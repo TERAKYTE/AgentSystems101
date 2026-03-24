@@ -124,8 +124,8 @@
 ## 下一步规划
 
 - 视频课程陆续放出（将会更加细致，实践课带领大家从设计思路到实施，授人以鱼也授人以渔）
-- 完善HelloAgents框架，开展Dev分支继续维护，兼容学习版本。
-- 感谢大家助力2W Star! 达到3W Star将会更新续作，《从零开始训练智能体》，帮助每一个学习者掌握从零到一训练自定义场景智能体模型的能力。
+- HelloAgents框架已经更新V1.0.0版本，将会继续完善，增加更多好用，轻量化的工具和特性，兼容学习版本。
+- 感谢大家助力3W Star! 之后将会提供调查问卷，供大家填写自己需要学习的智能体训练内容。后续作品《从零开始训练智能体》，帮助每一个学习者掌握从零到一训练自定义场景智能体模型的能力。
 
 ## 🤝 如何贡献
 
@@ -166,7 +166,7 @@
 ## Star History
 
 <div align='center'>
-    <img src="./docs/images/star-history-2026210.png" alt="Datawhale" width="90%">
+    <img src="./docs/images/star-history-2026324.png" alt="Datawhale" width="90%">
 </div>
 
 <div align="center">

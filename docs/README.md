@@ -29,7 +29,7 @@
 
 ## 🌐 在线阅读
 
-**[🌐 国外访问](https://datawhalechina.github.io/hello-agents/)** | **[� 国内加速](https://hello-agents.datawhale.cc)**
+**[🌐 国外访问](https://datawhalechina.github.io/hello-agents/)** | **[🚀 国内加速](https://hello-agents.datawhale.cc)**
 
 ### ✨ 你将收获什么？
 
@@ -157,7 +157,7 @@
 ## Star History
 
 <div align='center'>
-    <img src="./images/star-history-2026210.png" alt="Datawhale" width="90%">
+    <img src="./images/star-history-2026324.png" alt="Datawhale" width="90%">
 </div>
 
 <div align="center">
