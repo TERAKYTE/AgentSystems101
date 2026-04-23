@@ -152,7 +152,7 @@ We are an open-source community and welcome any form of contribution!
 ## Star History
 
 <div align='center'>
-    <img src="./images/star-history-2026324.png" alt="Datawhale" width="90%">
+    <img src="./images/star-history-2026424.png" alt="Datawhale" width="90%">
 </div>
 
 <div align="center">
