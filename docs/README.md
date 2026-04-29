@@ -184,7 +184,7 @@
 
 ```bibtex
 @misc{hello_agents2025,
-  title  = {{Hello-Agents}: Building an Agent from Scratch},
+  title  = {Hello-Agents: Building an Agent from Scratch},
   author = {Sizhou Chen and Tao Sun and Shufan Jiang and Peilin Huang and Xinmin Zeng and Xinzhong Zhu and all Hello-Agents contributors},
   year   = {2025},
   url    = {https://github.com/datawhalechina/Hello-Agents},
