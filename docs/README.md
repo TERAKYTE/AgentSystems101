@@ -86,6 +86,7 @@
 | [07-环境配置](https://github.com/datawhalechina/hello-agents/blob/main/Extra-Chapter/Extra07-环境配置.md)                | 环境配置 |
 | [08-如何写出好的Skill](https://github.com/datawhalechina/hello-agents/blob/main/Extra-Chapter/Extra08-如何写出好的Skill.md) | Skill 写作最佳实践 |
 | [09-Agent应用开发实践踩坑与经验分享](https://github.com/datawhalechina/hello-agents/blob/main/Extra-Chapter/Extra09-Agent应用开发实践踩坑与经验分享.md) | Code Agent 应用开发踩坑与经验总结 |
+| [10-Agent Self-Evolution智能体自进化](https://github.com/datawhalechina/hello-agents/blob/main/Extra-Chapter/Extra10-Agent自进化.md) | Agent 自进化四类闭环与代表项目 |
 
 ### PDF 版本下载
 
@@ -143,6 +144,7 @@
 - [黄宏晗-DW贡献者团队](https://github.com/XiaoMa-PM) (深圳大学, Extra04 内容贡献)
 - [王大鹏-Datawhale成员](https://github.com/ditingdapeng) (高级研发工程师, Extra08 内容贡献)
 - [尤逸晖-个人开发者](https://github.com/YYHDBL) (南京信息工程大学, Extra09 内容贡献)
+- [殷鑫-个人开发者](https://github.com/vinci-grape) (浙江大学, Extra10 内容贡献)
 
 ### 特别感谢
 - 感谢 [@Sm1les](https://github.com/Sm1les) 对本项目的帮助与支持
