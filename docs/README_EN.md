@@ -82,6 +82,7 @@
 | [07-Environment Configuration](https://github.com/datawhalechina/hello-agents/blob/main/Extra-Chapter/Extra07-环境配置.md)            | Environment Configuration |
 | [08-How to Write Good Skills](https://github.com/datawhalechina/hello-agents/blob/main/Extra-Chapter/Extra08-如何写出好的Skill.md) | Skill writing best practices |
 | [09-Agent Development Pitfalls and Practical Lessons](https://github.com/datawhalechina/hello-agents/blob/main/Extra-Chapter/Extra09-Agent应用开发实践踩坑与经验分享.md) | Practical lessons and pitfalls from building a Code Agent |
+| [10-Agent Self-Evolution](https://github.com/datawhalechina/hello-agents/blob/main/Extra-Chapter/Extra10-Agent自进化.md) | Four closed loops of agent self-evolution and representative projects |
 
 ### PDF Version Download
 
@@ -138,6 +139,7 @@ We are an open-source community and welcome any form of contribution!
 - [Huang Honghan - DW Contributor Team](https://github.com/XiaoMa-PM) (Shenzhen University, Extra04 Content Contributor)
 - [Wang Dapeng - Datawhale Member](https://github.com/ditingdapeng) (Senior Developer, Extra08 Content Contributor)
 - [You Yihui - Individual Developer](https://github.com/YYHDBL) (Nanjing University of Information Science and Technology, Extra09 content contribution)
+- [Yin Xin - Individual Developer](https://github.com/vinci-grape) (Zhejiang University, Extra10 content contribution)
 
 ### Special Thanks
 - Thanks to [@Sm1les](https://github.com/Sm1les) for help and support for this project
