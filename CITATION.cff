@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+title: AgentSystems101
+message: "If this handbook helps your work, cite the repository and preserve upstream attribution."
+type: software
+authors:
+  - name: Terakyte
+repository-code: "https://github.com/TERAKYTE/AgentSystems101"
+abstract: "English-first AI agent engineering handbook covering agent orchestration, memory, RAG, tool use, multi-agent systems, evaluation, and production workflows."
+license: CC-BY-NC-SA-4.0

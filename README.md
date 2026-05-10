@@ -1,5 +1,9 @@
 # AgentSystems101
 
+[![Validate Repository](https://github.com/TERAKYTE/AgentSystems101/actions/workflows/validate.yml/badge.svg)](https://github.com/TERAKYTE/AgentSystems101/actions/workflows/validate.yml)
+[![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC_BY--NC--SA_4.0-lightgrey.svg)](./LICENSE.txt)
+[![Focus: AI Agent Engineering](https://img.shields.io/badge/Focus-AI_Agent_Engineering-0f766e.svg)](#what-this-repository-covers)
+
 AgentSystems101 is a Terakyte-maintained engineering handbook for building AI agent systems. It gives engineers a practical path from LLM fundamentals to agent orchestration, tool use, memory, retrieval, evaluation, and production operations.
 
 The repository preserves upstream lineage for compatibility and attribution, but the active handbook is edited as an English-first learning resource rather than a literal translation.
@@ -17,6 +21,13 @@ This repository is not a claim that agents are fully autonomous software replace
 - Agentic RL and training workflows
 - End-to-end projects and community examples
 - Production concerns: observability, cost, safety, and reliability
+
+## Why It Is Different
+
+- **Engineering-first:** every topic is framed around implementation choices, constraints, and failure modes.
+- **Progressive curriculum:** concepts build from LLM foundations to production systems.
+- **Validation-backed:** active docs, links, examples, and English-first content are checked by repository validation.
+- **Extensible structure:** examples, reference docs, archived upstream material, and production guidance are separated cleanly.
 
 ## Architecture Map
 
@@ -169,6 +180,8 @@ Contributions should improve clarity, correctness, or reproducibility.
 4. Prefer smaller pull requests grouped by topic.
 5. Include validation output when changing docs, links, notebooks, or examples.
 6. Clearly mark uncertain translations with a TODO instead of guessing.
+
+See [CONTRIBUTING.md](./CONTRIBUTING.md) for contribution standards and local checks.
 
 ## Attribution
 
