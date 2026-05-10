@@ -1,37 +1,61 @@
-这里我们介绍项目中使用的本地安装方式中的Docker，因为这种方式最稳定，并且最利于持续探索n8n的使用。
+# Installing n8n Locally with Docker
 
-我们先进入docker官网：[Docker: Accelerated Container Application Development](https://www.docker.com/)
+This guide uses Docker because it is the most stable local setup for experimenting with n8n workflows.
 
-选择你的终端设备进行下载，这里以Windows作为演示。
+## 1. Install Docker
 
-![image-20250912025341155](./N8N_INSTALL_GUIDE/image-20250912025341272.png)
+Download Docker Desktop from the official site:
 
-下载好以后可以切换磁盘存放路径，因为镜像一般很大，尽量不要存在C盘。
+[https://www.docker.com/](https://www.docker.com/)
 
-![image-20250912032540657](./N8N_INSTALL_GUIDE/image-20250912032540657.png)
+Choose the installer for your operating system. The screenshots below use Windows.
 
-后打开你的命令行，输入以下指令拉取n8n
+![Docker download page](./N8N_INSTALL_GUIDE/image-20250912025341272.png)
 
-```
+During installation, you can choose a non-system drive for Docker data if your machine has limited space on `C:`.
+
+![Docker install location](./N8N_INSTALL_GUIDE/image-20250912032540657.png)
+
+## 2. Start n8n
+
+Open PowerShell, Terminal, or another shell and run:
+
+```bash
 docker volume create n8n_data
 docker run -d --restart unless-stopped --name n8n -p 5678:5678 -v n8n_data:/home/node/.n8n n8nio/n8n
 ```
 
-现在我们就能在docker里面看到n8n运行啦
+Docker should now show the n8n container running.
 
-![image-20250912033251997](./N8N_INSTALL_GUIDE/image-20250912033251997.png)
+![n8n running in Docker](./N8N_INSTALL_GUIDE/image-20250912033251997.png)
 
-点击5678:5678可以进入n8n的启动界面。
+## 3. Open the n8n UI
 
-![image-20250912033341666](./N8N_INSTALL_GUIDE/image-20250912033341666.png)
+Open:
 
-进入页面后，可以看到打开新项目的按钮
+[http://localhost:5678](http://localhost:5678)
 
-![image-20250912034040656](./N8N_INSTALL_GUIDE/image-20250912034040656.png)
+The Docker port mapping `5678:5678` exposes the n8n web UI on your local machine.
 
-主要用到的功能有三个
-![image-20250912234709064](./N8N_INSTALL_GUIDE/image-20250912234709064.png)
+![n8n start page](./N8N_INSTALL_GUIDE/image-20250912033341666.png)
 
-添加新节点按钮打开之后可以搜索节点或选择自己有需要的节点添加即可~
+After setup, create a new workflow from the n8n dashboard.
 
-![image-20250912234748845](./N8N_INSTALL_GUIDE/image-20250912234748845.png)
+![n8n new workflow](./N8N_INSTALL_GUIDE/image-20250912034040656.png)
+
+## 4. Add Nodes
+
+The main workflow surface has three common areas: workflow canvas, node search, and execution/testing controls.
+
+![n8n workflow UI](./N8N_INSTALL_GUIDE/image-20250912234709064.png)
+
+Use the add-node button to search for integrations or select nodes from the catalog.
+
+![n8n node search](./N8N_INSTALL_GUIDE/image-20250912234748845.png)
+
+## Operational Notes
+
+- Keep credentials in n8n credential storage, not in plain workflow notes.
+- Pin input/output examples when testing LLM nodes.
+- Version important workflows by exporting JSON and committing sanitized copies.
+- Stop the container with `docker stop n8n` when it is not needed.

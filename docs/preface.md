@@ -36,7 +36,7 @@ This project is divided into five parts, covering basics to practice, progressin
 
 **Part Five (Outlook)**: The end of the journey is a new beginning. You will personally create your "graduation project," drawing a perfect conclusion to your learning journey.
 
-"What is learned on paper is superficial; to truly understand, one must practice." To achieve the best learning effect, we provide all supporting code in the project's `code` folder. We strongly recommend combining theory with practice. Please be sure to personally run, debug, and even modify every piece of code provided in the project. We encourage you to apply what you've learned to real scenarios that interest you—this is the ultimate purpose of learning.
+"What is learned on paper is superficial; to truly understand, one must practice." To achieve the best learning effect, we provide all supporting code in the project's `examples` directory. We strongly recommend combining theory with practice. Please be sure to personally run, debug, and even modify every piece of code provided in the project. We encourage you to apply what you've learned to real scenarios that interest you—this is the ultimate purpose of learning.
 
 Finally, as an open-source project, we warmly welcome your participation and contribution. When you encounter problems, you can ask questions in our community; when you have new ideas or discoveries, you are also welcome to join the project's co-construction at any time.
 

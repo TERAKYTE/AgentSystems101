@@ -1675,7 +1675,7 @@ To achieve its design goals, ANP defines the following core concepts, as shown i
   <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/10-figures/10-table-8.png" alt="" width="85%"/>
 </div>
 
-We also borrow from the official [Getting Started Guide](https://github.com/agent-network-protocol/AgentNetworkProtocol/blob/main/docs/chinese/ANP入门指南.md) to introduce ANP's architectural design, as shown in Figure 10.9
+We also borrow from the official [ANP Getting Started Guide](https://github.com/agent-network-protocol/AgentNetworkProtocol/blob/main/docs/chinese/ANP%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97.md) to introduce ANP's architectural design, as shown in Figure 10.9.
 
 <div align="center">
   <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/10-figures/10-9.png" alt="" width="85%"/>
@@ -2135,7 +2135,7 @@ We created a real weather query MCP server. Now, let's publish it to the Smither
 - 🔄 Automatically get server updates
 
 (2) Preparing for Publication
-First, we need to organize the project into a standard publishing format. This folder has been organized in the `code` directory for your reference:
+First, we need to organize the project into a standard publishing format. This folder has been organized in the `examples` directory for your reference:
 
 ```
 weather-mcp-server/
@@ -2438,4 +2438,3 @@ You now have mastered the core knowledge of agent communication protocols. Keep 
 [2] The A2A Project. (2025). *A2A Protocol: An open protocol for agent-to-agent communication*. Retrieved October 7, 2025, from https://a2a-protocol.org/
 
 [3] Chang, G., Lin, E., Yuan, C., Cai, R., Chen, B., Xie, X., & Zhang, Y. (2025). *Agent Network Protocol technical white paper*. arXiv. https://doi.org/10.48550/arXiv.2508.00007
-

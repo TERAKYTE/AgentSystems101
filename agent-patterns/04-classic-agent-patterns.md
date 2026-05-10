@@ -32,7 +32,7 @@ To make our code more universal, we will uniformly configure model service-relat
 
 1. In your project root directory, create a file named `.env`.
 2. In this file, add the following content. You can point it to OpenAI's official service or any local/third-party service compatible with the OpenAI interface according to your needs.
-3. If you really don't know how to obtain it, you can refer to [Environment Configuration](https://github.com/datawhalechina/hello-agents/blob/main/Extra-Chapter/Extra07-环境配置.md).
+3. If you do not yet have provider credentials, start with the [Environment Configuration](../docs/setup/environment.md) notes.
 
 ```bash
 # .env file
@@ -517,7 +517,7 @@ By appending `Observation` to `self.history`, the agent can "see" the results of
 
 (6) Running Instance and Analysis
 
-Combining all the above parts, we get the complete `ReActAgent` class. The complete code running instance can be found in the `code` folder of this book's accompanying code repository.
+Combining all the above parts, we get the complete `ReActAgent` class. The complete code running instance can be found in the `examples` directory of this book's accompanying examples directory.
 
 Below is a real running record:
 
@@ -807,7 +807,7 @@ The design of this `PlanAndSolveAgent` class embodies the principle of "composit
 
 ### 4.3.4 Running Instance and Analysis
 
-The complete code can also be found in the `code` folder of this book's accompanying code repository; here we only demonstrate the final results.
+The complete code can also be found in the `examples` directory of this book's accompanying examples directory; here we only demonstrate the final results.
 
 ````bash
 --- Starting to Process Question ---
@@ -1101,7 +1101,7 @@ class ReflectionAgent:
 
 ### 4.4.4 Running Instance and Analysis
 
-The complete code can also be found in the `code` folder of this book's accompanying code repository; here we provide an output instance.
+The complete code can also be found in the `examples` directory of this book's accompanying examples directory; here we provide an output instance.
 
 ````python
 --- Starting to Process Task ---
@@ -1307,4 +1307,3 @@ At this point, we have mastered the core technologies for building individual ag
 [2] Wang L, Xu W, Lan Y, et al. Plan-and-solve prompting: Improving zero-shot chain-of-thought reasoning by large language models[J]. arXiv preprint arXiv:2305.04091, 2023.
 
 [3] Shinn N, Cassano F, Gopinath A, et al. Reflexion: Language agents with verbal reinforcement learning[J]. Advances in Neural Information Processing Systems, 2023, 36: 8634-8652.
-

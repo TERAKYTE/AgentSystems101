@@ -2111,7 +2111,7 @@ Next, we will explore together how to add RAG systems and Memory mechanisms to t
 
 1. This chapter built the `HelloAgents` framework and explained "why we need to build our own Agent framework." Please analyze:
 
-   - Section 7.1.1 mentioned four main limitations of current mainstream frameworks. Combined with your actual experience using a framework in [Chapter 6 exercises](../chapter6/第六章%20框架开发实践.md#习题) or actual projects, explain how these problems affect development efficiency.
+   - Section 7.1.1 mentioned four main limitations of current mainstream frameworks. Combined with your actual experience using a framework in [Chapter 6 exercises](./06-framework-development-practice.md#exercises) or actual projects, explain how these problems affect development efficiency.
    - `HelloAgents` proposes the design philosophy of "everything is a tool," abstracting modules like `Memory`, `RAG`, and `MCP` as tools. What are the advantages of this design? Are there any limitations? Please provide examples.
    - Comparing the agent code implemented from scratch in Chapter 4 with the framework implementation in this chapter, what specific improvements does the framework bring? If you were to design a framework, what design principles would you prioritize?
 

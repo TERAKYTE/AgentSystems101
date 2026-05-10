@@ -715,7 +715,7 @@ if __name__ == "__main__":
     )
 ```
 
-This main program file defines the basic structure of the FastAPI application, configures CORS middleware to allow cross-origin requests, and initializes各个managers on startup. Next we will implement specific API routes.
+This main program file defines the basic structure of the FastAPI application, configures CORS middleware to allow cross-origin requests, and initializes the managers on startup. Next we will implement specific API routes.
 
 ### 15.4.2 API Route Design
 

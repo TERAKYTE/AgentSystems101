@@ -386,7 +386,7 @@ class OpenAICompatibleClient:
             return "Error: Error occurred when calling language model service."
 ```
 
-To instantiate this class, you need to provide three pieces of information: `API_KEY`, `BASE_URL`, and `MODEL_ID`. The specific values depend on the service provider you use (such as OpenAI official, Azure, or local models like Ollama). If you don't have access to these yet, you can refer to [Environment Configuration](https://github.com/datawhalechina/hello-agents/blob/main/Extra-Chapter/Extra07-环境配置.md).
+To instantiate this class, you need to provide three pieces of information: `API_KEY`, `BASE_URL`, and `MODEL_ID`. The specific values depend on the service provider you use, such as OpenAI, Azure OpenAI, or local models through Ollama. If you do not have credentials configured yet, start with the [Environment Configuration](../docs/setup/environment.md) notes.
 
 ### 1.3.3 Executing the Action Loop
 
