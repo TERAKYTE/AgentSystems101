@@ -1,29 +1,43 @@
-- [Hello-Agents](/en/README_EN.md)
-  - [Preface](./Preface.md)
+# AgentSystems101 Navigation
 
-- <strong>Part I: Fundamentals of Agents and Language Models</strong>
-  - [Chapter 1 Introduction to Agents](/en/chapter1/Chapter1-Introduction-to-Agents.md)
-  - [Chapter 2 History of Agents](/en/chapter2/Chapter2-History-of-Agents.md)
-  - [Chapter 3 Fundamentals of Large Language Models](/en/chapter3/Chapter3-Fundamentals-of-Large-Language-Models.md)
+Use this map as the stable entry point for the handbook.
 
-- <strong>Part II: Building Your Large Language Model Agent</strong>
-  - [Chapter 4 Building Classic Agent Paradigms](/en/chapter4/Chapter4-Building-Classic-Agent-Paradigms.md)
-  - [Chapter 5 Building Agents with Low-Code Platforms](/en/chapter5/Chapter5-Building-Agents-with-Low-Code-Platforms.md)
-  - [Chapter 6 Framework Development Practice](/en/chapter6/Chapter6-Framework-Development-Practice.md)
-  - [Chapter 7 Building Your Agent Framework](/en/chapter7/Chapter7-Building-Your-Agent-Framework.md)
+## Core Curriculum
 
-- <strong>Part III: Advanced Knowledge Extension</strong>
-  - [Chapter 8 Memory and Retrieval](/en/chapter8/Chapter8-Memory-and-Retrieval.md)
-  - [Chapter 9 Context Engineering](/en/chapter9/Chapter9-Context-Engineering.md)
-  - [Chapter 10 Agent Communication Protocols](/en/chapter10/Chapter10-Agent-Communication-Protocols.md)
-  - [Chapter 11 Agentic-RL](/en/chapter11/Chapter11-Agentic-RL.md)
-  - [Chapter 12 Agent Performance Evaluation](/en/chapter12/Chapter12-Agent-Performance-Evaluation.md)
+| Order | Topic | File |
+| --- | --- | --- |
+| 01 | Introduction to Agents | [foundations/01-introduction-to-agents.md](../foundations/01-introduction-to-agents.md) |
+| 02 | History of Agents | [foundations/02-history-of-agents.md](../foundations/02-history-of-agents.md) |
+| 03 | Large Language Models | [foundations/03-large-language-models.md](../foundations/03-large-language-models.md) |
+| 04 | Classic Agent Patterns | [agent-patterns/04-classic-agent-patterns.md](../agent-patterns/04-classic-agent-patterns.md) |
+| 05 | Low-Code Agent Platforms | [frameworks/05-low-code-agent-platforms.md](../frameworks/05-low-code-agent-platforms.md) |
+| 06 | Framework Development Practice | [frameworks/06-framework-development-practice.md](../frameworks/06-framework-development-practice.md) |
+| 07 | Build Your Agent Framework | [frameworks/07-build-your-agent-framework.md](../frameworks/07-build-your-agent-framework.md) |
+| 08 | Memory and Retrieval | [memory-rag/08-memory-and-retrieval.md](../memory-rag/08-memory-and-retrieval.md) |
+| 09 | Context Engineering | [memory-rag/09-context-engineering.md](../memory-rag/09-context-engineering.md) |
+| 10 | Agent Communication Protocols | [multi-agent/10-agent-communication-protocols.md](../multi-agent/10-agent-communication-protocols.md) |
+| 11 | Agentic RL | [rl-agents/11-agentic-rl.md](../rl-agents/11-agentic-rl.md) |
+| 12 | Agent Performance Evaluation | [evaluation/12-agent-performance-evaluation.md](../evaluation/12-agent-performance-evaluation.md) |
+| 13 | Intelligent Travel Assistant | [projects/13-intelligent-travel-assistant.md](../projects/13-intelligent-travel-assistant.md) |
+| 14 | Automated Deep Research Agent | [projects/14-automated-deep-research-agent.md](../projects/14-automated-deep-research-agent.md) |
+| 15 | Building Cyber Town | [projects/15-building-cyber-town.md](../projects/15-building-cyber-town.md) |
+| 16 | Capstone Project | [projects/16-capstone-project.md](../projects/16-capstone-project.md) |
 
-- <strong>Part IV: Comprehensive Case Studies</strong>
-  - [Chapter 13 Intelligent Travel Assistant](/en/chapter13/Chapter13-Intelligent-Travel-Assistant.md)
-  - [Chapter 14 Automated Deep Research Agent](/en/chapter14/Chapter14-Automated-Deep-Research-Agent.md)
-  - [Chapter 15 Building Cyber Town](/en/chapter15/Chapter15-Building-Cyber-Town.md)
+## Reference Docs
 
-- <strong>Part V: Graduation Project and Future Outlook</strong>
-  - [Chapter 16 Graduation Project](/en/chapter16/Chapter16-Graduation-Project.md)
+- [Glossary](./glossary.md)
+- [Framework Comparison](./framework-comparison.md)
+- [Evaluation Methodology](./evaluation-methodology.md)
+- [Production Pitfalls](./production-pitfalls.md)
+- [Observability](./observability.md)
+- [Cost Optimization](./cost-optimization.md)
+- [Build From Scratch](./build-from-scratch.md)
+
+## Source and Compatibility
+
+- [Runnable examples](../examples/README.md)
+- [Capstone and community projects](../projects/README.md)
+- [Notebook index](../notebooks/README.md)
+- [Upstream Chinese source archive](./upstream-zh/README.md)
+- [Legacy upstream English archive](./upstream-legacy/README.md)
 
