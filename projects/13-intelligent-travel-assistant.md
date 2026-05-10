@@ -1,6 +1,6 @@
 # Chapter 13 Intelligent Travel Assistant
 
-In previous chapters, we built the HelloAgents framework from scratch, implementing core functionalities including various agent paradigms, tool systems, memory mechanisms, protocol communication, and performance evaluation. Starting from this chapter, we will enter a completely new phase: **integrating all learned knowledge to build complete practical applications.**
+In previous chapters, we built the AgentSystems101 framework from scratch, implementing core functionalities including various agent paradigms, tool systems, memory mechanisms, protocol communication, and performance evaluation. Starting from this chapter, we will enter a completely new phase: **integrating all learned knowledge to build complete practical applications.**
 
 Do you remember the first agent we built in Chapter 1? It was a simple intelligent travel assistant that demonstrated the basic principles of the `Thought-Action-Observation` loop. The intelligent travel assistant in this chapter will be a complete project, including the following core functions:
 
@@ -31,7 +31,7 @@ This is the intelligent travel assistant we want to build. It's not just a techn
 The system adopts the classic **front-end and back-end separation architecture**, divided into four layers, as shown in Figure 13.1:
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/13-figures/13-1.png" alt="" width="85%"/>
+  <img src="../assets/images/13-figures/13-1.png" alt="" width="85%"/>
   <p>Figure 13.1 Intelligent Travel Assistant Technical Architecture</p>
 </div>
 
@@ -39,7 +39,7 @@ The system adopts the classic **front-end and back-end separation architecture**
 
 **(2) Back-end Layer (FastAPI)**: Responsible for API routing, data validation, and business logic.
 
-**(3) Agent Layer (HelloAgents)**: Responsible for task decomposition, tool invocation, and result integration. Includes 4 specialized Agents.
+**(3) Agent Layer (AgentSystems101)**: Responsible for task decomposition, tool invocation, and result integration. Includes 4 specialized Agents.
 
 **(4) External Service Layer**: Provides data and capabilities, including Amap API, Unsplash API, and LLM API.
 
@@ -129,26 +129,26 @@ Experience core functions:
 First, fill in the destination city, travel dates, preferences, budget, transportation and accommodation types in the homepage form. After clicking the "Start Planning" button, the system will display a loading progress bar and quickly generate a result page, as shown in Figure 13.2.
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/13-figures/13-2.png" alt="" width="85%"/>
+  <img src="../assets/images/13-figures/13-2.png" alt="" width="85%"/>
   <p>Figure 13.2 Travel Assistant Planning Progress Page</p>
 </div>
 
 After successful loading, the page will clearly display itinerary overview, budget details, attraction map, daily itinerary details and weather information, as shown in Figures 13.3 and 13.4.
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/13-figures/13-3.png" alt="" width="85%"/>
+  <img src="../assets/images/13-figures/13-3.png" alt="" width="85%"/>
   <p>Figure 13.3 Travel Assistant Planning Completion Page</p>
 </div>
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/13-figures/13-4.png" alt="" width="85%"/>
+  <img src="../assets/images/13-figures/13-4.png" alt="" width="85%"/>
   <p>Figure 13.4 Travel Assistant Planning Completion Page</p>
 </div>
 
 If users need personalized adjustments, they can click the "Edit Itinerary" button to freely adjust the order of attractions or delete certain attractions, as shown in Figure 13.5. After planning is complete, through the "Export Itinerary" dropdown menu, the final plan can be easily saved as an image or PDF file for convenient reference at any time.
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/13-figures/13-5.png" alt="" width="85%"/>
+  <img src="../assets/images/13-figures/13-5.png" alt="" width="85%"/>
   <p>Figure 13.5 Travel Assistant Planning Completion Page</p>
 </div>
 
@@ -470,7 +470,7 @@ Imagine a travel agency in the real world. When you go to a travel agency to con
 Based on the task decomposition principle, we designed four specialized Agents, as shown in Figure 13.6:
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/13-figures/13-6.png" alt="" width="85%"/>
+  <img src="../assets/images/13-figures/13-6.png" alt="" width="85%"/>
   <p>Figure 13.6 Multi-Agent Collaboration Flow</p>
 </div>
 
@@ -662,7 +662,7 @@ def search_poi(keywords: str, city: str, api_key: str):
     return data
 ```
 
-This approach looks simple, but will encounter several problems in actual use. First is **Agent cannot call autonomously**. In our HelloAgents framework, Agents call tools by recognizing tool call markers in prompts (such as `[TOOL_CALL:tool_name:arg1=value1]`). If we call the API directly in code, the Agent loses its autonomous decision-making ability and becomes a simple function call.
+This approach looks simple, but will encounter several problems in actual use. First is **Agent cannot call autonomously**. In our AgentSystems101 framework, Agents call tools by recognizing tool call markers in prompts (such as `[TOOL_CALL:tool_name:arg1=value1]`). If we call the API directly in code, the Agent loses its autonomous decision-making ability and becomes a simple function call.
 
 Second is **complex parameter passing**. Amap's API has many parameters. For example, POI search has more than a dozen parameters such as `keywords`, `city`, `types`, `offset`, `page`, etc. If we want the Agent to use these parameters flexibly, we need to explain the meaning and format of each parameter in detail in the prompt, which will make the prompt very complex.
 
@@ -675,7 +675,7 @@ Finally is **chaotic tool management**. Amap provides more than a dozen differen
 MCP (Model Context Protocol) is a standardized protocol proposed by Anthropic for connecting LLMs and external tools. This section will introduce how to integrate the Amap MCP server in the project. Our project uses `amap-mcp-server`, which is an MCP server implemented in Node.js:
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/13-figures/13-7.png" alt="" width="85%"/>
+  <img src="../assets/images/13-figures/13-7.png" alt="" width="85%"/>
   <p>Figure 13.7 amap-mcp-server Tools</p>
 </div>
 
@@ -683,10 +683,10 @@ The Amap MCP server provides various tools, mainly divided into the following ca
 
 <div align="center">
   <p>Table 13.1 Amap MCP Tool Categories</p>
-  <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/13-figures/13-table-1.png" alt="" width="85%"/>
+  <img src="../assets/images/13-figures/13-table-1.png" alt="" width="85%"/>
 </div>
 
-Through the MCP protocol, we can easily integrate in HelloAgents:
+Through the MCP protocol, we can easily integrate in AgentSystems101:
 
 ```python
 from hello_agents.tools import MCPTool
@@ -725,11 +725,11 @@ print(list(agent.tools.keys()))
 As shown in Figure 13.8, suppose the user wants to search for attractions in Beijing. AttractionSearchAgent receives the query "Please search for historical and cultural attractions in Beijing". The Agent analyzes this query and decides to call the `amap_maps_text_search` tool with parameters `keywords=attraction, city=Beijing`.
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/13-figures/13-8.png" alt="" width="85%"/>
+  <img src="../assets/images/13-figures/13-8.png" alt="" width="85%"/>
   <p>Figure 13.8 MCP Tool Call Flow</p>
 </div>
 
-The Agent generates a tool call marker: `[TOOL_CALL:amap_maps_text_search:keywords=attraction,city=Beijing]`. The HelloAgents framework parses this marker, extracts the tool name and parameters, and then calls the corresponding Tool object.
+The Agent generates a tool call marker: `[TOOL_CALL:amap_maps_text_search:keywords=attraction,city=Beijing]`. The AgentSystems101 framework parses this marker, extracts the tool name and parameters, and then calls the corresponding Tool object.
 
 The Tool object is automatically created by `MCPTool`, and it will send the call request to the MCP server. Specifically, it will construct a JSON-RPC format message and send it to the server process through stdin:
 
@@ -918,7 +918,7 @@ The choice of front-end technology stack needs to consider several factors: deve
 
 <div align="center">
   <p>Table 13.2 Front-End Technology Stack</p>
-  <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/13-figures/13-table-2.png" alt="" width="85%"/>
+  <img src="../assets/images/13-figures/13-table-2.png" alt="" width="85%"/>
 </div>
 
 The project's directory structure is as follows:

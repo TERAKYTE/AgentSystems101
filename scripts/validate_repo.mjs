@@ -23,6 +23,32 @@ const activeMarkdownRoots = [
 
 const failures = [];
 const headingCache = new Map();
+const textExtensions = new Set([
+  ".css",
+  ".csv",
+  ".env",
+  ".gd",
+  ".godot",
+  ".html",
+  ".ini",
+  ".js",
+  ".json",
+  ".jsonc",
+  ".jsonl",
+  ".md",
+  ".mjs",
+  ".py",
+  ".sh",
+  ".svg",
+  ".toml",
+  ".ts",
+  ".tscn",
+  ".tsx",
+  ".txt",
+  ".vue",
+  ".yaml",
+  ".yml",
+]);
 
 function rel(file) {
   return path.relative(root, file).replaceAll(path.sep, "/");
@@ -52,8 +78,19 @@ function isArchivedOrGenerated(relative) {
   return (
     relative.startsWith("docs/upstream-zh/") ||
     relative.startsWith("docs/upstream-legacy/") ||
-    relative.startsWith("projects/community/") ||
-    relative.startsWith("examples/chapter15/Helloagents-AI-Town/backend/memory_data/")
+    relative.startsWith("projects/community/")
+  );
+}
+
+function isTextLikeFile(relative) {
+  const basename = path.basename(relative);
+  const extension = path.extname(relative);
+  return (
+    textExtensions.has(extension) ||
+    basename === "README" ||
+    basename === "LICENSE" ||
+    basename === "NOTICE" ||
+    basename.startsWith(".env")
   );
 }
 
@@ -219,11 +256,17 @@ for (const file of files) {
   } catch (error) {
     failures.push(`${relative}: unreadable file: ${error.message}`);
   }
+  if (!isArchivedOrGenerated(relative) && isTextLikeFile(relative)) {
+    const text = readFileSync(file, "utf8");
+    if (/\p{Script=Han}/u.test(text)) {
+      failures.push(`${relative}: active text file contains Chinese characters`);
+    }
+  }
 }
 
 const markdownFiles = files.filter((file) => file.endsWith(".md") && isActiveMarkdown(file));
-const notebookFiles = files.filter((file) => file.endsWith(".ipynb") && !rel(file).startsWith("projects/community/"));
-const pythonFiles = files.filter((file) => file.endsWith(".py") && !rel(file).startsWith("projects/community/"));
+const notebookFiles = files.filter((file) => file.endsWith(".ipynb") && !isArchivedOrGenerated(rel(file)));
+const pythonFiles = files.filter((file) => file.endsWith(".py") && !isArchivedOrGenerated(rel(file)));
 
 for (const file of markdownFiles) checkMarkdown(file);
 for (const file of notebookFiles) checkNotebook(file);

@@ -1,105 +1,87 @@
-name: Hello-Agents 问题反馈 / Textbook Issue Report
-description: 报告 Hello-Agents 中的代码/内容问题 / Report code/content issues in textbook
-title: "[问题/Issue] 章节X.X：简短问题描述 / ChapterX.X: Brief description"
-labels: ["documentation", "需要审核/needs-review"]
+name: AgentSystems101 Issue Report
+description: Report code, documentation, example, or curriculum issues.
+title: "[Issue] Chapter X.X: brief description"
+labels: ["documentation", "needs-review"]
 body:
   - type: markdown
     attributes:
       value: |
-        🐛 **请提供以下信息帮助我们快速定位问题 / Please provide the following information to help us locate the issue**  
+        Provide enough detail for maintainers to reproduce, verify, and fix the issue.
 
   - type: input
     id: chapter
     attributes:
-      label: 1. 遇到问题的章节 / Affected Chapter
-      description: "格式示例：Chapter3.2 或 Chapter6.4 / Format example: Chapter3.2 or Chapter6.4"
-      placeholder: "ChapterX.X"
+      label: Affected Chapter
+      description: "Example: Chapter 3.2 or Chapter 6.4"
+      placeholder: "Chapter X.X"
     validations:
       required: true
 
   - type: dropdown
     id: issue_type
     attributes:
-      label: 2. 问题类型 / Issue Type
-      description: 请选择最符合的问题类型 / Select the most appropriate issue type
+      label: Issue Type
+      description: Select the closest issue type.
       options:
-        - 代码错误 / Code Error
-        - 内容错误 / Content Error
-        - 格式问题 / Format Issue
-        - 依赖问题 / Dependency Issue
-        - 文档不清晰 / Unclear Documentation
-        - 其他 / Other
+        - Code error
+        - Content error
+        - Formatting issue
+        - Dependency issue
+        - Unclear documentation
+        - Broken link or asset
+        - Other
     validations:
       required: true
 
   - type: textarea
     id: problem
     attributes:
-      label: 3. 具体问题描述 / Problem Description
-      description: |
-        请清晰描述遇到的问题现象或错误信息 / Clearly describe the issue or error message
-        - 代码问题：遇到了什么错误？预期行为是什么？/ Code issue: What error occurred? Expected behavior?
-        - 内容问题：哪里不准确/有歧义？/ Content issue: What is inaccurate/ambiguous?
-        - 依赖问题：缺少哪个依赖？版本冲突？/ Dependency issue: Missing dependency? Version conflict?
+      label: Problem Description
+      description: Describe the observed issue and the expected behavior.
       placeholder: |
-        例：代码运行时出现XX错误 / E.g.: XX error when running code...
-        例：图3-5的内容描述不准确 / E.g.: Inaccurate description in Figure 3-5...
-        例：requirements.txt缺少hello-agents依赖 / E.g.: Missing hello-agents in requirements.txt...
+        Example: The code raises an import error when running on Python 3.11.
+        Example: Figure 3-5 does not match the surrounding explanation.
+        Example: A local Markdown link points to a missing file.
     validations:
       required: true
 
   - type: textarea
     id: reproduction
     attributes:
-      label: 4. 问题重现材料 / Reproduction Materials
-      description: |
-        🔧 根据问题类型提供以下内容 / Provide based on issue type:
-        - 代码问题：完整代码片段+错误日志+环境信息 / Code issue: Full code snippet + error log + environment info
-        - 内容问题：相关段落/图片编号+修改建议 / Content issue: Related paragraph/figure + suggested fix
-        - 格式问题：截图+问题位置描述 / Format issue: Screenshot + location description
-        - 依赖问题：pip list输出+Python版本 / Dependency issue: pip list output + Python version
+      label: Reproduction Materials
+      description: Include the smallest useful reproduction, logs, screenshots, or environment details.
       placeholder: |
         ```python
-        # 代码问题请粘贴完整代码 / Paste full code for code issues
-        from hello_agents import SimpleAgent
-        agent = SimpleAgent(...)
+        # Paste the smallest code example that reproduces the issue.
         ```
-        
-        **错误信息 / Error log**:
+
+        Error log:
         ```
-        粘贴完整的错误日志 / Paste full error log
+        Paste the full relevant error log.
         ```
-        
-        **环境信息 / Environment**:
-        - Python版本 / Python version: 3.10.x
-        - hello-agents版本 / hello-agents version: 0.2.4
-        - 操作系统 / OS: Windows 11 / macOS 14 / Ubuntu 22.04
-        
-        **建议修改 / Suggested fix**:
-        对原内容的修改建议... / Your suggested modification...
+
+        Environment:
+        - Python version:
+        - Operating system:
+        - Package versions:
     validations:
       required: true
 
   - type: textarea
     id: additional
     attributes:
-      label: 5. 补充信息 / Additional Information
-      description: 其他可能有助于解决问题的信息 / Any other information that might help resolve the issue
-      placeholder: |
-        - 是否尝试过其他解决方案？/ Have you tried other solutions?
-        - 是否在其他环境中测试过？/ Have you tested in other environments?
-        - 相关的Issue或PR链接 / Related Issue or PR links
+      label: Additional Context
+      description: Add related issues, pull requests, screenshots, or suggested fixes.
 
   - type: checkboxes
     id: checks
     attributes:
-      label: 确认事项 / Verification
-      description: 请确认以下事项 / Please confirm the following
+      label: Verification
+      description: Confirm the checks you completed before opening this issue.
       options:
-        - label: 我已阅读过相关章节的文档 / I have read the relevant chapter documentation
+        - label: I have read the relevant chapter documentation.
           required: true
-        - label: 我已搜索过现有的Issues,确认此问题未被报告 / I have searched existing Issues and confirmed this hasn't been reported
+        - label: I have searched existing issues and did not find a duplicate.
           required: true
-        - label: 我已尝试过基本的故障排除(如重启、重新安装依赖等) / I have tried basic troubleshooting (restart, reinstall dependencies, etc.)
-          required: false
-
+        - label: I have included reproduction details where applicable.
+          required: true

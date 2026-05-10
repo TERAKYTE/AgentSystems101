@@ -2,7 +2,7 @@
 
 In previous chapters, we built fully functional standalone agents with reasoning, tool invocation, and memory capabilities. However, when attempting to build more complex AI systems, natural questions arise: **How can agents efficiently interact with the external world? How can multiple agents collaborate with each other?**
 
-This is precisely the core problem that agent communication protocols aim to solve. This chapter will introduce three communication protocols to the HelloAgents framework: **MCP (Model Context Protocol)** for standardized communication between agents and tools, **A2A (Agent-to-Agent Protocol)** for peer-to-peer collaboration between agents, and **ANP (Agent Network Protocol)** for building large-scale agent networks. These three protocols together form the infrastructure layer for agent communication.
+This is precisely the core problem that agent communication protocols aim to solve. This chapter will introduce three communication protocols to the AgentSystems101 framework: **MCP (Model Context Protocol)** for standardized communication between agents and tools, **A2A (Agent-to-Agent Protocol)** for peer-to-peer collaboration between agents, and **ANP (Agent Network Protocol)** for building large-scale agent networks. These three protocols together form the infrastructure layer for agent communication.
 
 Through this chapter's learning, you will master the design philosophy and practical skills of agent communication protocols, understand the design differences between three mainstream protocols, and learn how to choose appropriate protocols to solve practical problems.
 
@@ -90,7 +90,7 @@ MCP (Model Context Protocol) was proposed by the Anthropic team<sup>[1]</sup>, a
 MCP's design philosophy is "context sharing". It is not just an RPC (Remote Procedure Call) protocol, but more importantly, it allows agents and tools to share rich contextual information. As shown in Figure 10.1, when an agent accesses a code repository, the MCP server can not only provide file content but also provide contextual information such as code structure, dependency relationships, and commit history, enabling the agent to make more intelligent decisions.
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/10-figures/10-1.png" alt="" width="85%"/>
+  <img src="../assets/images/10-figures/10-1.png" alt="" width="85%"/>
   <p>Figure 10.1 MCP Design Philosophy</p>
 </div>
 
@@ -101,7 +101,7 @@ The A2A (Agent-to-Agent Protocol) protocol was proposed by the Google team<sup>2
 A2A's design philosophy is "peer-to-peer communication". As shown in Figure 10.2, in an A2A network, each agent is both a service provider and a service consumer. Agents can actively initiate requests and also respond to requests from other agents. This peer-to-peer design avoids the bottleneck of centralized coordinators, making the agent network more flexible and scalable.
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/10-figures/10-2.png" alt="" width="85%"/>
+  <img src="../assets/images/10-figures/10-2.png" alt="" width="85%"/>
   <p>Figure 10.2 A2A Design Philosophy</p>
 </div>
 
@@ -112,7 +112,7 @@ ANP (Agent Network Protocol) is a conceptual protocol framework<sup>3</sup>, cur
 ANP's design philosophy is "decentralized service discovery". In a network containing hundreds or thousands of agents, how can agents find the services they need? As shown in Figure 10.3, ANP provides service registration, discovery, and routing mechanisms, allowing agents to dynamically discover other services in the network without needing to pre-configure all connection relationships.
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/10-figures/10-3.png" alt="" width="85%"/>
+  <img src="../assets/images/10-figures/10-3.png" alt="" width="85%"/>
   <p>Figure 10.3 ANP Design Philosophy</p>
 </div>
 
@@ -120,7 +120,7 @@ Finally, in Table 10.1, let's use a comparison table to more clearly understand 
 
 <div align="center">
   <p>Table 10.1 Comparison of Three Protocols</p>
-  <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/10-figures/10-table-1.png" alt="" width="85%"/>
+  <img src="../assets/images/10-figures/10-table-1.png" alt="" width="85%"/>
 </div>
 
 **(4) How to Choose the Right Protocol?**
@@ -133,15 +133,15 @@ The key to choosing a protocol lies in understanding your needs:
 - If you need multiple agents to collaborate on tasks, choose **A2A**
 - If you want to build a large-scale agent ecosystem, consider **ANP**
 
-### 10.1.3 HelloAgents Communication Protocol Architecture Design
+### 10.1.3 AgentSystems101 Communication Protocol Architecture Design
 
-After understanding the design philosophies of the three protocols, let's see how to implement and use them in the HelloAgents framework. Our design goal is: **Enable learners to use these protocols in the simplest way while maintaining sufficient flexibility to handle complex scenarios**.
+After understanding the design philosophies of the three protocols, let's see how to implement and use them in the AgentSystems101 framework. Our design goal is: **Enable learners to use these protocols in the simplest way while maintaining sufficient flexibility to handle complex scenarios**.
 
-As shown in Figure 10.4, the HelloAgents communication protocol architecture adopts a three-layer design, from bottom to top: protocol implementation layer, tool encapsulation layer, and agent integration layer.
+As shown in Figure 10.4, the AgentSystems101 communication protocol architecture adopts a three-layer design, from bottom to top: protocol implementation layer, tool encapsulation layer, and agent integration layer.
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/10-figures/10-4.png" alt="" width="85%"/>
-  <p>Figure 10.4 HelloAgents Communication Protocol Design</p>
+  <img src="../assets/images/10-figures/10-4.png" alt="" width="85%"/>
+  <p>Figure 10.4 AgentSystems101 Communication Protocol Design</p>
 </div>
 
 **(1) Protocol Implementation Layer**: This layer contains the specific implementations of the three protocols. MCP is implemented based on the FastMCP library, providing client and server functionality; A2A is implemented based on Google's official a2a-sdk; ANP is our self-developed lightweight implementation, providing service discovery and network management functions. Of course, there is currently also an official [implementation](https://github.com/agent-network-protocol/AgentConnect), but considering future iterations, we only simulate the concept here.
@@ -237,7 +237,7 @@ The MCP protocol adopts a three-layer architecture design of Host, Client, and S
 Suppose you are using Claude Desktop and asking: "What documents are on my desktop?"
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/10-figures/10-5.png" alt="" width="85%"/>
+  <img src="../assets/images/10-figures/10-5.png" alt="" width="85%"/>
   <p>Figure 10.5 MCP Case Demonstration</p>
 </div>
 
@@ -259,7 +259,7 @@ As shown in Table 10.2, the MCP protocol provides three core capabilities, formi
 
 <div align="center">
   <p>Table 10.2 MCP Core Capabilities</p>
-  <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/10-figures/10-table-2.png" alt="" width="85%"/>
+  <img src="../assets/images/10-figures/10-table-2.png" alt="" width="85%"/>
 </div>
 
 The difference between these three capabilities is: **Tools are active** (execute operations), **Resources are passive** (provide data), **Prompts are instructive** (provide templates).
@@ -269,7 +269,7 @@ The difference between these three capabilities is: **Tools are active** (execut
 Let's understand the complete workflow of MCP through a specific example, as shown in Figure 10.6:
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/10-figures/10-6.png" alt="" width="85%"/>
+  <img src="../assets/images/10-figures/10-6.png" alt="" width="85%"/>
   <p>Figure 10.6 MCP Case Demonstration</p>
 </div>
 
@@ -300,7 +300,7 @@ Many developers ask: **I'm already using Function Calling, why do I still need M
 
 <div align="center">
   <p>Table 10.3 Function Calling vs MCP Comparison</p>
-  <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/10-figures/10-table-3.png" alt="" width="85%"/>
+  <img src="../assets/images/10-figures/10-table-3.png" alt="" width="85%"/>
 </div>
 
 Here we use the example of an agent needing to access GitHub repositories and the local file system to compare two implementations of the same task in detail.
@@ -396,11 +396,11 @@ First, it needs to be clarified that Function Calling and MCP are not in competi
 
 We can use a simple analogy to understand: Function Calling is equivalent to learning the skill of "how to make a phone call", including when to dial, how to communicate with the other party, and when to hang up. MCP, on the other hand, is that globally unified "telephone communication standard" that ensures any phone can successfully dial another.
 
-After understanding their complementary relationship, let's next see how to use the MCP protocol in HelloAgents.
+After understanding their complementary relationship, let's next see how to use the MCP protocol in AgentSystems101.
 
 ### 10.2.2 Using MCP Client
 
-HelloAgents implements complete MCP client functionality based on FastMCP 2.0. We provide both asynchronous and synchronous APIs to suit different usage scenarios. For most applications, the asynchronous API is recommended as it better handles concurrent requests and long-running operations. Below we will provide a step-by-step operation demonstration.
+AgentSystems101 implements complete MCP client functionality based on FastMCP 2.0. We provide both asynchronous and synchronous APIs to suit different usage scenarios. For most applications, the asynchronous API is recommended as it better handles concurrent requests and long-running operations. Below we will provide a step-by-step operation demonstration.
 
 **(1) Connecting to MCP Server**
 
@@ -594,15 +594,15 @@ print(result)
 
 ### 10.2.3 MCP Transport Methods Explained
 
-An important feature of the MCP protocol is **transport agnosticism**. This means the MCP protocol itself does not depend on specific transport methods and can run on different communication channels. HelloAgents, based on FastMCP 2.0, provides complete transport method support, allowing you to choose the most appropriate transport mode based on actual scenarios.
+An important feature of the MCP protocol is **transport agnosticism**. This means the MCP protocol itself does not depend on specific transport methods and can run on different communication channels. AgentSystems101, based on FastMCP 2.0, provides complete transport method support, allowing you to choose the most appropriate transport mode based on actual scenarios.
 
 **(1) Transport Methods Overview**
 
-HelloAgents' `MCPClient` supports five transport methods, each with different use cases, as shown in Table 10.4:
+AgentSystems101' `MCPClient` supports five transport methods, each with different use cases, as shown in Table 10.4:
 
 <div align="center">
   <p>Table 10.4 MCP Transport Methods Comparison</p>
-  <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/10-figures/10-table-4.png" alt="" width="85%"/>
+  <img src="../assets/images/10-figures/10-table-4.png" alt="" width="85%"/>
 </div>
 
 **(2) Transport Method Usage Examples**
@@ -770,11 +770,11 @@ async def test_streamable_http_transport():
 
 ### 10.2.4 Using MCP Tools in Agents
 
-Previously, we learned how to use the MCP client directly. But in practical applications, we prefer to have agents **automatically** call MCP tools rather than manually writing calling code. HelloAgents provides the `MCPTool` wrapper, allowing MCP servers to seamlessly integrate into the agent's tool chain.
+Previously, we learned how to use the MCP client directly. But in practical applications, we prefer to have agents **automatically** call MCP tools rather than manually writing calling code. AgentSystems101 provides the `MCPTool` wrapper, allowing MCP servers to seamlessly integrate into the agent's tool chain.
 
 **(1) Automatic Expansion Mechanism of MCP Tools**
 
-HelloAgents' `MCPTool` has a feature: **automatic expansion**. When you add an MCP tool to an Agent, it automatically expands all tools provided by the MCP server into independent tools, allowing the Agent to call them like ordinary tools.
+AgentSystems101' `MCPTool` has a feature: **automatic expansion**. When you add an MCP tool to an Agent, it automatically expands all tools provided by the MCP server into independent tools, allowing the Agent to call them like ordinary tools.
 
 **Method 1: Using Built-in Demo Server**
 
@@ -1051,12 +1051,12 @@ Tables 10.5 and 10.6 show commonly used official MCP servers and popular communi
 
 <div align="center">
   <p>Table 10.5 Commonly Used Official MCP Servers</p>
-  <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/10-figures/10-table-5.png" alt="" width="85%"/>
+  <img src="../assets/images/10-figures/10-table-5.png" alt="" width="85%"/>
 </div>
 
 <div align="center">
   <p>Table 10.6 Popular Community MCP Servers</p>
-  <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/10-figures/10-table-6.png" alt="" width="85%"/>
+  <img src="../assets/images/10-figures/10-table-6.png" alt="" width="85%"/>
 </div>
 
 Here are some particularly interesting case TODOs for reference:
@@ -1103,7 +1103,7 @@ Here are some particularly interesting case TODOs for reference:
    # - Play background music (Spotify)
    ```
 
-Through this section's explanation, I hope you can explore more MCP implementation cases, and contributions to HelloAgents are welcome! Next, let's learn about the A2A protocol.
+Through this section's explanation, I hope you can explore more MCP implementation cases, and contributions to AgentSystems101 are welcome! Next, let's learn about the A2A protocol.
 
 ## 10.3 A2A Protocol in Practice
 
@@ -1123,13 +1123,13 @@ The A2A protocol adopts a peer-to-peer (P2P) architecture (mesh topology), allow
 
 <div align="center">
   <p>Table 10.7 A2A Core Concepts</p>
-  <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/10-figures/10-table-7.png" alt="" width="85%"/>
+  <img src="../assets/images/10-figures/10-table-7.png" alt="" width="85%"/>
 </div>
 
 To implement management of the collaboration process, A2A defines a standardized lifecycle for tasks, including states such as creation, negotiation, delegation, in-progress, completion, and failure, as shown in Figure 10.7.
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/10-figures/10-7.png" alt="" width="85%"/>
+  <img src="../assets/images/10-figures/10-7.png" alt="" width="85%"/>
   <p>Figure 10.7 A2A Task Lifecycle</p>
 </div>
 
@@ -1139,7 +1139,7 @@ This mechanism enables agents to perform task negotiation, progress tracking, an
 The A2A request lifecycle is a sequence that details the four main steps a request follows: agent discovery, authentication, send message API, and send message stream API. Figure 10.8 below, borrowed from the official website's flowchart, shows the operational flow, illustrating the interaction between client, A2A server, and authentication server.
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/10-figures/10-8.png" alt="" width="85%"/>
+  <img src="../assets/images/10-figures/10-8.png" alt="" width="85%"/>
   <p>Figure 10.8 A2A Request Lifecycle</p>
 </div>
 
@@ -1294,9 +1294,9 @@ if custom_agent:
     print(result2)
 ```
 
-### 10.3.3 Using HelloAgents A2A Tools
+### 10.3.3 Using AgentSystems101 A2A Tools
 
-HelloAgents provides a unified A2A tool interface.
+AgentSystems101 provides a unified A2A tool interface.
 
 **(1) Creating A2A Agent Server**
 
@@ -1460,7 +1460,7 @@ print(f"\nFinal result:\n{result}")
 
 ### 10.3.4 Using A2A Tools in Agents
 
-Now let's see how to integrate A2A into HelloAgents agents.
+Now let's see how to integrate A2A into AgentSystems101 agents.
 
 **(1) Using A2ATool Wrapper**
 
@@ -1672,13 +1672,13 @@ To achieve its design goals, ANP defines the following core concepts, as shown i
 
 <div align="center">
   <p>Table 10.8 ANP Core Concepts</p>
-  <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/10-figures/10-table-8.png" alt="" width="85%"/>
+  <img src="../assets/images/10-figures/10-table-8.png" alt="" width="85%"/>
 </div>
 
 We also borrow from the official [ANP Getting Started Guide](https://github.com/agent-network-protocol/AgentNetworkProtocol/blob/main/docs/chinese/ANP%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97.md) to introduce ANP's architectural design, as shown in Figure 10.9.
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/10-figures/10-9.png" alt="" width="85%"/>
+  <img src="../assets/images/10-figures/10-9.png" alt="" width="85%"/>
   <p>Figure 10.9 ANP Overall Process</p>
 </div>
 
@@ -2277,7 +2277,7 @@ Dockerfile configuration explanation:
 - **Port**: `8081` - Smithery platform standard port
 - **Start Command**: `python server.py` - Run MCP server
 
-Here, we need to Fork the `hello-agents` repository, get the source code in `code`, and create a repository named `weather-mcp-server` using your own GitHub, changing `yourusername` to your GitHub username.
+Here, we need to Fork the `AgentSystems101` repository, get the source code in `code`, and create a repository named `weather-mcp-server` using your own GitHub, changing `yourusername` to your GitHub username.
 
 (3) Submit to Smithery
 
@@ -2286,7 +2286,7 @@ Open your browser and visit [https://smithery.ai/](https://smithery.ai/). Log in
 Once publication is complete, you can see a page similar to this, as shown in Figure 10.10:
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/10-figures/10-10.png" alt="" width="85%"/>
+  <img src="../assets/images/10-figures/10-10.png" alt="" width="85%"/>
   <p>Figure 10.10 Smithery Publication Success Page</p>
 </div>
 
@@ -2317,7 +2317,7 @@ Method 2: Configure in Claude Desktop
 }
 ```
 
-Method 3: Use in HelloAgents
+Method 3: Use in AgentSystems101
 
 ```python
 from hello_agents import SimpleAgent, HelloAgentsLLM
@@ -2337,7 +2337,7 @@ response = agent.run("How's the weather in Beijing today?")
 Of course, this is just an example, and there are more usages to explore on your own. Figure 10.11 below shows the information included when an MCP tool is successfully published, displaying the service name "Weather", its unique identifier `@jjyaoao/weather-mcp-server`, and status information. The Tools area shows the methods we just implemented, and the Connect area provides technical information needed to connect and use this service, including the service's **access URL address** and **configuration code snippets** in multiple languages/environments. If you want to learn more, you can click this [link](https://smithery.ai/server/@jjyaoao/weather-mcp-server).
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/10-figures/10-11.png" alt="" width="85%"/>
+  <img src="../assets/images/10-figures/10-11.png" alt="" width="85%"/>
   <p>Figure 10.11 Successfully Published MCP Tool on Smithery</p>
 </div>
 
@@ -2355,9 +2355,9 @@ This chapter systematically introduced three core protocols for agent communicat
 - **A2A (Agent-to-Agent Protocol)**: As a dialogue system between agents, supports direct communication and task negotiation, suitable for close collaboration in small-scale teams.
 - **ANP (Agent Network Protocol)**: As the "internet" for agents, provides service discovery, routing, and load balancing mechanisms, suitable for building large-scale, open agent networks.
 
-**HelloAgents Integration Solution**
+**AgentSystems101 Integration Solution**
 
-In the `HelloAgents` framework, these three protocols are uniformly abstracted as tools (Tool), achieving seamless integration, allowing developers to flexibly add different levels of communication capabilities to agents:
+In the `AgentSystems101` framework, these three protocols are uniformly abstracted as tools (Tool), achieving seamless integration, allowing developers to flexibly add different levels of communication capabilities to agents:
 
 ```python
 # Unified Tool interface
@@ -2387,7 +2387,7 @@ After completing this chapter, it is recommended that you:
 3. **Participate in Community**:
    - Contribute new MCP services to the community
    - Share your own developed agent implementation cases
-   - Participate in technical standard discussions for related protocols, or ask questions in Issues or directly help HelloAgents support new example cases
+   - Participate in technical standard discussions for related protocols, or ask questions in Issues or directly help AgentSystems101 support new example cases
 
 **Congratulations on completing Chapter 10!**
 

@@ -32,7 +32,7 @@ In the subsequent practical work of this chapter, we will focus on four framewor
 
 <div align="center">
   <p>Table 6.1 Comparison of Four Agent Frameworks</p>
-  <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/6-figures/01.png" alt="" width="90%"/>
+  <img src="../assets/images/6-figures/01.png" alt="" width="90%"/>
 </div>
 
 
@@ -52,7 +52,7 @@ As mentioned earlier, AutoGen's design philosophy is rooted in "driving collabor
 The release of version `0.7.4` is an important milestone in AutoGen's development, marking a fundamental innovation in the framework's underlying design. This update is not a simple addition of features but a rethinking of the overall architecture, aimed at improving the framework's modularity, concurrency performance, and developer experience.
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/6-figures/02.png" alt="" width="90%"/>
+  <img src="../assets/images/6-figures/02.png" alt="" width="90%"/>
   <p>Figure 6.1 AutoGen Architecture Diagram</p>
 </div>
 
@@ -405,7 +405,7 @@ Compared with AutoGen, the core difference of AgentScope lies in its **message-d
 As shown in Figure 6.2, AgentScope adopts a clear layered modular design, forming a complete agent development ecosystem from bottom-level basic components to top-level application orchestration.
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/6-figures/03.png" alt="" width="90%"/>
+  <img src="../assets/images/6-figures/03.png" alt="" width="90%"/>
   <p>Figure 6.2 AgentScope Architecture Diagram</p>
 </div>
 
@@ -729,7 +729,7 @@ Simply setting roles is not enough. How can we ensure that two AIs can always "s
 These constraints ensure that the conversation does not deviate from the topic or fall into ineffective loops but advances in a highly structured, task-driven manner, as shown in Figure 6.3.
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/6-figures/04.png" alt="" width="90%"/>
+  <img src="../assets/images/6-figures/04.png" alt="" width="90%"/>
   <p>Figure 6.3 CAMEL Creating Stock Trading Robot</p>
 </div>
 
@@ -1117,11 +1117,8 @@ Search terms: [Best search keywords]"""
 
     # Parse LLM's output, extract search keywords
     search_query = user_message # Default to using original query
-    if "Search terms:" in response_text or "搜索词：" in response_text:
-        if "Search terms:" in response_text:
-            search_query = response_text.split("Search terms:")[1].strip()
-        else:
-            search_query = response_text.split("搜索词：")[1].strip()
+    if "Search terms:" in response_text:
+        search_query = response_text.split("Search terms:")[1].strip()
 
     return {
         "user_query": response_text,

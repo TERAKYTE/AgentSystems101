@@ -4,7 +4,7 @@
 
 In previous chapters, we implemented various agent paradigms and communication protocols. However, when agents handle more complex tasks, they perform poorly, naturally raising questions: **How can we make agents have stronger reasoning capabilities? How can we make agents learn to use tools better? How can we make agents capable of self-improvement?**
 
-This is precisely the core problem that Agentic RL (agent training based on reinforcement learning) aims to solve. This chapter will introduce reinforcement learning training capabilities to the HelloAgents framework, enabling you to train agents with advanced capabilities such as reasoning and tool use. We will start from the basics of LLM training and gradually delve into practical techniques such as Supervised Fine-Tuning (SFT) and Group Relative Policy Optimization (GRPO), ultimately building a complete agent training pipeline.
+This is precisely the core problem that Agentic RL (agent training based on reinforcement learning) aims to solve. This chapter will introduce reinforcement learning training capabilities to the AgentSystems101 framework, enabling you to train agents with advanced capabilities such as reasoning and tool use. We will start from the basics of LLM training and gradually delve into practical techniques such as Supervised Fine-Tuning (SFT) and Group Relative Policy Optimization (GRPO), ultimately building a complete agent training pipeline.
 
 ### 11.1.1 From Reinforcement Learning to Agentic RL
 
@@ -36,7 +36,7 @@ Reinforcement learning provides new possibilities. By allowing agents to autonom
 Before diving into Agentic RL, we need to first understand the complete process of LLM training. The birth of a powerful LLM (such as GPT, Claude, Qwen) typically goes through two main stages: Pretraining and Post-training. As shown in Figure 11.1, these two stages constitute the complete evolutionary path of LLM from "language model" to "conversational assistant".
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/11-figures/11-1.png" alt="" width="85%"/>
+  <img src="../assets/images/11-figures/11-1.png" alt="" width="85%"/>
   <p>Figure 11.1 LLM Training Landscape</p>
 </div>
 
@@ -94,7 +94,7 @@ Reinforcement learning is formalized based on the Markov Decision Process (MDP) 
 
 <div align="center">
   <p>Table 11.1 Comparison of PBRFT and Agentic RL</p>
-  <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/11-figures/11-table-1.png" alt="" width="85%"/>
+  <img src="../assets/images/11-figures/11-table-1.png" alt="" width="85%"/>
 </div>
 
 In terms of state, PBRFT's state $s_0$ consists only of user prompts, time span $T=1$ (single step), state doesn't change, can be represented as $s_0 = \text{prompt}$. While Agentic RL's state $s_t$ contains historical observations and context, time span $T \gg 1$ (multi-step), state evolves with actions, can be represented as $s_t = (\text{prompt}, o_1, o_2, ..., o_t)$, where $o_t$ is the observation at step $t$ (such as tool return results, environment feedback, etc.).
@@ -130,7 +130,7 @@ This transformation is not just a difference in technical details, but a fundame
 Agentic RL aims to endow LLM agents with six core capabilities, as shown in Figure 11.2.
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/11-figures/11-2.png" alt="" width="85%"/>
+  <img src="../assets/images/11-figures/11-2.png" alt="" width="85%"/>
   <p>Figure 11.2 Six Core Capabilities of Agentic RL</p>
 </div>
 
@@ -146,24 +146,24 @@ Agentic RL aims to endow LLM agents with six core capabilities, as shown in Figu
 
 **Perception** refers to the ability to understand multimodal information. For example, reinforcement learning can enhance visual reasoning capabilities, allowing models to learn to use visual tools and learn visual planning. This enables agents to not only understand text but also understand and operate in the visual world.
 
-### 11.1.4 HelloAgents' Agentic RL Design
+### 11.1.4 AgentSystems101' Agentic RL Design
 
-After understanding the core philosophy of Agentic RL, let's see how to implement these capabilities in the HelloAgents framework.
+After understanding the core philosophy of Agentic RL, let's see how to implement these capabilities in the AgentSystems101 framework.
 
 In terms of technology selection, we integrated the TRL (Transformer Reinforcement Learning) framework<sup>[9]</sup> and chose the Qwen3-0.6B model<sup>[10]</sup>. TRL is Hugging Face's reinforcement learning library, mature and stable, feature-complete, and easy to integrate. Qwen3-0.6B is Alibaba Cloud's small language model, with 0.6B parameters suitable for ordinary GPU training, excellent performance, and open source and free.
 
-HelloAgents' Agentic RL module adopts a four-layer architecture design, as shown in Figure 11.3.
+AgentSystems101' Agentic RL module adopts a four-layer architecture design, as shown in Figure 11.3.
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/11-figures/11-3.png" alt="" width="85%"/>
-  <p>Figure 11.3 HelloAgents Agentic RL Architecture</p>
+  <img src="../assets/images/11-figures/11-3.png" alt="" width="85%"/>
+  <p>Figure 11.3 AgentSystems101 Agentic RL Architecture</p>
 </div>
 
 The bottom layer is the **Dataset Layer**, containing the `GSM8KDataset` class, `create_sft_dataset()` function, and `create_rl_dataset()` function, responsible for data loading and format conversion. The second layer is the **Reward Function Layer**, containing the `MathRewardFunction` base class, `AccuracyReward` accuracy reward, `LengthPenaltyReward` length penalty, `StepReward` step reward, and convenient creation functions `create_*_reward()`, responsible for defining what good behavior is. The third layer is the **Trainer Layer**, containing `SFTTrainerWrapper` and `GRPOTrainerWrapper`, responsible for specific training logic and LoRA support. The top layer is the **Unified Interface Layer**, providing `RLTrainingTool` unified training tool, supporting four operations: `action="train"` (train model), `action="load_dataset"` (load dataset), `action="create_reward"` (create reward function), `action="evaluate"` (evaluate model).
 
 ### 11.1.5 Quick Start Example
 
-Before diving into learning, let's quickly experience the complete training process. Since this chapter has a lot of theoretical content and practical debugging is quite tedious, we focus on learning to apply rather than constructing tools. First install the HelloAgents framework:
+Before diving into learning, let's quickly experience the complete training process. Since this chapter has a lot of theoretical content and practical debugging is quite tedious, we focus on learning to apply rather than constructing tools. First install the AgentSystems101 framework:
 
 ```bash
 # Install HelloAgents framework (Chapter 11 version)
@@ -251,7 +251,7 @@ GSM8K (Grade School Math 8K)<sup>[4]</sup> is a high-quality elementary school m
 
 <div align="center">
   <p>Table 11.2 GSM8K Dataset Statistics</p>
-  <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/11-figures/11-table-2.png" alt="" width="85%"/>
+  <img src="../assets/images/11-figures/11-table-2.png" alt="" width="85%"/>
 </div>
 
 Let's look at a typical GSM8K problem:
@@ -273,7 +273,7 @@ This problem requires two steps of reasoning: first calculate the quantity sold 
 The GSM8K dataset needs to be converted to different formats to adapt to different training methods, as shown in Figure 11.4.
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/11-figures/11-4.png" alt="" width="85%"/>
+  <img src="../assets/images/11-figures/11-4.png" alt="" width="85%"/>
   <p>Figure 11.4 GSM8K Data Format Conversion</p>
 </div>
 
@@ -304,10 +304,10 @@ As shown in Table 11.3, the three formats each have their uses.
 
 <div align="center">
   <p>Table 11.3 Data Format Comparison</p>
-  <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/11-figures/11-table-3.png" alt="" width="85%"/>
+  <img src="../assets/images/11-figures/11-table-3.png" alt="" width="85%"/>
 </div>
 
-HelloAgents provides convenient dataset loading functions. Let's load and view the dataset through code:
+AgentSystems101 provides convenient dataset loading functions. Let's load and view the dataset through code:
 
 ```python
 from hello_agents.tools import RLTrainingTool
@@ -363,10 +363,10 @@ Where $q$ is the question, $a$ is the answer generated by the model, $a^*$ is th
 
 Reward function design directly affects training effectiveness. Good reward functions should clearly define what success is, provide gradient signals, not produce excessive variance, and be easy to adjust and combine. Poor reward functions may only give rewards at task end with no intermediate feedback, have reward hacking where agents find "cheating" ways to get high rewards, have multiple conflicting objectives, or have excessive variance preventing convergence.
 
-HelloAgents provides three built-in reward functions that can be used individually or in combination, as shown in Figure 11.5.
+AgentSystems101 provides three built-in reward functions that can be used individually or in combination, as shown in Figure 11.5.
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/11-figures/11-5.png" alt="" width="85%"/>
+  <img src="../assets/images/11-figures/11-5.png" alt="" width="85%"/>
   <p>Figure 11.5 Reward Function Design</p>
 </div>
 
@@ -564,12 +564,12 @@ As shown in Table 11.4, different reward functions are suitable for different ap
 
 <div align="center">
   <p>Table 11.4 Reward Function Comparison</p>
-  <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/11-figures/11-table-4.png" alt="" width="85%"/>
+  <img src="../assets/images/11-figures/11-table-4.png" alt="" width="85%"/>
 </div>
 
 ### 11.2.3 Custom Datasets and Reward Functions
 
-Although HelloAgents provides the GSM8K dataset and common reward functions, in practical applications you may need to use your own dataset or design specific reward functions. This section will introduce how to extend the framework.
+Although AgentSystems101 provides the GSM8K dataset and common reward functions, in practical applications you may need to use your own dataset or design specific reward functions. This section will introduce how to extend the framework.
 
 Before using custom datasets, you need to understand the data requirements for two training formats:
 
@@ -921,7 +921,7 @@ As can be seen, the SFT model's output has clear structure (using "Step 1", "Ste
 As shown in Figure 11.6, SFT is the bridge from pretrained models to reinforcement learning.
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/11-figures/11-6.png" alt="" width="85%"/>
+  <img src="../assets/images/11-figures/11-6.png" alt="" width="85%"/>
   <p>Figure 11.6 Role of SFT in Training Pipeline</p>
 </div>
 
@@ -955,14 +955,14 @@ As shown in Table 11.5, comparison of LoRA effects at different model scales.
 
 <div align="center">
   <p>Table 11.5 LoRA vs Full Fine-Tuning Comparison</p>
-  <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/11-figures/11-table-5.png" alt="" width="85%"/>
+  <img src="../assets/images/11-figures/11-table-5.png" alt="" width="85%"/>
 </div>
 
 LoRA's key hyperparameters include: rank (r), controlling the rank of LoRA matrices, larger means stronger expressiveness but more parameters, typical values 4-64, default 8; Alpha ($\alpha$), LoRA scaling factor, actual update is $\Delta W = \frac{\alpha}{r} BA$, controls LoRA's influence strength, typical value equals rank; target_modules, specifying which layers to apply LoRA, usually choosing attention layers (q_proj, k_proj, v_proj, o_proj), can also include MLP layers (gate_proj, up_proj, down_proj).
 
 ### 11.3.3 SFT Training Practice
 
-Now let's conduct SFT training using HelloAgents. The complete training process includes: preparing dataset, configuring LoRA, setting training parameters, starting training, and saving model.
+Now let's conduct SFT training using AgentSystems101. The complete training process includes: preparing dataset, configuring LoRA, setting training parameters, starting training, and saving model.
 
 Basic training example:
 
@@ -1093,7 +1093,7 @@ After training is complete, we need to evaluate the model's effectiveness. Evalu
 
 - **Reasoning Quality**: Clarity and logic of reasoning process, requires manual evaluation or specialized evaluation models.
 
-Using HelloAgents to evaluate models:
+Using AgentSystems101 to evaluate models:
 
 ```python
 from hello_agents.tools import RLTrainingTool
@@ -1179,7 +1179,7 @@ Where $\bar{r}_{\text{group}}$ is the group average reward and $\beta$ is the KL
 As shown in Figure 11.7, comparison of PPO and GRPO training processes.
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/11-figures/11-7.png" alt="" width="85%"/>
+  <img src="../assets/images/11-figures/11-7.png" alt="" width="85%"/>
   <p>Figure 11.7 PPO vs GRPO Training Process</p>
 </div>
 
@@ -1189,7 +1189,7 @@ As shown in Table 11.6, detailed comparison of PPO and GRPO.
 
 <div align="center">
   <p>Table 11.6 PPO vs GRPO Comparison</p>
-  <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/11-figures/11-table-6.png" alt="" width="85%"/>
+  <img src="../assets/images/11-figures/11-table-6.png" alt="" width="85%"/>
 </div>
 
 
@@ -1198,7 +1198,7 @@ For LLM training, GRPO is a better choice because it is simpler, more stable, an
 
 ### 11.4.2 GRPO Training Practice
 
-Now let's conduct GRPO training using HelloAgents. The prerequisite for GRPO training is completing SFT training, because GRPO requires a reasonable initial policy.
+Now let's conduct GRPO training using AgentSystems101. The prerequisite for GRPO training is completing SFT training, because GRPO requires a reasonable initial policy.
 
 Basic GRPO training example:
 
@@ -1407,7 +1407,7 @@ During GRPO training, we need to monitor the following metrics:
 
 - **Generation Quality**: Need manual inspection of generated answers to ensure correct format and clear reasoning.
 
-HelloAgents integrates two mainstream training monitoring tools: Weights & Biases (wandb) and TensorBoard.
+AgentSystems101 integrates two mainstream training monitoring tools: Weights & Biases (wandb) and TensorBoard.
 
 **Method 1: Using Weights & Biases (Recommended)**
 
@@ -1569,13 +1569,13 @@ As shown in Table 11.7, comparison of different metrics.
 
 <div align="center">
   <p>Table 11.7 Evaluation Metric Comparison</p>
-  <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/11-figures/11-table-7.png" alt="" width="85%"/>
+  <img src="../assets/images/11-figures/11-table-7.png" alt="" width="85%"/>
 </div>
 
 
 ### 11.5.2 Evaluation Practice
 
-HelloAgents provides comprehensive evaluation functionality, capable of calculating multiple metrics at once.
+AgentSystems101 provides comprehensive evaluation functionality, capable of calculating multiple metrics at once.
 
 ```python
 from hello_agents.tools import RLTrainingTool
@@ -1756,7 +1756,7 @@ As can be seen, the model performs well on easy problems (78.5%) but poorly on h
 Based on evaluation and analysis results, we can determine improvement directions for the model, as shown in Figure 11.8.
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/11-figures/11-8.png" alt="" width="85%"/>
+  <img src="../assets/images/11-figures/11-8.png" alt="" width="85%"/>
   <p>Figure 11.8 Model Improvement Iteration Process</p>
 </div>
 
@@ -1771,7 +1771,7 @@ In previous sections, we learned about data preparation, SFT training, GRPO trai
 A complete Agentic RL training pipeline includes the following stages: data preparation, SFT training, SFT evaluation, GRPO training, GRPO evaluation, and model deployment. As shown in Figure 11.9.
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/11-figures/11-9.png" alt="" width="85%"/>
+  <img src="../assets/images/11-figures/11-9.png" alt="" width="85%"/>
   <p>Figure 11.9 End-to-End Training Pipeline</p>
 </div>
 
@@ -2209,12 +2209,12 @@ As shown in Table 11.8, comparison of different tuning methods.
 
 <div align="center">
   <p>Table 11.8 Hyperparameter Tuning Method Comparison</p>
-  <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/11-figures/11-table-8.png" alt="" width="85%"/>
+  <img src="../assets/images/11-figures/11-table-8.png" alt="" width="85%"/>
 </div>
 
 ### 11.6.3 Distributed Training
 
-When data volume and model scale increase, single GPU training becomes very slow. At this point we need to use distributed training to accelerate the training process. HelloAgents is based on TRL and Hugging Face Accelerate, naturally supporting multi-GPU and multi-node distributed training.
+When data volume and model scale increase, single GPU training becomes very slow. At this point we need to use distributed training to accelerate the training process. AgentSystems101 is based on TRL and Hugging Face Accelerate, naturally supporting multi-GPU and multi-node distributed training.
 
 **Solution Selection Recommendations**:
 
@@ -2358,7 +2358,7 @@ As shown in Table 11.9, this is a memory comparison for training Qwen3-0.6B mode
 
 <div align="center">
   <p>Table 11.9 Memory Comparison (Qwen3-0.6B Model)</p>
-  <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/11-figures/11-table-9.png" alt="" width="85%"/>
+  <img src="../assets/images/11-figures/11-table-9.png" alt="" width="85%"/>
 </div>
 
 **(4) Multi-Node Training**
@@ -2598,7 +2598,7 @@ If you want to deeply learn Agentic RL, recommend following this path:
 
 1. **Reinforcement Learning Basics**: Learn basic concepts like MDP, policy gradient, PPO
 2. **LLM Basics**: Understand technologies like Transformer, pretraining, fine-tuning
-3. **Practice HelloAgents**: Run example code from this chapter, understand complete pipeline
+3. **Practice AgentSystems101**: Run example code from this chapter, understand complete pipeline
 
 **Advanced Stage**
 

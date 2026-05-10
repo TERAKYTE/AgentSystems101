@@ -8,7 +8,7 @@ To enable readers to quickly experience the complete functionality of this chapt
 pip install "hello-agents[all]==0.2.8"
 ```
 
-This chapter mainly introduces the core concepts and practices of context engineering, and adds a context builder and two supporting tools to the HelloAgents framework:
+This chapter mainly introduces the core concepts and practices of context engineering, and adds a context builder and two supporting tools to the AgentSystems101 framework:
 
 - **ContextBuilder** (`hello_agents/context/builder.py`): Context builder that implements the GSSC (Gather-Select-Structure-Compress) pipeline, providing a unified context management interface
 - **NoteTool** (`hello_agents/tools/builtin/note_tool.py`): Structured note tool that supports persistent memory management for agents
@@ -27,7 +27,7 @@ After years of Prompt Engineering becoming the focus of applied AI, a new term h
 The so-called "context" refers to the set of tokens included when sampling a large language model (LLM). The engineering problem at hand is to **optimize the utility of these tokens** under the inherent constraints of the LLM, in order to stably obtain expected results. To effectively harness LLMs, it is often necessary to "think in context"—that is: at any call, examine the overall state visible to the LLM and predict the behavior this state might induce.
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/9-figures/9-1.webp" alt="" width="85%"/>
+  <img src="../assets/images/9-figures/9-1.webp" alt="" width="85%"/>
   <p>Figure 9.1 Prompt engineering vs Context engineering</p>
 </div>
 
@@ -73,7 +73,7 @@ Under the constraint of "limited attention budget", the goal of excellent contex
 The overall guiding principle is: **sufficient but compact information**. As shown in Figure 9.2, this is dynamic retrieval entering runtime.
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/9-figures/9-2.webp" alt="" width="85%"/>
+  <img src="../assets/images/9-figures/9-2.webp" alt="" width="85%"/>
   <p>Figure 9.2 Calibrating the system prompt</p>
 </div>
 
@@ -118,9 +118,9 @@ Method trade-offs can follow these rules of thumb:
 
 Even as model capabilities continue to improve, "maintaining coherence and focus in long interactions" remains a core challenge in building robust agents. Careful and systematic context engineering will maintain its key value in the long term.
 
-## 9.3 Practice in Hello-Agents: ContextBuilder
+## 9.3 Practice in AgentSystems101: ContextBuilder
 
-This section will detail the context engineering practice in the HelloAgents framework. We will gradually demonstrate how to build a production-grade context management system from design motivation, core data structures, implementation details to complete cases. The design philosophy of ContextBuilder is "simple and efficient", removing unnecessary complexity, uniformly selecting based on "relevance + recency" scores, conforming to the engineering orientation of Agent modularity and maintainability.
+This section will detail the context engineering practice in the AgentSystems101 framework. We will gradually demonstrate how to build a production-grade context management system from design motivation, core data structures, implementation details to complete cases. The design philosophy of ContextBuilder is "simple and efficient", removing unnecessary complexity, uniformly selecting based on "relevance + recency" scores, conforming to the engineering orientation of Agent modularity and maintainability.
 
 ### 9.3.1 Design Motivation and Goals
 
@@ -2045,7 +2045,7 @@ This scenario faces several typical long-horizon task challenges. First is the p
 Our codebase maintenance assistant adopts a three-layer architecture, as shown in Figure 9.3:
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/9-figures/9-3.png" alt="" width="85%"/>
+  <img src="../assets/images/9-figures/9-3.png" alt="" width="85%"/>
   <p>Figure 9.3 Three-layer architecture of codebase maintenance assistant</p>
 </div>
 

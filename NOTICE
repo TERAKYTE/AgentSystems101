@@ -1,0 +1,14 @@
+AgentSystems101 Notice
+======================
+
+AgentSystems101 is maintained by Terakyte as an English-first AI agent engineering handbook.
+
+This repository includes a restructured and editorially adapted version of educational material originally published by DatawhaleChina and its contributors in the upstream hello-agents repository:
+
+https://github.com/datawhalechina/hello-agents
+
+The active AgentSystems101 handbook has been reorganized, rewritten in technical English, and extended with production-focused material. Original source files, examples, images, and community project materials are preserved for lineage and compatibility under docs/upstream-zh and docs/upstream-legacy where applicable.
+
+Original authors and DatawhaleChina contributors retain credit for upstream source material. This notice must remain with redistributions or substantial derivatives of this repository.
+
+License lineage is preserved. See LICENSE.txt for the repository license terms and consult the upstream repository for authoritative upstream licensing context.

@@ -1,12 +1,12 @@
 # Chapter 12: Agent Performance Evaluation
 
-In previous chapters, we built the core functionality of the HelloAgents framework, implementing various agent paradigms, tool systems, memory mechanisms, and reinforcement learning training. When building agent systems, we also need to solve a core problem: **How to objectively evaluate agent performance?** Specifically, we need to answer the following questions:
+In previous chapters, we built the core functionality of the AgentSystems101 framework, implementing various agent paradigms, tool systems, memory mechanisms, and reinforcement learning training. When building agent systems, we also need to solve a core problem: **How to objectively evaluate agent performance?** Specifically, we need to answer the following questions:
 
 1. Does the agent possess the expected capabilities?
 2. How does it perform on different tasks?
 3. What level is it at compared to other agents?
 
-This chapter will add a **Performance Evaluation System** to HelloAgents. We will deeply understand the theoretical foundation of agent evaluation and implement evaluation tools.
+This chapter will add a **Performance Evaluation System** to AgentSystems101. We will deeply understand the theoretical foundation of agent evaluation and implement evaluation tools.
 
 ## 12.1 Agent Evaluation Fundamentals
 
@@ -88,7 +88,7 @@ Different benchmarks use different evaluation metrics, common ones include:
 - **Robustness Metrics**: Error Rate, Failure Recovery, used to measure fault tolerance.
 - **Collaboration Metrics**: Communication Efficiency, Task Completion, used to measure collaboration effectiveness.
 
-### 12.1.3 HelloAgents Evaluation System Design
+### 12.1.3 AgentSystems101 Evaluation System Design
 
 Considering learning curve and practicality, this chapter will focus on the following evaluation scenarios:
 
@@ -108,8 +108,8 @@ Considering learning curve and practicality, this chapter will focus on the foll
 Through these three evaluation scenarios, we will build a complete evaluation system. Figure 12.1 shows our evaluation system construction approach.
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/12-figures/12-1.png" alt="" width="85%"/>
-  <p>Figure 12.1 HelloAgents Evaluation System Architecture</p>
+  <img src="../assets/images/12-figures/12-1.png" alt="" width="85%"/>
+  <p>Figure 12.1 AgentSystems101 Evaluation System Architecture</p>
 </div>
 
 
@@ -173,13 +173,13 @@ The BFCL benchmark contains four evaluation categories with increasing difficult
 
 <div align="center">
   <p>Table 12.1 Four Evaluation Categories in BFCL Benchmark</p>
-  <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/12-figures/12-table-1.png" alt="" width="85%"/>
+  <img src="../assets/images/12-figures/12-table-1.png" alt="" width="85%"/>
 </div>
 
 The BFCL evaluation process follows standard benchmark testing procedures: first load dataset and select evaluation category, then run agent to obtain prediction results, next parse prediction results into Abstract Syntax Tree (AST), and finally judge whether predictions are correct through AST matching algorithm. The entire process traverses all test samples, ultimately calculating evaluation metrics like accuracy and generating evaluation reports. The complete evaluation process is shown in Figure 12.2:
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/12-figures/12-2.png" alt="" width="85%"/>
+  <img src="../assets/images/12-figures/12-2.png" alt="" width="85%"/>
   <p>Figure 12.2 BFCL Evaluation Process Diagram</p>
 </div>
 
@@ -380,9 +380,9 @@ ls bfcl_eval/data/possible_answer/
 
 Reasons for recommending this method: it contains complete ground truth (standard answers), data format is completely consistent with official evaluation tool, can directly use official evaluation scripts, and supports BFCL v4 latest version.
 
-**Method 2: Load Official Data Using HelloAgents**
+**Method 2: Load Official Data Using AgentSystems101**
 
-After cloning repository, load data using HelloAgents:
+After cloning repository, load data using AgentSystems101:
 
 ```python
 from hello_agents.evaluation import BFCLDataset
@@ -407,7 +407,7 @@ The working principle of this loader is: first load test data from `bfcl_eval/da
 
 <div align="center">
   <p>Table 12.2 Four Evaluation Categories in BFCL Benchmark</p>
-  <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/12-figures/12-table-2.png" alt="" width="85%"/>
+  <img src="../assets/images/12-figures/12-table-2.png" alt="" width="85%"/>
 </div>
 
 You can also view available categories through code:
@@ -419,9 +419,9 @@ print(f"Supported categories: {categories}")
 # Output: ['simple_python', 'simple_java', 'simple_javascript', 'multiple', ...]
 ```
 
-### 12.2.3 Implementing BFCL Evaluation in HelloAgents
+### 12.2.3 Implementing BFCL Evaluation in AgentSystems101
 
-Now let's see how to implement BFCL evaluation in the HelloAgents framework. We provide three usage methods:
+Now let's see how to implement BFCL evaluation in the AgentSystems101 framework. We provide three usage methods:
 
 **Method 1: Using BFCLEvaluationTool (Recommended)**
 
@@ -616,13 +616,13 @@ Through these three methods, we can choose appropriate evaluation methods based 
 
 ### 12.2.4 BFCL Official Evaluation Tool Integration
 
-Previously we learned how to use HelloAgents' built-in evaluation functionality. In fact, `BFCLEvaluationTool` has **automatically integrated BFCL official evaluation tool**, allowing you to obtain authoritative, comparable evaluation results.
+Previously we learned how to use AgentSystems101' built-in evaluation functionality. In fact, `BFCLEvaluationTool` has **automatically integrated BFCL official evaluation tool**, allowing you to obtain authoritative, comparable evaluation results.
 
-The entire evaluation process includes four steps: first load test data from BFCL v4 dataset, then use HelloAgents to run evaluation and obtain agent prediction results, next export results to BFCL official format (JSONL), and finally use official evaluation script to calculate final scores. This process ensures evaluation results are completely consistent with BFCL leaderboard, as shown in Figure 12.3:
+The entire evaluation process includes four steps: first load test data from BFCL v4 dataset, then use AgentSystems101 to run evaluation and obtain agent prediction results, next export results to BFCL official format (JSONL), and finally use official evaluation script to calculate final scores. This process ensures evaluation results are completely consistent with BFCL leaderboard, as shown in Figure 12.3:
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/12-figures/12-3.png" alt="" width="85%"/>
-  <p>Figure 12.3 HelloAgents Loading BFCL Evaluation Process</p>
+  <img src="../assets/images/12-figures/12-3.png" alt="" width="85%"/>
+  <p>Figure 12.3 AgentSystems101 Loading BFCL Evaluation Process</p>
 </div>
 
 When using `BFCLEvaluationTool`, official evaluation **runs automatically** (enabled by default):
@@ -648,7 +648,7 @@ results = bfcl_tool.run(
 )
 ```
 
-The tool automatically executes the complete evaluation process: first run HelloAgents evaluation to obtain prediction results, then export results to BFCL format and save to `evaluation_results/bfcl_official/` directory, next copy result file to `result/{model_name}/` directory to meet official evaluation tool requirements, then run BFCL official evaluation command to calculate scores, and finally display official evaluation results and generate Markdown format evaluation report.
+The tool automatically executes the complete evaluation process: first run AgentSystems101 evaluation to obtain prediction results, then export results to BFCL format and save to `evaluation_results/bfcl_official/` directory, next copy result file to `result/{model_name}/` directory to meet official evaluation tool requirements, then run BFCL official evaluation command to calculate scores, and finally display official evaluation results and generate Markdown format evaluation report.
 
 **Official Evaluation Output Example:**
 
@@ -716,7 +716,7 @@ print(report)
 
 ### 12.2.5 Core Component Implementation Details
 
-In previous sections, we learned how to use BFCL evaluation tools. Now let's dive into how HelloAgents evaluation system's core components are implemented. Understanding these implementation details not only helps you better use the evaluation system, but also allows you to customize and extend according to your own needs.
+In previous sections, we learned how to use BFCL evaluation tools. Now let's dive into how AgentSystems101 evaluation system's core components are implemented. Understanding these implementation details not only helps you better use the evaluation system, but also allows you to customize and extend according to your own needs.
 
 **(1) BFCLDataset: Dataset Loader**
 
@@ -900,11 +900,11 @@ class BFCLEvaluationTool(Tool):
         return json.dumps(results, ensure_ascii=False)
 ````
 
-This tool's design follows three core principles: first inherit Tool base class to follow HelloAgents' tool specification, ensuring seamless integration with framework; second perform strict parameter validation, checking required parameters and providing friendly error prompts, improving user experience; finally format results, returning JSON string for easy parsing and display. Through this modular design, we implemented an evaluation system that is both easy to use and flexible. Users can directly use high-level Tool interface to quickly complete evaluation, or dive into low-level components for customization to meet special needs.
+This tool's design follows three core principles: first inherit Tool base class to follow AgentSystems101' tool specification, ensuring seamless integration with framework; second perform strict parameter validation, checking required parameters and providing friendly error prompts, improving user experience; finally format results, returning JSON string for easy parsing and display. Through this modular design, we implemented an evaluation system that is both easy to use and flexible. Users can directly use high-level Tool interface to quickly complete evaluation, or dive into low-level components for customization to meet special needs.
 
 ### 12.2.6 Extension and Optimization Recommendations
 
-Through previous learning, we have mastered how to use HelloAgents for BFCL evaluation. It should be noted that our current implementation is a simple reproduction based on SimpleAgent, mainly completing basic BFCL evaluation functionality. In practical applications, BFCL benchmark contains multiple difficulty levels and scenarios. To achieve higher scores on the leaderboard, further optimization and extension are needed.
+Through previous learning, we have mastered how to use AgentSystems101 for BFCL evaluation. It should be noted that our current implementation is a simple reproduction based on SimpleAgent, mainly completing basic BFCL evaluation functionality. In practical applications, BFCL benchmark contains multiple difficulty levels and scenarios. To achieve higher scores on the leaderboard, further optimization and extension are needed.
 
 **(1) Limitations of Current Implementation**
 
@@ -1010,7 +1010,7 @@ After understanding GAIA's evaluation philosophy, let's dive into the specific s
 
 <div align="center">
   <p>Table 12.3 GAIA Dataset Difficulty Level Distribution</p>
-  <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/12-figures/12-table-3.png" alt="" width="85%"/>
+  <img src="../assets/images/12-figures/12-table-3.png" alt="" width="85%"/>
 </div>
 
 For GAIA dataset sample examples, refer to the code snippet below:
@@ -1138,7 +1138,7 @@ Suppose we evaluated 10 samples, results can be referenced in Table 12.4:
 
 <div align="center">
   <p>Table 12.4 GAIA Dataset Difficulty Level Distribution</p>
-  <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/12-figures/12-table-4.png" alt="" width="85%"/>
+  <img src="../assets/images/12-figures/12-table-4.png" alt="" width="85%"/>
 </div>
 
 To calculate metrics for this case, refer to the Python script below:
@@ -1220,9 +1220,9 @@ Add your HuggingFace Token to `.env` file:
 HF_TOKEN=hf_your_token_here
 ```
 
-**Method 1: Automatic Download Using HelloAgents (Recommended)**
+**Method 1: Automatic Download Using AgentSystems101 (Recommended)**
 
-HelloAgents automatically handles GAIA dataset download and caching:
+AgentSystems101 automatically handles GAIA dataset download and caching:
 
 ```python
 from hello_agents.evaluation import GAIADataset
@@ -1296,7 +1296,7 @@ print(f"Level distribution: {stats['level_distribution']}")
 ```
 
 
-### 12.3.3 Implementing GAIA Evaluation in HelloAgents
+### 12.3.3 Implementing GAIA Evaluation in AgentSystems101
 
 Similar to BFCL, we provide two evaluation methods, **Method 1** is recommended.
 
@@ -1500,7 +1500,7 @@ https://huggingface.co/spaces/gaia-benchmark/leaderboard
 As shown in Figure 12.4, fill in information in submission form:
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/12-figures/12-4.png" alt="" width="85%"/>
+  <img src="../assets/images/12-figures/12-4.png" alt="" width="85%"/>
   <p>Figure 12.4 BFCL Evaluation Process Diagram</p>
 </div>
 
@@ -1698,10 +1698,8 @@ def _extract_answer(self, response: str) -> str:
 
     # Fallback: Look for other answer markers
     answer_patterns = [
-        r'答案[：:]\s*(.+)',
-        r'最终答案[：:]\s*(.+)',
-        r'Final answer[：:]\s*(.+)',
-        r'Answer[：:]\s*(.+)',
+        r'final answer:\s*(.+)',
+        r'answer:\s*(.+)',
     ]
 
     for pattern in answer_patterns:
@@ -1842,7 +1840,7 @@ def generate_report(
 
 ## 12.4 Data Generation Quality Evaluation
 
-In AI system development, high-quality training data is the foundation of system performance. This section introduces how to use the HelloAgents framework to evaluate the quality of generated data, using AIME (American Invitational Mathematics Examination)<sup>[9]</sup> style mathematics problem generation as an example.
+In AI system development, high-quality training data is the foundation of system performance. This section introduces how to use the AgentSystems101 framework to evaluate the quality of generated data, using AIME (American Invitational Mathematics Examination)<sup>[9]</sup> style mathematics problem generation as an example.
 
 AIME is a medium-difficulty mathematics competition hosted by the Mathematical Association of America (MAA), positioned between AMC 10/12 and the USA Mathematical Olympiad (USAMO). AIME problems have distinctive characteristics: each problem's answer is an integer between 0 and 999, problems cover multiple mathematical domains including algebra, geometry, number theory, combinatorics, and probability, require multi-step reasoning but don't involve advanced theory, and have moderate difficulty (equivalent to AIME problems 6-9). These characteristics make AIME problems an ideal benchmark for evaluating mathematics problem generation quality: unified answer format facilitates automated evaluation, and moderate difficulty is suitable for large-scale generation. We use the `TianHongZXY/aime-1983-2025` dataset on HuggingFace as reference, which contains over 900 AIME real problems from 1983 to 2025, providing rich reference samples for our generation and evaluation.
 
@@ -1853,7 +1851,7 @@ In data generation quality evaluation, we adopt three complementary evaluation m
 Below we introduce the specific implementation of these three evaluation methods in detail. The implementation flow of the entire case is shown in Figure 12.5:
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/12-figures/12-5.png" alt="" width="85%"/>
+  <img src="../assets/images/12-figures/12-5.png" alt="" width="85%"/>
   <p>Figure 12.5 Data Generation Quality Evaluation Flow Diagram</p>
 </div>
 
@@ -1865,7 +1863,7 @@ In our implementation, LLM Judge evaluates AIME problem quality from four key di
 
 <div align="center">
   <p>Table 12.5 LLM Judge Evaluation Dimensions for AIME Problems</p>
-  <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/12-figures/12-table-5.png" alt="" width="85%"/>
+  <img src="../assets/images/12-figures/12-table-5.png" alt="" width="85%"/>
 </div>
 
 After obtaining scores from four dimensions, we need to aggregate these scores into overall evaluation metrics. We define three key metrics to measure the quality level of generated problems:
@@ -1903,7 +1901,7 @@ These three metrics reflect generation quality from different angles: average sc
 In our implementation, Win Rate evaluation is conducted through the flow shown in Figure 12.6:
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/12-figures/12-6.png" alt="" width="85%"/>
+  <img src="../assets/images/12-figures/12-6.png" alt="" width="85%"/>
   <p>Figure 12.6 Data Generation Quality Evaluation Flow Diagram</p>
 </div>
 
@@ -1968,7 +1966,7 @@ data_generation/
         └── comprehensive_report.md
 ```
 
-The system contains four core components: First is AIMEGenerator (problem generator), using HelloAgents framework to generate AIME-style problems, supporting batch generation and progress saving, and automatically handling API rate limits; second is LLMJudgeTool (LLM Judge evaluation tool), providing 4-dimensional quality evaluation, automatically generating JSON results and Markdown reports; third is WinRateTool (Win Rate evaluation tool), calculating win rate, loss rate, and tie rate through pairwise comparison evaluation; finally is HumanVerificationUI (manual verification interface), based on Gradio Web interface, supporting scoring and status annotation.
+The system contains four core components: First is AIMEGenerator (problem generator), using AgentSystems101 framework to generate AIME-style problems, supporting batch generation and progress saving, and automatically handling API rate limits; second is LLMJudgeTool (LLM Judge evaluation tool), providing 4-dimensional quality evaluation, automatically generating JSON results and Markdown reports; third is WinRateTool (Win Rate evaluation tool), calculating win rate, loss rate, and tie rate through pairwise comparison evaluation; finally is HumanVerificationUI (manual verification interface), based on Gradio Web interface, supporting scoring and status annotation.
 
 ### 12.4.3 AIME Problem Generator Implementation
 
@@ -2386,7 +2384,7 @@ http://127.0.0.1:7860
 The final effect can be referenced in Figure 12.7. For problem correctness, manual review is best:
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/12-figures/12-7.png" alt="" width="85%"/>
+  <img src="../assets/images/12-figures/12-7.png" alt="" width="85%"/>
   <p>Figure 12.7 AIME Problem Manual Verification Page</p>
 </div>
 
@@ -2670,13 +2668,13 @@ Based on practical usage experience, summarize the following content:
 
 In data generation, use appropriate delay time (2-3 seconds) to avoid API rate limits, enable checkpoint saving to avoid interruption losses, first test with small batches (10) to confirm no issues before large-scale generation, and regularly check generation quality to adjust prompts in time. In evaluation strategy, recommend combining LLM Judge and Win Rate methods, where LLM Judge is used for absolute quality evaluation, Win Rate for relative quality comparison, and manual verification for final quality control. For quality standards, recommend LLM Judge average score above 4.0/5.0, Win Rate above 45% (close to 50%), pass rate above 80%, and manual verification pass rate above 90%. In iterative optimization, adjust generation prompts based on evaluation results, analyze common issues in low-scoring problems, reference advantages of high-scoring problems, and continuously improve generation strategy.
 
-Through learning this section, we have mastered how to use the HelloAgents framework for data generation quality evaluation, including three methods: LLM Judge evaluation, Win Rate evaluation, and manual verification. This complete evaluation system can ensure high quality of generated data, providing reliable data support for AI system training and testing.
+Through learning this section, we have mastered how to use the AgentSystems101 framework for data generation quality evaluation, including three methods: LLM Judge evaluation, Win Rate evaluation, and manual verification. This complete evaluation system can ensure high quality of generated data, providing reliable data support for AI system training and testing.
 
-For LLM Judge and Win Rate evaluation, HelloAgents has also integrated tools and provided complete example code. If you are interested in the specific implementation details of these two evaluation methods, you can also refer to the example code.
+For LLM Judge and Win Rate evaluation, AgentSystems101 has also integrated tools and provided complete example code. If you are interested in the specific implementation details of these two evaluation methods, you can also refer to the example code.
 
 ## 12.5 Chapter Summary
 
-In this chapter, we built a complete performance evaluation system for the HelloAgents framework. Let's review the core content learned:
+In this chapter, we built a complete performance evaluation system for the AgentSystems101 framework. Let's review the core content learned:
 
 **(1) Evaluation System Overview**
 
@@ -2698,7 +2696,7 @@ Evaluation is an important part of agent development, it allows us to:
 - Discover and fix issues
 - Continuously improve systems
 
-In the next chapter, we will explore how to apply the HelloAgents framework to actual projects.
+In the next chapter, we will explore how to apply the AgentSystems101 framework to actual projects.
 
 **Keep going!** 💪
 

@@ -1,6 +1,6 @@
 # Chapter 16: Graduation Project - Building Your Own Multi-Agent Application
 
-Congratulations on reaching the final chapter of the Hello-Agents tutorial! In the previous 15 chapters, we built the HelloAgents framework from scratch and learned about core agent concepts, multiple paradigms, tool systems, memory mechanisms, communication protocols, reinforcement learning training, and performance evaluation. In Chapters 13-15, we also demonstrated how to integrate all learned knowledge through three complete practical projects (Intelligent Travel Assistant, Automated Deep Research Agent, and Cyber Town).
+Congratulations on reaching the final chapter of the AgentSystems101 tutorial! In the previous 15 chapters, we built the AgentSystems101 framework from scratch and learned about core agent concepts, multiple paradigms, tool systems, memory mechanisms, communication protocols, reinforcement learning training, and performance evaluation. In Chapters 13-15, we also demonstrated how to integrate all learned knowledge through three complete practical projects (Intelligent Travel Assistant, Automated Deep Research Agent, and Cyber Town).
 
 Now, it's time for you to become a true agent system builder! This chapter will guide you in **building your own multi-agent application** and sharing your achievements with the community through open-source collaboration.
 
@@ -12,11 +12,11 @@ The best way to learn technology is not by reading tutorials, but by **hands-on 
 
 The core value of the graduation project is to cultivate your comprehensive application ability, selectively integrating all the knowledge learned previously (agent paradigms, tool systems, memory mechanisms, communication protocols, etc.) into a complete project.
 
-Through the learning and practice in this chapter, we hope you can independently design and implement a complete agent application, skillfully use various functions of the HelloAgents framework, master basic Git and GitHub operations, learn to write clear project documentation, participate in open-source community collaborative development, and ultimately obtain a technical work you can showcase.
+Through the learning and practice in this chapter, we hope you can independently design and implement a complete agent application, skillfully use various functions of the AgentSystems101 framework, master basic Git and GitHub operations, learn to write clear project documentation, participate in open-source community collaborative development, and ultimately obtain a technical work you can showcase.
 
 ### 16.1.2 Form of the Graduation Project
 
-Your graduation project will be submitted to the Hello-Agents co-creation project repository (`Co-creation-projects` directory) in the form of an **open-source project**. Specific requirements are as follows:
+Your graduation project will be submitted to the AgentSystems101 co-creation project repository (`Co-creation-projects` directory) in the form of an **open-source project**. Specific requirements are as follows:
 
 1. **Project Naming**: Use the format `{your-GitHub-username}-{project-name}`, for example `jjyaoao-CodeReviewAgent`
 
@@ -139,12 +139,12 @@ jupyter lab
 
 **Step 1: Fork the Repository**
 
-1. Visit the Hello-Agents repository: https://github.com/datawhalechina/hello-agents
+1. Visit the AgentSystems101 repository: https://github.com/datawhalechina/AgentSystems101
 2. Click the "Fork" button in the upper right corner, as shown in the red box in Figure 16.1
 3. Select your GitHub account and create the Fork
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/datawhalechina/hello-agents/main/docs/images/16-figures/16-1.png" alt="" width="85%"/>
+  <img src="../assets/images/16-figures/16-1.png" alt="" width="85%"/>
   <p>Figure 16.1 Fork Repository Steps</p>
 </div>
 
@@ -158,14 +158,14 @@ git clone git@github.com:your-username/hello-agents.git
 cd Hello-Agents
 
 # Add upstream repository (for syncing updates)
-git remote add upstream https://github.com/datawhalechina/hello-agents.git
+git remote add upstream https://github.com/terakyte/AgentSystems101.git
 
 # View remote repositories
 git remote -v
 ```
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/datawhalechina/hello-agents/main/docs/images/16-figures/16-2.png" alt="" width="85%"/>
+  <img src="../assets/images/16-figures/16-2.png" alt="" width="85%"/>
   <p>Figure 16.2 Clone Repository to Local</p>
 </div>
 
@@ -317,7 +317,7 @@ MIT License
 
 ## 🙏 Acknowledgments
 
-Thanks to the Datawhale community and Hello-Agents project!
+Thanks to the AgentSystems101 maintainers and open-source learning community!
 ```
 
 ### 16.4.2 Writing requirements.txt
@@ -470,7 +470,7 @@ Before submission, use this checklist to determine if your project meets submiss
 
 **⚠️ Important: Avoid Oversized Main Repository**
 
-To keep the Hello-Agents main repository lightweight, please follow these large file handling guidelines:
+To keep the AgentSystems101 main repository lightweight, please follow these large file handling guidelines:
 
 **(1) File Size Limits**
 
@@ -619,20 +619,20 @@ git push origin feature/your-project-name
 
 **Step 1: Visit GitHub**
 
-1. Visit your forked repository: `https://github.com/your-username/hello-agents`
+1. Visit your forked repository: `https://github.com/your-username/AgentSystems101`
 2. Click the "Pull requests" tab, as shown in Figure 16.3
 3. Click the "New pull request" button
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/datawhalechina/hello-agents/main/docs/images/16-figures/16-3.png" alt="" width="85%"/>
+  <img src="../assets/images/16-figures/16-3.png" alt="" width="85%"/>
   <p>Figure 16.3 Creating Pull Request</p>
 </div>
 
 **Step 2: Select Branches**
 
-- Base repository: `datawhalechina/hello-agents`
+- Base repository: `datawhalechina/AgentSystems101`
 - Base branch: `main`
-- Head repository: `your-username/hello-agents`
+- Head repository: `your-username/AgentSystems101`
 - Compare branch: `feature/your-project-name`
 
 **Step 3: Fill in PR Information**
@@ -697,7 +697,7 @@ Brief description of your project (2-3 sentences)
 As shown in Figure 16.4, click the "Create pull request" button to submit.
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/datawhalechina/hello-agents/main/docs/images/16-figures/16-4.png" alt="" width="85%"/>
+  <img src="../assets/images/16-figures/16-4.png" alt="" width="85%"/>
   <p>Figure 16.4 Submit Pull Request</p>
 </div>
 
@@ -975,18 +975,18 @@ jupyter lab
 ## 👤 Author
 
 - GitHub: [@jjyaoao](https://github.com/jjyaoao)
-- Project link: [CodeReviewAgent](https://github.com/datawhalechina/hello-agents/tree/main/Co-creation-projects/jjyaoao-CodeReviewAgent)
+- Project link: [CodeReviewAgent](https://github.com/terakyte/AgentSystems101/tree/main/projects/community/jjyaoao-CodeReviewAgent)
 
 ## 🙏 Acknowledgments
 
-Thanks to the Datawhale community and Hello-Agents project!
+Thanks to the AgentSystems101 maintainers and open-source learning community!
 ```
 
 ## 16.7 Summary and Outlook
 
-By completing the graduation project, you should have mastered the complete process of agent system design: designing system architecture from requirements, skillfully using various functions and components of the HelloAgents framework, developing custom tools to extend agent capabilities, completing full project development from requirement analysis to code implementation, learning to use Git and GitHub for open-source collaboration, and writing clear technical documentation.
+By completing the graduation project, you should have mastered the complete process of agent system design: designing system architecture from requirements, skillfully using various functions and components of the AgentSystems101 framework, developing custom tools to extend agent capabilities, completing full project development from requirement analysis to code implementation, learning to use Git and GitHub for open-source collaboration, and writing clear technical documentation.
 
-In this project, we built the HelloAgents framework from scratch and used it to implement multiple practical applications. Completing the graduation project is just the beginning. You can continue to deepen your learning of more agent paradigms and algorithms, prompt engineering and context engineering, multi-agent collaboration mechanisms, and other theoretical knowledge. You can also expand your technology stack by learning web development to build complete applications, learning databases to implement data persistence, and learning deployment to launch applications online. You can also continuously optimize your project by adding more features, optimizing performance and user experience, and improving testing and documentation. More importantly, actively participate in community contributions by helping other learners, participating in Hello-Agents framework development, and sharing your experiences and insights.
+In this project, we built the AgentSystems101 framework from scratch and used it to implement multiple practical applications. Completing the graduation project is just the beginning. You can continue to deepen your learning of more agent paradigms and algorithms, prompt engineering and context engineering, multi-agent collaboration mechanisms, and other theoretical knowledge. You can also expand your technology stack by learning web development to build complete applications, learning databases to implement data persistence, and learning deployment to launch applications online. You can also continuously optimize your project by adding more features, optimizing performance and user experience, and improving testing and documentation. More importantly, actively participate in community contributions by helping other learners, participating in AgentSystems101 framework development, and sharing your experiences and insights.
 
 From the simple agent in Chapter 1 to now being able to independently build complete multi-agent applications, you have traveled through an exciting learning journey. But this is not the end - it's a new beginning.
 
@@ -998,10 +998,9 @@ Finally, thank you for reading this project in its entirety. We hope you have ga
 
 Now, start building your own agent application! We look forward to seeing your excellent work in the Co-creation-projects directory!
 
-If you find the Hello-Agents project helpful, please give us a ⭐Star!
+If you find the AgentSystems101 project helpful, please give us a ⭐Star!
 
 ---
 <div align="center">
-  <strong>🎓 Congratulations on completing the Hello-Agents tutorial! 🎉</strong>
+  <strong>🎓 Congratulations on completing the AgentSystems101 tutorial! 🎉</strong>
 </div>
-

@@ -29,20 +29,20 @@ This is the new possibility that AI technology brings to games. By combining lar
 Cyber Town adopts a **game engine + back-end service** separation architecture, divided into four layers, as shown in Figure 15.1.
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/15-figures/15-1.png" alt="" width="85%"/>
+  <img src="../assets/images/15-figures/15-1.png" alt="" width="85%"/>
   <p>Figure 15.1 Cyber Town Technical Architecture</p>
 </div>
 
-The front-end layer uses the Godot 4.5 game engine, responsible for game rendering, player control, NPC display, and dialogue UI. Godot is an open-source 2D/3D game engine, very suitable for quickly developing pixel-style games. The back-end layer uses the FastAPI framework, responsible for API routing, NPC state management, dialogue processing, and logging. FastAPI is a modern Python web framework with excellent performance and easy development. The agent layer uses our own HelloAgents framework, responsible for NPC intelligence, memory management, and affection calculation. Each NPC is a SimpleAgent instance with independent memory and state. The external service layer provides LLM capabilities, vector storage, and data persistence, including LLM API, Qdrant vector database, and SQLite relational database.
+The front-end layer uses the Godot 4.5 game engine, responsible for game rendering, player control, NPC display, and dialogue UI. Godot is an open-source 2D/3D game engine, very suitable for quickly developing pixel-style games. The back-end layer uses the FastAPI framework, responsible for API routing, NPC state management, dialogue processing, and logging. FastAPI is a modern Python web framework with excellent performance and easy development. The agent layer uses our own AgentSystems101 framework, responsible for NPC intelligence, memory management, and affection calculation. Each NPC is a SimpleAgent instance with independent memory and state. The external service layer provides LLM capabilities, vector storage, and data persistence, including LLM API, Qdrant vector database, and SQLite relational database.
 
 The data flow process is shown in Figure 15.2:
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/15-figures/15-2.png" alt="" width="85%"/>
+  <img src="../assets/images/15-figures/15-2.png" alt="" width="85%"/>
   <p>Figure 15.2 Data Flow Process</p>
 </div>
 
-Players press the E key in Godot to interact with NPCs, and Godot sends dialogue requests to the FastAPI back-end via HTTP API. The back-end calls HelloAgents' SimpleAgent to process the dialogue, the Agent retrieves relevant history from the memory system, and then calls the LLM to generate a reply. The back-end updates NPC state and affection, records logs to console and file, and finally returns the reply to the Godot front-end. Godot displays the NPC reply and updates the UI, completing a complete interaction loop.
+Players press the E key in Godot to interact with NPCs, and Godot sends dialogue requests to the FastAPI back-end via HTTP API. The back-end calls AgentSystems101' SimpleAgent to process the dialogue, the Agent retrieves relevant history from the memory system, and then calls the LLM to generate a reply. The back-end updates NPC state and affection, records logs to console and file, and finally returns the reply to the Godot front-end. Godot displays the NPC reply and updates the UI, completing a complete interaction loop.
 
 The project structure is as follows, making it easy for you to locate the source code:
 
@@ -94,7 +94,7 @@ Before diving into implementation details, let's first run the project to see th
 
 **Get the Project:**
 
-You can check `code/chapter15/Helloagents-AI-Town`, or clone the complete hello-agents repository from GitHub.
+You can check `code/chapter15/Helloagents-AI-Town`, or clone the complete AgentSystems101 repository from GitHub.
 
 **Start the Back-End:**
 
@@ -129,21 +129,21 @@ After successful startup, you will see the following output:
 
 Godot installation is very simple. Windows provides a direct `.exe` file, and Mac also provides a `.dmg` file. You can download directly from the official website ([Windows](https://godotengine.org/download/windows/) / [Mac](https://godotengine.org/download/macos/))
 
-Open the Godot engine, click the "Import" button, browse to `Helloagents-AI-Town/helloagents-ai-town/scenes/main.tscn`, and click "Import and Edit". After Godot imports the resources, press `F5` or click the "Run" button to start the game.
+Open the Godot engine, click the "Import" button, browse to `Helloagents-AI-Town/agentsystems101-ai-town/scenes/main.tscn`, and click "Import and Edit". After Godot imports the resources, press `F5` or click the "Run" button to start the game.
 
 **Experience Core Features:**
 
-After the game starts, you will see a pixel-style Datawhale office scene, as shown in Figure 15.3.
+After the game starts, you will see a pixel-style community lab scene, as shown in Figure 15.3.
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/15-figures/15-3.png" alt="" width="85%"/>
+  <img src="../assets/images/15-figures/15-3.png" alt="" width="85%"/>
   <p>Figure 15.3 Cyber Town Game Scene</p>
 </div>
 
 Use WASD keys to move the player character. When you walk near an NPC, the screen will display a "Press E to interact" prompt. After pressing the E key, a dialogue box will pop up, and you can enter anything you want to say, as shown in Figure 15.4.
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/15-figures/15-4.png" alt="" width="85%"/>
+  <img src="../assets/images/15-figures/15-4.png" alt="" width="85%"/>
   <p>Figure 15.4 Dialogue Interface with NPC</p>
 </div>
 
@@ -162,9 +162,9 @@ This simple experience demonstrates the core features of AI Town. Next, we will 
 
 ## 15.2 NPC Agent System
 
-### 15.2.1 SimpleAgent Based on HelloAgents
+### 15.2.1 SimpleAgent Based on AgentSystems101
 
-In Cyber Town, each NPC is an independent agent. We use SimpleAgent from the HelloAgents framework to implement NPC intelligence. SimpleAgent is a lightweight agent implementation that encapsulates core functions such as LLM calls, message management, and tool calls.
+In Cyber Town, each NPC is an independent agent. We use SimpleAgent from the AgentSystems101 framework to implement NPC intelligence. SimpleAgent is a lightweight agent implementation that encapsulates core functions such as LLM calls, message management, and tool calls.
 
 Recall the SimpleAgent we learned in Chapter 7. Its core is a simple dialogue loop: receive user message, call LLM to generate reply, return result. In Cyber Town, we need to create a SimpleAgent instance for each NPC and configure unique system prompts for them, giving each NPC different personalities and role settings.
 
@@ -213,7 +213,7 @@ This code demonstrates how to create an NPC Agent. The system prompt defines the
 The workflow of NPC Agent is shown in Figure 15.5:
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/15-figures/15-5.png" alt="" width="85%"/>
+  <img src="../assets/images/15-figures/15-5.png" alt="" width="85%"/>
   <p>Figure 15.5 NPC Agent Workflow</p>
 </div>
 
@@ -223,7 +223,7 @@ A good NPC needs distinct personality and role settings. In Cyber Town, we desig
 
 **Zhang San - Python Engineer**
 
-Zhang San is a senior Python engineer responsible for the core development of the HelloAgents framework. He has a rigorous personality, speaks directly, and likes to use technical terms. He has high requirements for code quality and often shares programming tips and best practices.
+Zhang San is a senior Python engineer responsible for the core development of the AgentSystems101 framework. He has a rigorous personality, speaks directly, and likes to use technical terms. He has high requirements for code quality and often shares programming tips and best practices.
 
 ```python
 npc_zhang = {
@@ -236,7 +236,7 @@ npc_zhang = {
 
 **Li Si - Product Manager**
 
-Li Si is an experienced product manager responsible for product planning and user experience design of the HelloAgents framework. He has an outgoing personality, is good at communication, and can always think from the user's perspective. He likes to discuss product design and user needs, and often asks "why".
+Li Si is an experienced product manager responsible for product planning and user experience design of the AgentSystems101 framework. He has an outgoing personality, is good at communication, and can always think from the user's perspective. He likes to discuss product design and user needs, and often asks "why".
 
 ```python
 npc_li = {
@@ -249,7 +249,7 @@ npc_li = {
 
 **Wang Wu - UI Designer**
 
-Wang Wu is a creative UI designer responsible for interface design and visual presentation of the HelloAgents framework. He has a gentle personality, unique aesthetics, and keen perception of color and layout. He likes to discuss design concepts and aesthetics, and often shares design inspiration.
+Wang Wu is a creative UI designer responsible for interface design and visual presentation of the AgentSystems101 framework. He has a gentle personality, unique aesthetics, and keen perception of color and layout. He likes to discuss design concepts and aesthetics, and often shares design inspiration.
 
 ```python
 npc_wang = {
@@ -264,7 +264,7 @@ These three NPCs have distinct characteristics. Players can choose to interact w
 
 ### 15.2.3 Memory System Integration
 
-The memory system is the key to NPC intelligence. An NPC that can remember past conversations will make players feel more realistic and interesting. We use HelloAgents' `WorkingMemory` and `EpisodicMemory` to construct short-term and long-term memory.
+The memory system is the key to NPC intelligence. An NPC that can remember past conversations will make players feel more realistic and interesting. We use AgentSystems101' `WorkingMemory` and `EpisodicMemory` to construct short-term and long-term memory.
 
 Short-term memory stores recent conversation content with limited capacity and automatic cleanup over time. Its role is to maintain dialogue coherence, allowing NPCs to understand context. For example, when a player says "What color is it?", the NPC needs to find from short-term memory what "it" refers to.
 
@@ -273,7 +273,7 @@ Long-term memory stores all conversation history, using vector databases for sem
 The architecture of the memory system is shown in Figure 15.6:
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/15-figures/15-6.png" alt="" width="85%"/>
+  <img src="../assets/images/15-figures/15-6.png" alt="" width="85%"/>
   <p>Figure 15.6 Memory System Architecture</p>
 </div>
 
@@ -317,7 +317,7 @@ To solve this problem, we designed a **batch dialogue generation system**. The c
 The workflow of batch generation is shown in Figure 15.7:
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/15-figures/15-7.png" alt="" width="85%"/>
+  <img src="../assets/images/15-figures/15-7.png" alt="" width="85%"/>
   <p>Figure 15.7 Batch Generation vs Traditional Mode</p>
 </div>
 
@@ -483,7 +483,7 @@ The core idea of the affection system is: by quantifying the relationship betwee
 We divide affection into five levels, each corresponding to a score range, as shown in Figure 15.8:
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/15-figures/15-8.png" alt="" width="85%"/>
+  <img src="../assets/images/15-figures/15-8.png" alt="" width="85%"/>
   <p>Figure 15.8 Affection Level Classification</p>
 </div>
 
@@ -508,7 +508,7 @@ In Cyber Town, we use LLM to analyze conversation content, judging whether the p
 The affection calculation process is shown in Figure 15.9:
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/15-figures/15-9.png" alt="" width="85%"/>
+  <img src="../assets/images/15-figures/15-9.png" alt="" width="85%"/>
   <p>Figure 15.9 Affection Calculation Process</p>
 </div>
 
@@ -635,12 +635,12 @@ This design makes NPC behavior change dynamically with affection. Players can cl
 
 ### 15.4.1 FastAPI Application Structure
 
-The back-end of Cyber Town is built using the FastAPI framework, responsible for handling requests from the Godot front-end, calling HelloAgents' NPC Agents, managing NPC state and affection, and recording logs. A clear application structure makes code easier to maintain and extend.
+The back-end of Cyber Town is built using the FastAPI framework, responsible for handling requests from the Godot front-end, calling AgentSystems101' NPC Agents, managing NPC state and affection, and recording logs. A clear application structure makes code easier to maintain and extend.
 
 Our FastAPI application adopts a modular design, separating different functions into different files, as shown in Figure 15.10:
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/15-figures/15-10.png" alt="" width="85%"/>
+  <img src="../assets/images/15-figures/15-10.png" alt="" width="85%"/>
   <p>Figure 15.10 Back-End Application Structure</p>
 </div>
 
@@ -675,7 +675,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Initialize各个managers
+# Initialize all managers
 agent_manager = NPCAgentManager()
 relationship_manager = RelationshipManager()
 state_manager = StateManager()
@@ -828,7 +828,7 @@ async def get_affinity(npc_id: str, player_name: str):
 The API route call flow is shown in Figure 15.11:
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/15-figures/15-11.png" alt="" width="85%"/>
+  <img src="../assets/images/15-figures/15-11.png" alt="" width="85%"/>
   <p>Figure 15.11 API Call Flow</p>
 </div>
 
@@ -1037,7 +1037,7 @@ Cyber Town's scene organization adopts a modular design. We first create three b
 Let's first look at the structure of the four core scenes, as shown in Figure 15.12:
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/15-figures/15-12.png" alt="" width="85%"/>
+  <img src="../assets/images/15-figures/15-12.png" alt="" width="85%"/>
   <p>Figure 15.12 Four Core Scenes of Cyber Town</p>
 </div>
 
@@ -1588,7 +1588,7 @@ The dialogue UI is the interface for player-NPC interaction. We need to design a
 The dialogue UI structure is shown in Figure 15.13:
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/15-figures/15-13.png" alt="" width="85%"/>
+  <img src="../assets/images/15-figures/15-13.png" alt="" width="85%"/>
   <p>Figure 15.13 Dialogue UI Structure</p>
 </div>
 
@@ -1799,7 +1799,7 @@ The core function of the main scene script is to periodically obtain NPC status 
 The complete front-end and back-end communication process is shown in Figure 15.14:
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/15-figures/15-14.png" alt="" width="85%"/>
+  <img src="../assets/images/15-figures/15-14.png" alt="" width="85%"/>
   <p>Figure 15.14 Complete Front-End and Back-End Communication Process</p>
 </div>
 
@@ -1809,15 +1809,15 @@ At this point, all front-end and back-end communication functions have been impl
 
 ### 15.7.1 Chapter Review
 
-In this chapter, we completed a full AI town project - Cyber Town. This project combines the HelloAgents framework with the Godot game engine to create a vibrant virtual world. Let's review the core content we learned.
+In this chapter, we completed a full AI town project - Cyber Town. This project combines the AgentSystems101 framework with the Godot game engine to create a vibrant virtual world. Let's review the core content we learned.
 
 **Technical Architecture Design**
 
-We adopted a separated architecture of game engine + back-end service, separating front-end rendering, back-end logic, and AI intelligence into different layers. Godot handles game graphics and player interaction, FastAPI handles API services and state management, and HelloAgents handles NPC intelligence and memory systems. This layered design allows each part to be developed and tested independently, and also provides a good foundation for future expansion.
+We adopted a separated architecture of game engine + back-end service, separating front-end rendering, back-end logic, and AI intelligence into different layers. Godot handles game graphics and player interaction, FastAPI handles API services and state management, and AgentSystems101 handles NPC intelligence and memory systems. This layered design allows each part to be developed and tested independently, and also provides a good foundation for future expansion.
 
 **NPC Agent System**
 
-We used HelloAgents' SimpleAgent to create independent agents for each NPC. Each NPC has its own role setting, personality traits, and memory system. Through carefully designed system prompts, we made Zhang San a rigorous Python engineer, Li Si a product manager good at communication, and Wang Wu a creative UI designer. These NPCs can not only understand player dialogue but also respond according to their role characteristics.
+We used AgentSystems101' SimpleAgent to create independent agents for each NPC. Each NPC has its own role setting, personality traits, and memory system. Through carefully designed system prompts, we made Zhang San a rigorous Python engineer, Li Si a product manager good at communication, and Wang Wu a creative UI designer. These NPCs can not only understand player dialogue but also respond according to their role characteristics.
 
 **Memory and Affection System**
 
@@ -1834,7 +1834,7 @@ We used HTTP REST API to implement communication between the Godot front-end and
 The project's technology stack is shown in Figure 15.15:
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/15-figures/15-15.png" alt="" width="85%"/>
+  <img src="../assets/images/15-figures/15-15.png" alt="" width="85%"/>
   <p>Figure 15.15 Cyber Town Technology Stack</p>
 </div>
 

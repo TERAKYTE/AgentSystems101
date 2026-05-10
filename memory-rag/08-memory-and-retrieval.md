@@ -1,8 +1,8 @@
 # Chapter 8 Memory and Retrieval
 
-In previous chapters, we built the basic architecture of the HelloAgents framework, implementing various agent paradigms and tool systems. However, our framework still lacks a critical capability: **memory**. If an agent cannot remember previous interactions or learn from historical experiences, its performance will be greatly limited in continuous conversations or complex tasks.
+In previous chapters, we built the basic architecture of the AgentSystems101 framework, implementing various agent paradigms and tool systems. However, our framework still lacks a critical capability: **memory**. If an agent cannot remember previous interactions or learn from historical experiences, its performance will be greatly limited in continuous conversations or complex tasks.
 
-This chapter will add two core capabilities to HelloAgents based on the framework built in Chapter 7: **Memory System** and **Retrieval-Augmented Generation (RAG)**. We will adopt a "framework extension + knowledge popularization" approach, deeply understanding the theoretical foundations of Memory and RAG during the construction process, and ultimately implementing an agent system with complete memory and knowledge retrieval capabilities.
+This chapter will add two core capabilities to AgentSystems101 based on the framework built in Chapter 7: **Memory System** and **Retrieval-Augmented Generation (RAG)**. We will adopt a "framework extension + knowledge popularization" approach, deeply understanding the theoretical foundations of Memory and RAG during the construction process, and ultimately implementing an agent system with complete memory and knowledge retrieval capabilities.
 
 
 ## 8.1 From Cognitive Science to Agent Memory
@@ -12,7 +12,7 @@ This chapter will add two core capabilities to HelloAgents based on the framewor
 Before building an agent's memory system, let's first understand from a cognitive science perspective how humans process and store information. Human memory is a multi-level cognitive system that not only stores information but also classifies and organizes information based on importance, time, and context. Cognitive psychology provides a classic theoretical framework for understanding the structure and processes of memory<sup>[1]</sup>, as shown in Figure 8.1.
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/8-figures/8-1.png" alt="Human Memory System Structure" width="85%"/>
+  <img src="../assets/images/8-figures/8-1.png" alt="Human Memory System Structure" width="85%"/>
   <p>Figure 8.1 Hierarchical Structure of Human Memory System</p>
 </div>
 
@@ -74,8 +74,8 @@ To overcome this limitation, RAG technology emerged. Its core idea is to retriev
 Based on the framework foundation established in Chapter 7 and inspiration from cognitive science, we designed a layered memory and RAG system architecture, as shown in Figure 8.2. This architecture not only draws on the hierarchical structure of human memory systems but also fully considers the scalability of engineering implementation. In implementation, we design memory and RAG as two independent tools: `memory_tool` is responsible for storing and maintaining interaction information during conversations, while `rag_tool` is responsible for retrieving relevant information from user-provided knowledge bases as context and can automatically store important retrieval results in the memory system.
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/8-figures/8-2.png" alt="HelloAgents Memory and RAG System Architecture" width="95%"/>
-  <p>Figure 8.2 Overall Architecture of HelloAgents Memory and RAG System</p>
+  <img src="../assets/images/8-figures/8-2.png" alt="AgentSystems101 Memory and RAG System Architecture" width="95%"/>
+  <p>Figure 8.2 Overall Architecture of AgentSystems101 Memory and RAG System</p>
 </div>
 
 The memory system adopts a four-layer architecture design:
@@ -149,7 +149,7 @@ hello-agents/
 └──
 ```
 
-**Quick Start: Installing the HelloAgents Framework**
+**Quick Start: Installing the AgentSystems101 Framework**
 
 To allow readers to quickly experience the complete functionality of this chapter, we provide a directly installable Python package. You can install the version corresponding to this chapter with the following commands:
 
@@ -286,7 +286,7 @@ Hello, Zhang San! Nice to meet you. As a Python developer, you must be passionat
 Before entering the code implementation phase, we need to first define the workflow of the memory system. This workflow references the memory model in cognitive science and maps each cognitive stage to specific technical components and operations. Understanding this mapping relationship will help us with subsequent code implementation.
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/8-figures/8-3.png" alt="Memory Formation Process" width="90%"/>
+  <img src="../assets/images/8-figures/8-3.png" alt="Memory Formation Process" width="90%"/>
   <p>Figure 8.3 Cognitive Process of Memory Formation</p>
 </div>
 
@@ -298,11 +298,11 @@ As shown in Figure 8.3, according to cognitive science research, the formation o
 4. **Consolidation**: Converting short-term memory into long-term memory
 5. **Forgetting**: Deleting unimportant or outdated information
 
-Based on this inspiration, we designed a complete memory system for HelloAgents. Its core idea is to mimic how the human brain processes different types of information, dividing memory into multiple specialized modules and establishing an intelligent management mechanism. Figure 8.4 shows in detail the workflow of this system, including key links such as memory addition, retrieval, consolidation, and forgetting.
+Based on this inspiration, we designed a complete memory system for AgentSystems101. Its core idea is to mimic how the human brain processes different types of information, dividing memory into multiple specialized modules and establishing an intelligent management mechanism. Figure 8.4 shows in detail the workflow of this system, including key links such as memory addition, retrieval, consolidation, and forgetting.
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/8-figures/8-4.png" alt="Memory System Workflow" width="95%"/>
-  <p>Figure 8.4 Complete Workflow of HelloAgents Memory System</p>
+  <img src="../assets/images/8-figures/8-4.png" alt="Memory System Workflow" width="95%"/>
+  <p>Figure 8.4 Complete Workflow of AgentSystems101 Memory System</p>
 </div>
 
 Our memory system consists of four different types of memory modules, each optimized for specific application scenarios and lifecycles:
@@ -1090,7 +1090,7 @@ This time decay model simulates the forgetting curve in human memory, ensuring t
 
 ### 8.3.1 RAG Fundamentals
 
-Before diving into the RAG system implementation of HelloAgents, let's first understand the basic concepts, development history, and core principles of RAG technology. Since this text is not created based on RAG as a foundation, we will only quickly review the relevant concepts here to better understand the technical choices and innovations in system design.
+Before diving into the RAG system implementation of AgentSystems101, let's first understand the basic concepts, development history, and core principles of RAG technology. Since this text is not created based on RAG as a foundation, we will only quickly review the relevant concepts here to better understand the technical choices and innovations in system design.
 
 (1) What is RAG?
 
@@ -1112,10 +1112,10 @@ Third stage: Modular RAG (2023-present). Building on advanced RAG, modern RAG sy
 
 ### 8.3.2 RAG System Working Principle
 
-Before diving into implementation details, we can use a flowchart to outline the complete workflow of HelloAgents' RAG system:
+Before diving into implementation details, we can use a flowchart to outline the complete workflow of AgentSystems101' RAG system:
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/8-figures/8-5.png" alt="RAG System Core Principle" width="85%"/>
+  <img src="../assets/images/8-figures/8-5.png" alt="RAG System Core Principle" width="85%"/>
   <p>Figure 8.5 Core Working Principle of RAG System</p>
 </div>
 
@@ -1179,7 +1179,7 @@ result = rag_tool.execute("stats")
 print(result)
 ```
 
-Next, we will delve into the specific implementation of the HelloAgents RAG system.
+Next, we will delve into the specific implementation of the AgentSystems101 RAG system.
 
 ### 8.3.4 RAG System Architecture Design
 
@@ -1239,7 +1239,7 @@ Any format document → MarkItDown conversion → Markdown text → Intelligent 
 
 (1) Multimodal Document Loading
 
-One of the core advantages of the RAG system is its powerful multimodal document processing capability. The system uses MarkItDown as a unified document conversion engine, supporting almost all common document formats. MarkItDown is an open-source universal document conversion tool from Microsoft. It is a core component of the HelloAgents RAG system, responsible for uniformly converting documents of any format into structured Markdown text. Whether the input is PDF, Word, Excel, images, or audio, it will ultimately be converted to standard Markdown format, then enter the unified chunking, vectorization, and storage workflow.
+One of the core advantages of the RAG system is its powerful multimodal document processing capability. The system uses MarkItDown as a unified document conversion engine, supporting almost all common document formats. MarkItDown is an open-source universal document conversion tool from Microsoft. It is a core component of the AgentSystems101 RAG system, responsible for uniformly converting documents of any format into structured Markdown text. Whether the input is PDF, Word, Excel, images, or audio, it will ultimately be converted to standard Markdown format, then enter the unified chunking, vectorization, and storage workflow.
 
 ```python
 def _convert_to_markdown(path: str) -> str:
@@ -1281,7 +1281,7 @@ def _convert_to_markdown(path: str) -> str:
 
 (2) Intelligent Chunking Strategy
 
-After MarkItDown conversion, all documents are unified into standard Markdown format. This provides a structured foundation for subsequent intelligent chunking. HelloAgents implements an intelligent chunking strategy specifically for Markdown format, fully utilizing the structured characteristics of Markdown for precise segmentation.
+After MarkItDown conversion, all documents are unified into standard Markdown format. This provides a structured foundation for subsequent intelligent chunking. AgentSystems101 implements an intelligent chunking strategy specifically for Markdown format, fully utilizing the structured characteristics of Markdown for precise segmentation.
 
 Markdown structure-aware chunking workflow:
 
@@ -1441,7 +1441,7 @@ def _is_cjk(ch: str) -> bool:
 
 (3) Unified Embedding and Vector Storage
 
-The embedding model is the core of the RAG system. It is responsible for converting text into high-dimensional vectors, enabling computers to understand and compare semantic similarity of text. The retrieval capability of the RAG system largely depends on the quality of the embedding model and the efficiency of vector storage. HelloAgents implements a unified embedding interface. For demonstration purposes, we use the Bailian API here. If not yet configured, you can switch to the local `all-MiniLM-L6-v2` model. If both solutions are not supported, the TF-IDF algorithm is also configured as a fallback. In actual use, you can replace it with your desired model or API, or try to extend the framework content~
+The embedding model is the core of the RAG system. It is responsible for converting text into high-dimensional vectors, enabling computers to understand and compare semantic similarity of text. The retrieval capability of the RAG system largely depends on the quality of the embedding model and the efficiency of vector storage. AgentSystems101 implements a unified embedding interface. For demonstration purposes, we use the Bailian API here. If not yet configured, you can switch to the local `all-MiniLM-L6-v2` model. If both solutions are not supported, the TF-IDF algorithm is also configured as a fallback. In actual use, you can replace it with your desired model or API, or try to extend the framework content~
 
 ```python
 def index_chunks(
@@ -1522,7 +1522,7 @@ def index_chunks(
 
 ### 8.3.5 Advanced Retrieval Strategies
 
-The retrieval capability of the RAG system is its core competitiveness. In practical applications, there may be wording differences between user queries and actual content in documents, resulting in relevant documents not being retrieved. To solve this problem, HelloAgents implements three complementary advanced retrieval strategies: Multi-Query Expansion (MQE), Hypothetical Document Embeddings (HyDE), and a unified extended retrieval framework.
+The retrieval capability of the RAG system is its core competitiveness. In practical applications, there may be wording differences between user queries and actual content in documents, resulting in relevant documents not being retrieved. To solve this problem, AgentSystems101 implements three complementary advanced retrieval strategies: Multi-Query Expansion (MQE), Hypothetical Document Embeddings (HyDE), and a unified extended retrieval framework.
 
 (1) Multi-Query Expansion (MQE)
 
@@ -1571,7 +1571,7 @@ def _prompt_hyde(query: str) -> Optional[str]:
 
 (3) Extended Retrieval Framework
 
-HelloAgents integrates the two strategies of MQE and HyDE into a unified extended retrieval framework. The system allows users to choose which strategies to enable based on specific scenarios through the `enable_mqe` and `enable_hyde` parameters: for scenarios requiring high recall, both strategies can be enabled simultaneously; for performance-sensitive scenarios, only basic retrieval can be used.
+AgentSystems101 integrates the two strategies of MQE and HyDE into a unified extended retrieval framework. The system allows users to choose which strategies to enable based on specific scenarios through the `enable_mqe` and `enable_hyde` parameters: for scenarios requiring high recall, both strategies can be enabled simultaneously; for performance-sensitive scenarios, only basic retrieval can be used.
 
 The core mechanism of extended retrieval is a three-step "expand-retrieve-merge" workflow. First, the system generates multiple expanded queries based on the original query (including diverse queries generated by MQE and hypothetical documents generated by HyDE); then, it executes vector retrieval in parallel for each expanded query to obtain a candidate document pool; finally, it merges all results through deduplication and score sorting, returning the most relevant top-k documents. The ingenuity of this design is that it expands the candidate pool through the `candidate_pool_multiplier` parameter (default is 4), ensuring sufficient candidate documents for screening, while avoiding returning duplicate content through intelligent deduplication.
 
@@ -1655,13 +1655,13 @@ Of course, there are many other interesting methods. This is just an appropriate
 
 ## 8.4 Building an Intelligent Document Q&A Assistant
 
-In the previous sections, we detailed the design and implementation of HelloAgents' memory system and RAG system. Now, let's demonstrate through a complete practical case how to organically combine these two systems to build an intelligent document Q&A assistant.
+In the previous sections, we detailed the design and implementation of AgentSystems101' memory system and RAG system. Now, let's demonstrate through a complete practical case how to organically combine these two systems to build an intelligent document Q&A assistant.
 
 ### 8.4.1 Case Background and Objectives
 
 In actual work, we often need to process a large number of technical documents, research papers, product manuals, and other PDF files. Traditional document reading methods are inefficient, making it difficult to quickly locate key information, let alone establish associations between knowledge.
 
-This case will use the public beta PDF document `Happy-LLM-0727.pdf` from Datawhale's another hands-on large model tutorial Happy-LLM as an example to build a **Gradio-based Web application**, demonstrating how to use RAGTool and MemoryTool to build a complete interactive learning assistant. The PDF can be obtained from this [link](https://github.com/datawhalechina/happy-llm/releases/download/v1.0.1/Happy-LLM-0727.pdf).
+This case will use the public beta PDF document `Happy-LLM-0727.pdf` from the reference organization's another hands-on large model tutorial Happy-LLM as an example to build a **Gradio-based Web application**, demonstrating how to use RAGTool and MemoryTool to build a complete interactive learning assistant. The PDF can be obtained from this [link](https://github.com/datawhalechina/happy-llm/releases/download/v1.0.1/Happy-LLM-0727.pdf).
 
 We hope to implement the following functions:
 
@@ -1676,7 +1676,7 @@ We hope to implement the following functions:
 To more clearly demonstrate the workflow of the entire system, Figure 8.6 shows the relationships and data flow between the five steps. The five steps form a complete closed loop: Step 1 records information from processed PDF documents to the memory system, Step 2's retrieval results are also recorded to the memory system, Step 3 demonstrates the complete functions of the memory system (add, retrieve, consolidate, forget), Step 4 integrates RAG and Memory to provide intelligent routing, and Step 5 collects all statistical information to generate learning reports.
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/8-figures/8-6.png" alt="" width="85%"/>
+  <img src="../assets/images/8-figures/8-6.png" alt="" width="85%"/>
   <p>Figure 8.6 Five-step Execution Workflow of Intelligent Q&A Assistant</p>
 </div>
 
@@ -1976,28 +1976,28 @@ These methods respectively implement:
 Next is the running effect demonstration. As shown in Figure 8.7, after entering the main page, you need to first initialize the assistant, which is to load our database, model, API and other loading operations. Then pass in the PDF document and click to load the document.
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/8-figures/8-7.png" alt="" width="85%"/>
+  <img src="../assets/images/8-figures/8-7.png" alt="" width="85%"/>
   <p>Figure 8.7 Q&A Assistant Main Page</p>
 </div>
 
 The first function is intelligent Q&A, which can retrieve based on uploaded documents and return reference sources and similarity calculations of related materials. This is a demonstration of RAG tool capabilities, as shown in Figure 8.8.
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/8-figures/8-8.png" alt="" width="85%"/>
+  <img src="../assets/images/8-figures/8-8.png" alt="" width="85%"/>
   <p>Figure 8.8 Q&A Assistant Main Page</p>
 </div>
 
 The second function is learning notes. As shown in Figure 8.9, you can select related concepts and write note content. This part uses Memory tool and will store your personal notes in the database for easy statistics and subsequent return of overall learning reports.
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/8-figures/8-9.png" alt="" width="85%"/>
+  <img src="../assets/images/8-figures/8-9.png" alt="" width="85%"/>
   <p>Figure 8.9 Q&A Assistant Main Page</p>
 </div>
 
 Finally, there are statistics on learning progress and report generation. As shown in Figure 8.10, we can see the number of documents loaded, number of questions asked, and number of notes during the use of the assistant. Finally, our Q&A results and notes are organized into a JSON document and returned.
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/8-figures/8-10.png" alt="" width="85%"/>
+  <img src="../assets/images/8-figures/8-10.png" alt="" width="85%"/>
   <p>Figure 8.10 Q&A Assistant Main Page</p>
 </div>
 
@@ -2007,7 +2007,7 @@ Readers are advised to run this case personally, experience the capabilities of 
 
 ## 8.5 Chapter Summary and Outlook
 
-In this chapter, we successfully added two core capabilities to the HelloAgents framework: the memory system and the RAG system.
+In this chapter, we successfully added two core capabilities to the AgentSystems101 framework: the memory system and the RAG system.
 
 For readers who wish to deeply learn and apply the content of this chapter, we provide the following suggestions:
 
@@ -2021,18 +2021,18 @@ Advanced Exploration
 
 1. Track and study cutting-edge memory and RAG repositories, learning excellent implementations.
 2. Explore the possibility of applying RAG architecture to multimodal (text + image) or cross-modal scenarios.
-3. Participate in the HelloAgents open-source project, contributing your ideas and code.
+3. Participate in the AgentSystems101 open-source project, contributing your ideas and code.
 
 Through the study of this chapter, you have not only mastered the implementation technology of Memory and RAG systems, but more importantly, understood how to transform cognitive science theory into practical engineering solutions. This interdisciplinary way of thinking will lay a solid foundation for your further development in the AI field.
 
 Finally, let's summarize the complete knowledge system of this chapter through a mind map, as shown in Figure 8.11:
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/8-figures/8-11.png" alt="" width="85%"/>
+  <img src="../assets/images/8-figures/8-11.png" alt="" width="85%"/>
   <p>Figure 8.11 Hello-agents Chapter 8 Knowledge Summary</p>
 </div>
 
-This chapter demonstrated the capabilities of the HelloAgents framework's memory system and RAG technology. We successfully built a truly "intelligent" learning assistant. This architecture can be easily extended to other application scenarios, such as customer service, technical support, personal assistants, and other fields.
+This chapter demonstrated the capabilities of the AgentSystems101 framework's memory system and RAG technology. We successfully built a truly "intelligent" learning assistant. This architecture can be easily extended to other application scenarios, such as customer service, technical support, personal assistants, and other fields.
 
 In the next chapter, we will continue to explore how to further improve the dialogue quality and user experience of agents through context engineering. Stay tuned!
 

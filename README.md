@@ -1,6 +1,8 @@
 # AgentSystems101
 
-AgentSystems101 is an English-first engineering handbook for building AI agent systems. It is derived from DatawhaleChina's excellent [hello-agents](https://github.com/datawhalechina/hello-agents) curriculum and reorganized for engineers who want a clearer path from LLM fundamentals to practical agent infrastructure.
+AgentSystems101 is a Terakyte-maintained engineering handbook for building AI agent systems. It gives engineers a practical path from LLM fundamentals to agent orchestration, tool use, memory, retrieval, evaluation, and production operations.
+
+The repository preserves upstream lineage for compatibility and attribution, but the active handbook is edited as an English-first learning resource rather than a literal translation.
 
 This repository is not a claim that agents are fully autonomous software replacements. It treats agents as an emerging engineering pattern: useful when tool use, state, retrieval, planning, and evaluation are designed carefully; fragile when prompts are treated as architecture.
 
@@ -79,7 +81,7 @@ AgentSystems101/
 |-- evaluation/        # Benchmarks, evaluation design, reporting
 |-- rl-agents/         # Agentic RL and training workflows
 |-- projects/          # Capstone projects and community submissions
-|-- examples/          # Runnable chapter code from upstream
+|-- examples/          # Curated English runnable examples
 |-- assets/            # Images and static assets
 |-- notebooks/         # Notebook index and notebook guidance
 `-- scripts/           # Maintenance and validation scripts
@@ -101,14 +103,16 @@ foundations/01-introduction-to-agents.md
 agent-patterns/04-classic-agent-patterns.md
 ```
 
-Run examples from the relevant chapter directory:
+Run the dependency-light examples:
 
 ```bash
-cd examples/chapter1
-python FirstAgentTest.py
+python examples/minimal-agent-loop.py
+python examples/tool-use-agent.py
+python examples/rag-memory-workflow.py
+python examples/evaluation-harness.py
 ```
 
-Many examples call external LLM APIs. Before running a chapter project, inspect its local `README.md` or `.env.example` and configure the required API keys. Do not commit secrets.
+Archived upstream examples are available under `docs/upstream-zh/examples` for reference. Many of those projects call external LLM APIs or platform services; inspect their local `README.md` or `.env.example` before running them. Do not commit secrets.
 
 ## Prerequisites
 
@@ -153,7 +157,7 @@ node scripts/validate_repo.mjs
 npx markdownlint-cli2
 ```
 
-The validation script checks UTF-8 readability, Markdown fence balance, duplicate headings in each file, local Markdown links, notebook JSON parsing, and Python syntax compilation for tracked examples.
+The validation script checks UTF-8 readability, active English-only content, Markdown fence balance, duplicate headings in each file, local Markdown links, notebook JSON parsing, and Python syntax compilation for active scripts and examples.
 
 ## Contributing
 
@@ -166,13 +170,11 @@ Contributions should improve clarity, correctness, or reproducibility.
 5. Include validation output when changing docs, links, notebooks, or examples.
 6. Clearly mark uncertain translations with a TODO instead of guessing.
 
-## Upstream Attribution
+## Attribution
 
-AgentSystems101 is an English-first restructuring and editorial transformation of [DatawhaleChina/hello-agents](https://github.com/datawhalechina/hello-agents).
+AgentSystems101 includes an English-first restructuring and editorial adaptation of upstream educational material. Original authors and contributors retain credit for source curriculum material, code examples, images, and community projects. Original-language source material is preserved under [docs/upstream-zh](./docs/upstream-zh), and legacy English upstream material is preserved under [docs/upstream-legacy](./docs/upstream-legacy).
 
-Original authors and contributors retain credit for the educational source material, code examples, images, and community projects. The original Chinese source material is preserved under [docs/upstream-zh](./docs/upstream-zh), and legacy English upstream material is preserved under [docs/upstream-legacy](./docs/upstream-legacy).
-
-Please cite or acknowledge the upstream project when reusing this material.
+See [NOTICE](./NOTICE) for fork lineage and upstream attribution details.
 
 ## License
 

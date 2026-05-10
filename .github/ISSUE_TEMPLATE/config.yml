@@ -1,15 +1,11 @@
 blank_issues_enabled: false
 contact_links:
-  - name: 📚 Hello-Agents 教程文档
-    url: https://github.com/datawhalechina/Hello-Agents
-    about: 查看完整的 Hello-Agents 教程文档和代码示例 / View complete Hello-Agents tutorial and code examples
-  - name: 🌐 在线阅读
-    url: https://datawhalechina.github.io/hello-agents/
-    about: 在线阅读 Hello-Agents 教程 / Read Hello-Agents tutorial online
-  - name: 🐛 快速反馈 / Quick Feedback
-    url: https://github.com/datawhalechina/Hello-Agents/issues/new?template=book_issue.yml
-    about: 快速报告教程中的问题 / Quickly report issues in the tutorial
-  - name: 💬 社区讨论 / Community Discussion
-    url: https://github.com/datawhalechina/Hello-Agents/discussions
-    about: 加入社区讨论,分享经验和想法 / Join community discussions, share experiences and ideas
-
+  - name: AgentSystems101 Handbook
+    url: https://github.com/terakyte/AgentSystems101
+    about: Read the maintained handbook and examples.
+  - name: Quick Feedback
+    url: https://github.com/terakyte/AgentSystems101/issues/new?template=book_issue.yml
+    about: Report documentation, example, or curriculum issues.
+  - name: Community Discussion
+    url: https://github.com/terakyte/AgentSystems101/discussions
+    about: Ask questions and discuss agent engineering topics.

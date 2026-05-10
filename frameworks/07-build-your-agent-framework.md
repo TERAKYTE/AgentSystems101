@@ -1,8 +1,8 @@
 # Chapter 7 Building Your Agent Framework
 
-In the previous chapters, we explained the fundamentals of agents and experienced the development convenience brought by mainstream frameworks. Starting from this chapter, we will enter a more challenging and valuable stage: **building an agent framework from scratch—HelloAgents**.
+In the previous chapters, we explained the fundamentals of agents and experienced the development convenience brought by mainstream frameworks. Starting from this chapter, we will enter a more challenging and valuable stage: **building an agent framework from scratch—AgentSystems101**.
 
-To ensure the continuity and reproducibility of the learning process, HelloAgents will advance development through version iterations. Each chapter will add new functional modules based on the previous chapter and integrate and implement agent-related knowledge points. Ultimately, we will use this self-built framework to efficiently implement the advanced application cases in the subsequent chapters of this book.
+To ensure the continuity and reproducibility of the learning process, AgentSystems101 will advance development through version iterations. Each chapter will add new functional modules based on the previous chapter and integrate and implement agent-related knowledge points. Ultimately, we will use this self-built framework to efficiently implement the advanced application cases in the subsequent chapters of this book.
 
 ## 7.1 Overall Framework Architecture Design
 
@@ -35,27 +35,27 @@ In practical applications, the needs for agents vary greatly across different sc
 - **Precise Control of Performance and Resources**: In production environments, there are strict requirements for response time, memory usage, and concurrent processing capabilities. The "one-size-fits-all" solutions of general frameworks often cannot meet refined needs.
 - **Transparency Requirements for Learning and Teaching**: In our teaching scenario, learners expect to clearly see every step of the agent construction process and understand the working mechanisms of different paradigms, which requires the framework to have high observability and interpretability.
 
-### 7.1.2 Design Philosophy of HelloAgents Framework
+### 7.1.2 Design Philosophy of AgentSystems101 Framework
 
-Building a new Agent framework is not about the number of features but whether the design philosophy can truly solve the pain points of existing frameworks. The design of the HelloAgents framework revolves around a core question: How can learners both get started quickly and deeply understand the working principles of Agents?
+Building a new Agent framework is not about the number of features but whether the design philosophy can truly solve the pain points of existing frameworks. The design of the AgentSystems101 framework revolves around a core question: How can learners both get started quickly and deeply understand the working principles of Agents?
 
-When you first encounter any mature framework, you may be attracted by its rich features, but you will soon discover a problem: to complete a simple task, you often need to understand more than a dozen different concepts such as Chain, Agent, Tool, Memory, Retriever, etc. Each concept has its own abstraction layer, making the learning curve extremely steep. Although this complexity brings powerful functionality, it also becomes an obstacle for beginners. The HelloAgents framework attempts to find a balance between functional completeness and learning friendliness, forming four core design philosophies.
+When you first encounter any mature framework, you may be attracted by its rich features, but you will soon discover a problem: to complete a simple task, you often need to understand more than a dozen different concepts such as Chain, Agent, Tool, Memory, Retriever, etc. Each concept has its own abstraction layer, making the learning curve extremely steep. Although this complexity brings powerful functionality, it also becomes an obstacle for beginners. The AgentSystems101 framework attempts to find a balance between functional completeness and learning friendliness, forming four core design philosophies.
 
 (1) Balance Between Lightweight and Teaching-Friendly
 
-An excellent learning framework should have complete readability. HelloAgents separates core code by chapters, based on a simple principle: any developer with a certain programming foundation should be able to fully understand the framework's working principles within a reasonable time. In dependency management, the framework adopts a minimalist strategy. Except for OpenAI's official SDK and a few necessary basic libraries, no heavy dependencies are introduced. When encountering problems, we can directly locate the framework's own code without searching for answers in complex dependency relationships.
+An excellent learning framework should have complete readability. AgentSystems101 separates core code by chapters, based on a simple principle: any developer with a certain programming foundation should be able to fully understand the framework's working principles within a reasonable time. In dependency management, the framework adopts a minimalist strategy. Except for OpenAI's official SDK and a few necessary basic libraries, no heavy dependencies are introduced. When encountering problems, we can directly locate the framework's own code without searching for answers in complex dependency relationships.
 
 (2) Pragmatic Choice Based on Standard APIs
 
-OpenAI's API has become an industry standard, and almost all mainstream LLM providers are working hard to be compatible with this interface. HelloAgents chooses to build on this standard rather than reinventing an abstract interface. This decision is mainly motivated by several points. First is the guarantee of compatibility. After mastering the use of HelloAgents, when migrating to other frameworks or integrating it into existing projects, the underlying API invocation logic is completely consistent. Second is the reduction of learning costs. You don't need to learn new conceptual models because all operations are based on standard interfaces you are already familiar with.
+OpenAI's API has become an industry standard, and almost all mainstream LLM providers are working hard to be compatible with this interface. AgentSystems101 chooses to build on this standard rather than reinventing an abstract interface. This decision is mainly motivated by several points. First is the guarantee of compatibility. After mastering the use of AgentSystems101, when migrating to other frameworks or integrating it into existing projects, the underlying API invocation logic is completely consistent. Second is the reduction of learning costs. You don't need to learn new conceptual models because all operations are based on standard interfaces you are already familiar with.
 
 (3) Careful Design of Progressive Learning Path
 
-HelloAgents provides a clear learning path. We will save the learning code for each chapter as a historical version that can be downloaded via pip, so there is no need to worry about the cost of using the code, because every core function will be written by yourself. This design allows you to move forward according to your own needs and pace. Each upgrade is natural, without conceptual jumps or understanding gaps. It's worth mentioning that the content of this chapter is also based on the content of the previous six chapters. Similarly, this chapter also lays the framework foundation for subsequent advanced knowledge learning.
+AgentSystems101 provides a clear learning path. We will save the learning code for each chapter as a historical version that can be downloaded via pip, so there is no need to worry about the cost of using the code, because every core function will be written by yourself. This design allows you to move forward according to your own needs and pace. Each upgrade is natural, without conceptual jumps or understanding gaps. It's worth mentioning that the content of this chapter is also based on the content of the previous six chapters. Similarly, this chapter also lays the framework foundation for subsequent advanced knowledge learning.
 
 (4) Unified "Tool" Abstraction: Everything is a Tool
 
-To thoroughly implement the lightweight and teaching-friendly philosophy, HelloAgents made a key simplification in architecture: except for the core Agent class, everything is Tools. Memory, RAG (Retrieval-Augmented Generation), RL (Reinforcement Learning), MCP (Protocol), and other modules that need to be learned independently in many other frameworks are all uniformly abstracted as a "tool" in HelloAgents. The original intention of this design is to eliminate unnecessary abstraction layers, allowing learners to return to the most intuitive core logic of "agents calling tools," thereby truly achieving the unity of quick start and deep understanding.
+To thoroughly implement the lightweight and teaching-friendly philosophy, AgentSystems101 made a key simplification in architecture: except for the core Agent class, everything is Tools. Memory, RAG (Retrieval-Augmented Generation), RL (Reinforcement Learning), MCP (Protocol), and other modules that need to be learned independently in many other frameworks are all uniformly abstracted as a "tool" in AgentSystems101. The original intention of this design is to eliminate unnecessary abstraction layers, allowing learners to return to the most intuitive core logic of "agents calling tools," thereby truly achieving the unity of quick start and deep understanding.
 
 ### 7.1.3 Learning Objectives of This Chapter
 
@@ -89,9 +89,9 @@ hello-agents/
 └──
 ```
 
-Before starting to write specific code, we need to first establish a clear architectural blueprint. The architectural design of HelloAgents follows the core principles of "layered decoupling, single responsibility, unified interface," which maintains code organization and facilitates content expansion by chapters.
+Before starting to write specific code, we need to first establish a clear architectural blueprint. The architectural design of AgentSystems101 follows the core principles of "layered decoupling, single responsibility, unified interface," which maintains code organization and facilitates content expansion by chapters.
 
-**Quick Start: Installing HelloAgents Framework**
+**Quick Start: Installing AgentSystems101 Framework**
 
 To allow readers to quickly experience the complete functionality of this chapter, we provide a directly installable Python package. You can install the version corresponding to this chapter with the following command:
 
@@ -106,7 +106,7 @@ Learning this chapter can be done in two ways:
 1. **Experiential Learning**: Directly install the framework using `pip`, run example code, and quickly experience various functions
 2. **Deep Learning**: Follow the content of this chapter, implement each component from scratch, and deeply understand the framework's design ideas and implementation details
 
-We recommend adopting the "experience first, then implement" learning path. In this chapter, we provide complete test files. You can rewrite core functions and run tests to verify whether your implementation is correct. This learning method ensures both practicality and learning effectiveness. If you want to deeply understand the framework's implementation details or wish to participate in the framework's development, you can visit this [GitHub repository](https://github.com/jjyaoao/helloagents).
+We recommend adopting the "experience first, then implement" learning path. In this chapter, we provide complete test files. You can rewrite core functions and run tests to verify whether your implementation is correct. This learning method ensures both practicality and learning effectiveness. If you want to deeply understand the framework's implementation details or wish to participate in the framework's development, you can visit this [GitHub repository](https://github.com/jjyaoao/agentsystems101).
 
 Before starting, let's experience building a simple agent using Hello-agents in 30 seconds!
 
@@ -151,9 +151,9 @@ print(f"Number of historical messages: {len(agent.get_history())}")
 
 
 
-## 7.2 HelloAgentsLLM Extension
+## 7.2 AgentSystems101LLM Extension
 
-The content of this section will be an iterative upgrade based on the `HelloAgentsLLM` created in Section 4.1.3. We will transform this basic client into a more adaptive model invocation hub. This upgrade mainly revolves around the following three goals:
+The content of this section will be an iterative upgrade based on the `AgentSystems101LLM` created in Section 4.1.3. We will transform this basic client into a more adaptive model invocation hub. This upgrade mainly revolves around the following three goals:
 
 1. **Multi-provider Support**: Achieve seamless switching between various mainstream LLM service providers such as OpenAI, ModelScope, Zhipu AI, etc., avoiding framework binding to specific vendors.
 2. **Local Model Integration**: Introduce VLLM and Ollama, two high-performance local deployment solutions, as production-grade supplements to the Hugging Face Transformers solution in Section 3.2.3, meeting the needs of data privacy and cost control.
@@ -161,13 +161,13 @@ The content of this section will be an iterative upgrade based on the `HelloAgen
 
 ### 7.2.1 Supporting Multiple Providers
 
-The `HelloAgentsLLM` class we previously defined can already connect to any service compatible with the OpenAI interface through the two core parameters `api_key` and `base_url`. This theoretically guarantees universality, but in practical applications, different service providers have differences in environment variable naming, default API addresses, and recommended models. If users need to manually query and modify code every time they switch service providers, it will greatly affect development efficiency. To solve this problem, we introduce `provider`. The improvement idea is: let `HelloAgentsLLM` handle the configuration details of different service providers internally, thereby providing users with a unified and concise invocation experience. We will elaborate on the specific implementation details in Section 7.2.3 "Automatic Detection Mechanism." Here, we first focus on how to use this mechanism to extend the framework.
+The `AgentSystems101LLM` class we previously defined can already connect to any service compatible with the OpenAI interface through the two core parameters `api_key` and `base_url`. This theoretically guarantees universality, but in practical applications, different service providers have differences in environment variable naming, default API addresses, and recommended models. If users need to manually query and modify code every time they switch service providers, it will greatly affect development efficiency. To solve this problem, we introduce `provider`. The improvement idea is: let `AgentSystems101LLM` handle the configuration details of different service providers internally, thereby providing users with a unified and concise invocation experience. We will elaborate on the specific implementation details in Section 7.2.3 "Automatic Detection Mechanism." Here, we first focus on how to use this mechanism to extend the framework.
 
-Below, we will demonstrate how to add support for the ModelScope platform by inheriting `HelloAgentsLLM`. We hope readers will not only learn how to "use" the framework but also master how to "extend" it. Directly modifying the source code of installed libraries is not a recommended practice because it makes subsequent library upgrades difficult.
+Below, we will demonstrate how to add support for the ModelScope platform by inheriting `AgentSystems101LLM`. We hope readers will not only learn how to "use" the framework but also master how to "extend" it. Directly modifying the source code of installed libraries is not a recommended practice because it makes subsequent library upgrades difficult.
 
 (1) Create Custom LLM Class and Inherit
 
-Suppose we have a `my_llm.py` file in our project directory. We first import the `HelloAgentsLLM` base class from the `hello_agents` library, then create a new class named `MyLLM` that inherits from it.
+Suppose we have a `my_llm.py` file in our project directory. We first import the `AgentSystems101LLM` base class from the `hello_agents` library, then create a new class named `MyLLM` that inherits from it.
 
 ```python
 # my_llm.py
@@ -185,7 +185,7 @@ class MyLLM(HelloAgentsLLM):
 
 (2) Override `__init__` Method to Support New Provider
 
-Next, we override the `__init__` method in the `MyLLM` class. Our goal is: when the user passes `provider="modelscope"`, execute our custom logic; otherwise, call the original logic of the parent class `HelloAgentsLLM`, enabling it to continue supporting other built-in providers like OpenAI.
+Next, we override the `__init__` method in the `MyLLM` class. Our goal is: when the user passes `provider="modelscope"`, execute our custom logic; otherwise, call the original logic of the parent class `AgentSystems101LLM`, enabling it to continue supporting other built-in providers like OpenAI.
 
 ```python
 class MyLLM(HelloAgentsLLM):
@@ -229,7 +229,7 @@ This code demonstrates the idea of "overriding": we intercept the case of `provi
 
 (3) Using the Custom `MyLLM` Class
 
-Now, we can use our own `MyLLM` class in the project's business logic just like using the native `HelloAgentsLLM`.
+Now, we can use our own `MyLLM` class in the project's business logic just like using the native `AgentSystems101LLM`.
 
 First, configure the ModelScope API key in the `.env` file:
 
@@ -265,13 +265,13 @@ for chunk in response_stream:
     pass
 ```
 
-Through the above steps, we have successfully extended new functionality to the `hello-agents` library without modifying its source code. This method not only ensures code cleanliness and maintainability but also ensures that our customized functionality will not be lost when upgrading the `hello-agents` library in the future.
+Through the above steps, we have successfully extended new functionality to the `AgentSystems101` library without modifying its source code. This method not only ensures code cleanliness and maintainability but also ensures that our customized functionality will not be lost when upgrading the `AgentSystems101` library in the future.
 
 ### 7.2.2 Local Model Invocation
 
 In Section 3.2.3, we learned how to use the Hugging Face Transformers library to run open-source models locally. This method is very suitable for introductory learning and functional verification, but its underlying implementation has limited performance when handling high-concurrency requests and is usually not the first choice for production environments.
 
-To achieve high-performance, production-grade model inference services locally, the community has produced excellent tools such as VLLM and Ollama. They significantly improve model throughput and operational efficiency through techniques such as continuous batching and PagedAttention, and encapsulate models as API services compatible with OpenAI standards. This means we can seamlessly integrate them into `HelloAgentsLLM`.
+To achieve high-performance, production-grade model inference services locally, the community has produced excellent tools such as VLLM and Ollama. They significantly improve model throughput and operational efficiency through techniques such as continuous batching and PagedAttention, and encapsulate models as API services compatible with OpenAI standards. This means we can seamlessly integrate them into `AgentSystems101LLM`.
 
 **VLLM**
 
@@ -308,9 +308,9 @@ ollama run llama3
 
 When you see the model's interactive prompt in the terminal, it indicates that the service has successfully started in the background. Ollama will expose an OpenAI-compatible API interface at the `http://localhost:11434/v1` address by default.
 
-**Integrating with `HelloAgentsLLM`**
+**Integrating with `AgentSystems101LLM`**
 
-Since both VLLM and Ollama follow industry-standard APIs, integrating them into `HelloAgentsLLM` is very simple. We only need to treat them as a new `provider` when instantiating the client.
+Since both VLLM and Ollama follow industry-standard APIs, integrating them into `AgentSystems101LLM` is very simple. We only need to treat them as a new `provider` when instantiating the client.
 
 For example, connecting to a locally running **VLLM** service:
 
@@ -349,7 +349,7 @@ Through this unified design, our agent core code requires no modifications to fr
 
 ### 7.2.3 Automatic Detection Mechanism
 
-To minimize the user's configuration burden as much as possible and follow the principle of "convention over configuration," `HelloAgentsLLM` internally designs two core auxiliary methods: `_auto_detect_provider` and `_resolve_credentials`. They work together, with `_auto_detect_provider` responsible for inferring the service provider based on environment information, while `_resolve_credentials` completes specific parameter configuration based on the inference result.
+To minimize the user's configuration burden as much as possible and follow the principle of "convention over configuration," `AgentSystems101LLM` internally designs two core auxiliary methods: `_auto_detect_provider` and `_resolve_credentials`. They work together, with `_auto_detect_provider` responsible for inferring the service provider based on environment information, while `_resolve_credentials` completes specific parameter configuration based on the inference result.
 
 The `_auto_detect_provider` method is responsible for automatically inferring the service provider based on environment information, according to the following priority order:
 
@@ -424,7 +424,7 @@ LLM_BASE_URL="http://localhost:11434/v1"
 LLM_MODEL_ID="llama3"
 ```
 
-They don't need to configure `LLM_API_KEY` at all or specify `provider` in the code. Then, in Python code, they simply instantiate `HelloAgentsLLM`:
+They don't need to configure `LLM_API_KEY` at all or specify `provider` in the code. Then, in Python code, they simply instantiate `AgentSystems101LLM`:
 
 ```python
 from dotenv import load_dotenv
@@ -445,11 +445,11 @@ for chunk in llm.think(messages):
 
 In this process, the `_auto_detect_provider` method successfully infers the `provider` as `"ollama"` by parsing `"localhost"` and `:11434` in `LLM_BASE_URL`. Subsequently, the `_resolve_credentials` method sets the correct default parameters for Ollama.
 
-Compared to the basic implementation in Section 4.1.3, the current HelloAgentsLLM has the following significant advantages:
+Compared to the basic implementation in Section 4.1.3, the current AgentSystems101LLM has the following significant advantages:
 
 <div align="center">
   <p>Table 7.1 Comparison of HelloAgentLLM Different Version Features</p>
-  <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/7-figures/table-01.png" alt="" width="90%"/>
+  <img src="../assets/images/7-figures/table-01.png" alt="" width="90%"/>
 </div>
 
 As shown in Table 7.1 above, this evolution embodies an important principle of framework design: **start simple, gradually improve**. We enhanced functional completeness while maintaining interface simplicity.
@@ -458,7 +458,7 @@ As shown in Table 7.1 above, this evolution embodies an important principle of f
 
 ## 7.3 Framework Interface Implementation
 
-In the previous section, we built `HelloAgentsLLM`, a core component that solves the key problem of communicating with large language models. However, it still needs a series of supporting interfaces and components to handle data flow, manage configuration, handle exceptions, and provide a clear, unified structure for upper-layer application construction. This section will cover the following three core files:
+In the previous section, we built `AgentSystems101LLM`, a core component that solves the key problem of communicating with large language models. However, it still needs a series of supporting interfaces and components to handle data flow, manage configuration, handle exceptions, and provide a clear, unified structure for upper-layer application construction. This section will cover the following three core files:
 
 - `message.py`: Defines the unified message format within the framework, ensuring standardization of information transfer between agents and models.
 - `config.py`: Provides a centralized configuration management solution, making framework behavior easy to adjust and extend.
@@ -600,7 +600,7 @@ class Agent(ABC):
 
 The design of this class embodies the abstraction principle in object-oriented programming. First, it is defined as an abstract class that cannot be directly instantiated by inheriting `ABC`. Its constructor `__init__` clearly defines the core dependencies of an Agent: name, LLM instance, system prompt, and configuration. The most important part is the `run` method decorated with `@abstractmethod`, which forces all subclasses to implement this method, thereby ensuring that all agents have a unified execution entry point. In addition, the base class also provides common history management methods, which work in coordination with the `Message` class, reflecting the connection between components.
 
-At this point, we have completed the design and implementation of the core basic components of the `HelloAgents` framework.
+At this point, we have completed the design and implementation of the core basic components of the `AgentSystems101` framework.
 
 ## 7.4 Framework Implementation of Agent Paradigms
 
@@ -1030,7 +1030,7 @@ class MyReActAgent(ReActAgent):
 The meaning of its initialization parameters is as follows:
 
 - `name`: Name of the Agent.
-- `llm`: Instance of `HelloAgentsLLM`, responsible for communicating with the large language model.
+- `llm`: Instance of `AgentSystems101LLM`, responsible for communicating with the large language model.
 - `tool_registry`: Instance of `ToolRegistry`, used to manage and execute tools available to the Agent.
 - `system_prompt`: System prompt, used to set the Agent's role and behavioral guidelines.
 - `config`: Configuration object, used to pass framework-level settings.
@@ -1277,12 +1277,12 @@ As shown in Table 7.2, through this framework refactoring, we not only maintaine
 
 <div align="center">
   <p>Table 7.2 Comparison of Agent Implementations Across Chapters</p>
-  <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/7-figures/table-02.png" alt="" width="90%"/>
+  <img src="../assets/images/7-figures/table-02.png" alt="" width="90%"/>
 </div>
 
 ### 7.4.5 FunctionCallAgent
 
-FunctionCallAgent is an Agent introduced in hello-agents after version 0.2.8, based on OpenAI's native function calling mechanism. It demonstrates how to build an Agent using OpenAI's function calling capabilities.
+FunctionCallAgent is an Agent introduced in AgentSystems101 after version 0.2.8, based on OpenAI's native function calling mechanism. It demonstrates how to build an Agent using OpenAI's function calling capabilities.
 It supports the following features:
 
 - _build_tool_schemas: Constructs OpenAI function calling schema through tool descriptions
@@ -1607,8 +1607,8 @@ if __name__ == "__main__":
 Through this simplified mathematical calculation tool case, we learned how to quickly develop custom tools: write a simple calculation function, register it through ToolRegistry, and then integrate it with SimpleAgent. For more intuitive observation, Figure 7.1 is provided here to clearly understand the code's running logic.
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/7-figures/01.png" alt="" width="90%"/>
-  <p>Figure 7.1 SimpleAgent Workflow Based on HelloAgents</p>
+  <img src="../assets/images/7-figures/01.png" alt="" width="90%"/>
+  <p>Figure 7.1 SimpleAgent Workflow Based on AgentSystems101</p>
 </div>
 
 ### 7.5.3 Multi-Source Search Tool
@@ -1621,7 +1621,7 @@ pip install "hello-agents[search]==0.1.1"
 
 (1) Unified Interface Design for Search Tools
 
-The SearchTool built into the HelloAgents framework demonstrates how to design an advanced multi-source search tool:
+The SearchTool built into the AgentSystems101 framework demonstrates how to design an advanced multi-source search tool:
 
 ````python
 class SearchTool(Tool):
@@ -2096,9 +2096,9 @@ Based on the above design and implementation experience, we can summarize the co
 
 ## 7.6 Chapter Summary
 
-Before formally summarizing, we want to share good news with everyone: For all methods and functions implemented in this chapter, complete test cases are provided in the GitHub repository. You can visit [this link](https://github.com/jjyaoao/HelloAgents/blob/main/examples/chapter07_basic_setup.py) to view and run these test codes. This file contains demonstrations of four Agent paradigms, integration tests of the tool system, usage examples of advanced features, and interactive Agent experiences. If you want to verify whether your implementation is correct or want to deeply understand the actual usage of the framework, these test cases will be valuable references.
+Before formally summarizing, we want to share good news with everyone: For all methods and functions implemented in this chapter, complete test cases are provided in the GitHub repository. You can visit [this link](https://github.com/jjyaoao/AgentSystems101/blob/main/examples/chapter07_basic_setup.py) to view and run these test codes. This file contains demonstrations of four Agent paradigms, integration tests of the tool system, usage examples of advanced features, and interactive Agent experiences. If you want to verify whether your implementation is correct or want to deeply understand the actual usage of the framework, these test cases will be valuable references.
 
-Looking back at this chapter, we completed a challenging task: step by step, we built a basic agent framework—HelloAgents. This process consistently followed the core principles of "layered decoupling, single responsibility, and unified interfaces."
+Looking back at this chapter, we completed a challenging task: step by step, we built a basic agent framework—AgentSystems101. This process consistently followed the core principles of "layered decoupling, single responsibility, and unified interfaces."
 
 In the specific implementation of the framework, we re-implemented four classic Agent paradigms. From SimpleAgent's basic conversation mode to ReActAgent's combination of reasoning and action; from ReflectionAgent's self-reflection and iterative optimization to PlanAndSolveAgent's decomposition planning and step-by-step execution. The tool system, as the core of Agent capability extension, was a complete engineering practice.
 
@@ -2109,17 +2109,17 @@ Next, we will explore together how to add RAG systems and Memory mechanisms to t
 
 ## Exercises
 
-1. This chapter built the `HelloAgents` framework and explained "why we need to build our own Agent framework." Please analyze:
+1. This chapter built the `AgentSystems101` framework and explained "why we need to build our own Agent framework." Please analyze:
 
    - Section 7.1.1 mentioned four main limitations of current mainstream frameworks. Combined with your actual experience using a framework in [Chapter 6 exercises](./06-framework-development-practice.md#exercises) or actual projects, explain how these problems affect development efficiency.
-   - `HelloAgents` proposes the design philosophy of "everything is a tool," abstracting modules like `Memory`, `RAG`, and `MCP` as tools. What are the advantages of this design? Are there any limitations? Please provide examples.
+   - `AgentSystems101` proposes the design philosophy of "everything is a tool," abstracting modules like `Memory`, `RAG`, and `MCP` as tools. What are the advantages of this design? Are there any limitations? Please provide examples.
    - Comparing the agent code implemented from scratch in Chapter 4 with the framework implementation in this chapter, what specific improvements does the framework bring? If you were to design a framework, what design principles would you prioritize?
 
-2. In Section 7.2, we extended `HelloAgentsLLM` to support multiple model providers and local model invocation.
+2. In Section 7.2, we extended `AgentSystems101LLM` to support multiple model providers and local model invocation.
 
    > <strong>Hint</strong>: This is a practical exercise, hands-on operation is recommended
 
-   - Referring to the example in Section 7.2.1, try adding support for a new model provider to `HelloAgentsLLM` (such as `Gemini`, `Anthropic`, `Kim`). Implement it through inheritance and enable automatic detection of that provider's environment variables.
+   - Referring to the example in Section 7.2.1, try adding support for a new model provider to `AgentSystems101LLM` (such as `Gemini`, `Anthropic`, `Kim`). Implement it through inheritance and enable automatic detection of that provider's environment variables.
    - Section 7.2.3 introduced three priorities of the automatic detection mechanism. Please analyze: If both `OPENAI_API_KEY` and `LLM_BASE_URL="http://localhost:11434/v1"` are set, which provider will the framework ultimately choose? Is this priority design reasonable?
    - Besides `VLLM` and `Ollama` introduced in this chapter, there are other local model deployment solutions like `SGLang`. Please first search for and understand the basic information and characteristics of `SGLang`, then compare `VLLM`, `SGLang`, and `Ollama` in terms of ease of use, resource consumption, inference speed, and inference accuracy.
 
@@ -2143,9 +2143,9 @@ Next, we will explore together how to add RAG systems and Memory mechanisms to t
    - Section 7.5.3 implemented tool chains (`ToolChain`). Please design a practical application scenario that requires chaining at least 3 tools and draw the execution flow diagram of the tool chain.
    - The asynchronous tool executor (`AsyncToolExecutor`) uses a thread pool to execute tools in parallel. Please analyze: Under what circumstances can parallel tool execution bring performance improvements?
 
-6. Framework extensibility is one of the important considerations in design. You now need to extend the `HelloAgents` framework to implement some interesting new features and characteristics.
+6. Framework extensibility is one of the important considerations in design. You now need to extend the `AgentSystems101` framework to implement some interesting new features and characteristics.
 
-   - First, add a "streaming output" feature to `HelloAgents` so that the `Agent` can return intermediate results in real-time when generating responses (similar to the typing effect in the `ChatGPT` user interface). Please design the implementation plan for this feature and explain which classes and methods need to be modified.
+   - First, add a "streaming output" feature to `AgentSystems101` so that the `Agent` can return intermediate results in real-time when generating responses (similar to the typing effect in the `ChatGPT` user interface). Please design the implementation plan for this feature and explain which classes and methods need to be modified.
    - Then add a "multi-turn conversation management" feature to the framework that can automatically manage conversation history, support conversation branching and backtracking. How would you design this? What new classes are needed? How to integrate with the existing `Message` system?
-   - Finally, please design a "plugin system" for `HelloAgents` that allows third-party developers to extend framework functionality through plugins (such as adding new `Agent` types, new tool types, etc.) without modifying the framework's core code. Draw the architecture diagram of the plugin system and explain the key interfaces.
+   - Finally, please design a "plugin system" for `AgentSystems101` that allows third-party developers to extend framework functionality through plugins (such as adding new `Agent` types, new tool types, etc.) without modifying the framework's core code. Draw the architecture diagram of the plugin system and explain the key interfaces.
 

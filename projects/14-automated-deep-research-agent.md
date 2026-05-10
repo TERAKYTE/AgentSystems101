@@ -1,6 +1,6 @@
 # Chapter 14: Automated Deep Research Agent
 
-In Chapter 13's travel assistant project, we experienced how to apply HelloAgents to a multi-agent product. In this chapter, we continue forward, focusing on **knowledge-intensive applications**: **building an agent assistant that can automatically execute deep research tasks.**
+In Chapter 13's travel assistant project, we experienced how to apply AgentSystems101 to a multi-agent product. In this chapter, we continue forward, focusing on **knowledge-intensive applications**: **building an agent assistant that can automatically execute deep research tasks.**
 
 Compared to travel planning, the difficulty of deep research lies in the continuous divergence of information, rapid updates of facts, and users' high requirements for citation sources. To deliver trustworthy research reports, we need to equip agents with three core capabilities:
 
@@ -30,7 +30,7 @@ This is the problem that the deep research assistant needs to solve. It's not ju
 This system still adopts the classic **front-end and back-end separation architecture**, as shown in Figure 14.1.
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/14-figures/14-1.png" alt="" width="85%"/>
+  <img src="../assets/images/14-figures/14-1.png" alt="" width="85%"/>
   <p>Figure 14.1 Deep Research Assistant Technical Architecture</p>
 </div>
 
@@ -40,14 +40,14 @@ The system is designed with a four-layer architecture:
 
 **Back-End Layer (FastAPI)**: API routing (`/research/stream`)
 
-**Agent Layer (HelloAgents)**: Three specialized Agents (TODO Planner, Task Summarizer, Report Writer) + Two core tools (SearchTool, NoteTool)
+**Agent Layer (AgentSystems101)**: Three specialized Agents (TODO Planner, Task Summarizer, Report Writer) + Two core tools (SearchTool, NoteTool)
 
 **External Service Layer**: Search engines + LLM providers
 
 Let's see how a complete research request flows through the system, as shown in Figure 14.2:
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/14-figures/14-2.png" alt="" width="85%"/>
+  <img src="../assets/images/14-figures/14-2.png" alt="" width="85%"/>
   <p>Figure 14.2 Deep Research Assistant Data Flow Process</p>
 </div>
 
@@ -169,17 +169,17 @@ If everything is normal, you'll see output similar to:
 
 **(3) Start Research**
 
-Open your browser and visit `http://localhost:5174`. You'll see a centered input card, as shown in Figure 14.3. Enter a research topic, for example `What kind of organization is Datawhale?`, select a search engine (if multiple are configured), and click the "Start Research" button.
+Open your browser and visit `http://localhost:5174`. You'll see a centered input card, as shown in Figure 14.3. Enter a research topic, for example `What kind of organization is the reference organization?`, select a search engine (if multiple are configured), and click the "Start Research" button.
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/14-figures/14-3.png" alt="" width="85%"/>
+  <img src="../assets/images/14-figures/14-3.png" alt="" width="85%"/>
   <p>Figure 14.3 Deep Research Assistant Search Page</p>
 </div>
 
 As shown in Figure 14.4, the system will automatically expand to full screen, with research information displayed on the left and research progress and results displayed in real-time on the right. The entire research process takes about 1-3 minutes, depending on the complexity of the topic and the response speed of the search engine.
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/14-figures/14-4.png" alt="" width="85%"/>
+  <img src="../assets/images/14-figures/14-4.png" alt="" width="85%"/>
   <p>Figure 14.4 Deep Research Assistant Expanded Research</p>
 </div>
 
@@ -199,7 +199,7 @@ Traditional search engines can only answer single questions, while deep research
 
 The core idea of this paradigm is: **Transform the complex task of "research" into a "planning → execution → integration" process**.
 
-Let's understand this transformation through an example. Suppose you want to research "What kind of organization is Datawhale?". The traditional search method is:
+Let's understand this transformation through an example. Suppose you want to research "What kind of organization is the reference organization?". The traditional search method is:
 
 ```
 User input: What kind of organization is Datawhale?
@@ -249,7 +249,7 @@ A complete TODO-driven research system contains three core elements:
 In our case, the TODO-driven research process is shown in Figure 14.5:
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/14-figures/14-5.png" alt="" width="85%"/>
+  <img src="../assets/images/14-figures/14-5.png" alt="" width="85%"/>
   <p>Figure 14.5 TODO-Driven Research Process</p>
 </div>
 
@@ -263,7 +263,7 @@ The TODO-driven research process is divided into three stages: Planning, Executi
 
 The goal of the planning stage is to decompose the research topic into 3-5 subtasks. The system receives the research topic and current date as input, and outputs a JSON-format list of subtasks. Each subtask contains three fields: title (task title), intent (research intent), and query (search query).
 
-The research planning Agent adopts different decomposition strategies based on topic characteristics, usually starting with basic concepts, then understanding technical status, practical applications, and development trends, and conducting comparative analysis when necessary. For example, for "What kind of organization is Datawhale?", the planning Agent might generate the following subtasks:
+The research planning Agent adopts different decomposition strategies based on topic characteristics, usually starting with basic concepts, then understanding technical status, practical applications, and development trends, and conducting comparative analysis when necessary. For example, for "What kind of organization is the reference organization?", the planning Agent might generate the following subtasks:
 
 ```json
 [
@@ -335,7 +335,7 @@ For each subtask, the executor will:
    })
    ```
 
-The task summarization Agent will extract core viewpoints from each search result, merge similar information, retain important numbers, dates, names and other key data, and add source citations for each viewpoint. For example, for the search results of "Basic information about Datawhale", the summarization Agent might generate:
+The task summarization Agent will extract core viewpoints from each search result, merge similar information, retain important numbers, dates, names and other key data, and add source citations for each viewpoint. For example, for the search results of "Basic information about the reference organization", the summarization Agent might generate:
 
 ```markdown
 ## Basic Information about Datawhale
@@ -391,7 +391,7 @@ During execution, the system will push progress information to the front-end in 
 
 **(3) Stage 3: Reporting**
 
-The goal of the reporting stage is to integrate the summaries of all subtasks and generate the final report. The system receives the summaries of all subtasks and the research topic as input, and outputs the final report in Markdown format. The report contains five parts: title, overview, detailed analysis of each subtask, summary, and references. For example, for "What kind of organization is Datawhale?", the final report might be:
+The goal of the reporting stage is to integrate the summaries of all subtasks and generate the final report. The system receives the summaries of all subtasks and the research topic as input, and outputs the final report in Markdown format. The report contains five parts: title, overview, detailed analysis of each subtask, summary, and references. For example, for "What kind of organization is the reference organization?", the final report might be:
 
 ```markdown
 # What Kind of Organization is Datawhale?
@@ -437,7 +437,7 @@ As shown in Table 14.1, the three Agents are respectively responsible for planni
 
 <div align="center">
   <p>Table 14.1 Responsibility Division of Three Agents</p>
-  <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/14-figures/14-table-1.png" alt="" width="85%"/>
+  <img src="../assets/images/14-figures/14-table-1.png" alt="" width="85%"/>
 </div>
 
 Let's introduce the design of each Agent in detail.
@@ -736,7 +736,7 @@ class ReportingService:
 
 ### 14.3.2 ToolAwareSimpleAgent Design
 
-In Chapter 7, we implemented `SimpleAgent`, which is the basic Agent of the HelloAgents framework. But in the deep research assistant, we need an Agent that can **record tool calls**. This is where `ToolAwareSimpleAgent` comes from.
+In Chapter 7, we implemented `SimpleAgent`, which is the basic Agent of the AgentSystems101 framework. But in the deep research assistant, we need an Agent that can **record tool calls**. This is where `ToolAwareSimpleAgent` comes from.
 
 In the deep research assistant, we need to record the tool call status of each Agent for:
 
@@ -838,7 +838,7 @@ This way, all Agent tool calls are recorded and pushed to the front-end via SSE,
 The three Agents have a **sequential collaboration** relationship, as shown in Figure 14.6.
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/14-figures/14-6.png" alt="" width="85%"/>
+  <img src="../assets/images/14-figures/14-6.png" alt="" width="85%"/>
   <p>Figure 14.6 Agent Collaboration Process</p>
 </div>
 
@@ -896,7 +896,7 @@ As shown in Table 14.2, the search engines added this time have different charac
 
 <div align="center">
   <p>Table 14.2 Multi-Search Engine Comparison</p>
-  <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/14-figures/14-table-2.png" alt="" width="85%"/>
+  <img src="../assets/images/14-figures/14-table-2.png" alt="" width="85%"/>
 </div>
 
 We will no longer discuss how to extend separately. You can refer to the source code and the extension cases in Chapter 7 for implementation. `SearchTool` provides a unified search interface. No matter which search engine is used, the calling method is the same.
@@ -1043,7 +1043,7 @@ class NotesService:
 
 ### 14.4.3 ToolRegistry Tool Management
 
-`ToolRegistry` is the tool registry of the HelloAgents framework, also supported in our Chapter 7, used to manage the registration and invocation of all tools. In the deep research assistant, we use `ToolRegistry` to manage `SearchTool` and `NoteTool`.
+`ToolRegistry` is the tool registry of the AgentSystems101 framework, also supported in our Chapter 7, used to manage the registration and invocation of all tools. In the deep research assistant, we use `ToolRegistry` to manage `SearchTool` and `NoteTool`.
 
 Before creating an Agent, we need to register tools first:
 
@@ -1076,13 +1076,13 @@ agent = ToolAwareSimpleAgent(
 When an Agent needs to call a tool, it generates a tool call instruction, as shown in Figure 14.7.
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/14-figures/14-7.png" alt="" width="85%"/>
+  <img src="../assets/images/14-figures/14-7.png" alt="" width="85%"/>
   <p>Figure 14.7 Tool Call Process</p>
 </div>
 
 **Tool Call Process**:
 
-1. **Agent generates instruction**: Agent generates tool call instruction, such as `[TOOL_CALL:search_tool:{"input": "Datawhale organization", "backend": "tavily"}]`
+1. **Agent generates instruction**: Agent generates tool call instruction, such as `[TOOL_CALL:search_tool:{"input": "open-source education organization", "backend": "tavily"}]`
 2. **Parse instruction**: `ToolRegistry` parses the instruction, extracts tool name and parameters
 3. **Find tool**: `ToolRegistry` finds the corresponding tool based on the tool name
 4. **Call tool**: Call the tool's `run` method, passing in parameters
@@ -1615,7 +1615,7 @@ class SearchService:
 Select search engine based on configuration, as shown in Figure 14.8:
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/14-figures/14-8.png" alt="" width="85%"/>
+  <img src="../assets/images/14-figures/14-8.png" alt="" width="85%"/>
   <p>Figure 14.8 Search Engine Scheduling Process</p>
 </div>
 
@@ -1695,7 +1695,7 @@ The deep research assistant adopts a full-screen modal dialog UI design, which h
 As shown in Figure 14.9, the full-screen modal dialog contains the following parts:
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/14-figures/14-9.png" alt="" width="85%"/>
+  <img src="../assets/images/14-figures/14-9.png" alt="" width="85%"/>
   <p>Figure 14.9 Full-Screen Modal Dialog UI</p>
 </div>
 
@@ -1853,7 +1853,7 @@ The deep research assistant uses SSE to implement real-time progress display. SS
 As shown in Figure 14.10, the SSE process includes the following steps:
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/14-figures/14-10.png" alt="" width="85%"/>
+  <img src="../assets/images/14-figures/14-10.png" alt="" width="85%"/>
   <p>Figure 14.10 SSE Process</p>
 </div>
 
@@ -2111,17 +2111,17 @@ The advantages of this design are:
 
 **(3) ToolAwareSimpleAgent Design**
 
-We extended the `SimpleAgent` of the HelloAgents framework and implemented `ToolAwareSimpleAgent`. This Agent has tool call listening capability and can:
+We extended the `SimpleAgent` of the AgentSystems101 framework and implemented `ToolAwareSimpleAgent`. This Agent has tool call listening capability and can:
 
 - **Listen to tool calls**: Listen to each tool call through callback functions
 - **Real-time feedback**: Push tool call information to the front-end in real-time
 - **Debugging support**: Record all tool calls for easy debugging
 
-This Agent has been integrated into the HelloAgents framework and can be reused in other projects.
+This Agent has been integrated into the AgentSystems101 framework and can be reused in other projects.
 
 **(4) Tool System Integration**
 
-We fully utilized the tool system of the HelloAgents framework:
+We fully utilized the tool system of the AgentSystems101 framework:
 
 - **SearchTool**: Extended to support more search engines (Tavily, DuckDuckGo, Perplexity, etc.)
 - **NoteTool**: Persist research progress, support recovery and auditing
