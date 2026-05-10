@@ -1,279 +1,226 @@
-# 第十二章示例代码
+# Chapter 12 Examples: Agent Evaluation
 
-本目录包含第十二章《智能体性能评估》的所有示例代码，按照文档顺序编号，方便学习者跟随文档学习。
+This directory contains the runnable examples for Chapter 12, which covers agent performance evaluation, BFCL, GAIA, LLM-as-judge workflows, win-rate comparison, and synthetic data quality checks.
 
-## 📁 文件列表
+## File Map
 
-| 文件名 | 对应章节 | 说明 |
-|--------|---------|------|
-| `01_basic_agent_example.py` | 12.1.1 | 基础智能体示例，说明为何需要评估 |
-| `02_bfcl_quick_start.py` | 12.2.5 | BFCL快速开始（一键评估） |
-| `03_bfcl_custom_evaluation.py` | 12.2.5 | BFCL自定义评估（底层组件） |
-| `04_run_bfcl_evaluation.py` | 12.2.9 | BFCL评估最佳实践 |
-| `05_gaia_quick_start.py` | 12.3.5 | GAIA快速开始（一键评估） |
-| `06_gaia_best_practices.py` | 12.3.9 | GAIA评估最佳实践 |
-| `07_data_generation_complete_flow.py` | 12.4.6 | 数据生成完整评估流程 |
-| `08_data_generation_llm_judge.py` | 12.4.3 | LLM Judge评估 |
-| `09_data_generation_win_rate.py` | 12.4.4 | Win Rate评估 |
+| File | Section | Purpose |
+| --- | --- | --- |
+| `01_basic_agent_example.py` | 12.1.1 | Basic agent example that motivates evaluation. |
+| `02_bfcl_quick_start.py` | 12.2.5 | BFCL quickstart with a high-level evaluation wrapper. |
+| `03_bfcl_custom_evaluation.py` | 12.2.5 | BFCL evaluation using lower-level components. |
+| `04_run_bfcl_evaluation.py` | 12.2.9 | BFCL evaluation workflow with practical checks. |
+| `05_gaia_quick_start.py` | 12.3.5 | GAIA quickstart. |
+| `06_gaia_best_practices.py` | 12.3.9 | GAIA evaluation practices. |
+| `07_data_generation_complete_flow.py` | 12.4.6 | End-to-end synthetic data generation and evaluation. |
+| `08_data_generation_llm_judge.py` | 12.4.3 | LLM judge evaluation for generated data. |
+| `09_data_generation_win_rate.py` | 12.4.4 | Win-rate evaluation for generated data. |
 
-## 🚀 快速开始
+## Quickstart
 
-### 环境准备
-
-1. **安装HelloAgents框架**：
-   ```bash
-   pip install hello-agents[evaluation]==0.2.3
-   ```
-
-2. **设置环境变量**：
-   ```bash
-   # OpenAI API Key（用于GPT-4o）
-   export OPENAI_API_KEY="your_openai_api_key"
-   
-   # HuggingFace Token（用于GAIA数据集）
-   export HF_TOKEN="your_huggingface_token"
-   ```
-
-3. **下载BFCL数据集**（可选，首次运行会自动下载）：
-   ```bash
-   cd ../HelloAgents
-   git clone https://github.com/ShishirPatil/gorilla.git temp_gorilla
-   ```
-
-### 运行示例
-
-#### 1. 基础智能体示例
+### 1. Install dependencies
 
 ```bash
-python 01_basic_agent_example.py
+pip install hello-agents[evaluation]==0.2.3
 ```
 
-这个示例展示了一个基本的ReAct智能体，说明为何需要评估系统。
-
-#### 2. BFCL快速开始
+### 2. Configure environment variables
 
 ```bash
-python 02_bfcl_quick_start.py
+export OPENAI_API_KEY="your_openai_api_key"
+export HF_TOKEN="your_huggingface_token"
 ```
 
-这是最简单的BFCL评估方式，一行代码完成评估。
+`HF_TOKEN` is required for gated Hugging Face datasets such as GAIA.
 
-**预期输出**：
-```
-准确率: 100.00%
-正确数: 5/5
-```
+### 3. Download BFCL data if needed
 
-#### 3. BFCL自定义评估
+The first BFCL run can download data automatically. If that fails, download the Gorilla repository manually:
 
-```bash
-python 03_bfcl_custom_evaluation.py
-```
-
-展示如何使用底层组件进行自定义评估流程。
-
-#### 4. BFCL最佳实践
-
-```bash
-python 04_run_bfcl_evaluation.py
-```
-
-展示BFCL评估的最佳实践，包括：
-- 渐进式评估
-- 多类别评估
-- 对比评估
-- 错误分析
-
-#### 5. GAIA快速开始
-
-**重要提示**：GAIA是受限数据集，需要先申请访问权限。
-
-1. 访问 https://huggingface.co/datasets/gaia-benchmark/GAIA
-2. 点击"Request Access"申请访问权限
-3. 等待审核通过（通常1-2天）
-4. 设置HF_TOKEN环境变量
-
-```bash
-python 05_gaia_quick_start.py
-```
-
-**预期输出**：
-```
-精确匹配率: 100.00%
-部分匹配率: 100.00%
-正确数: 2/2
-```
-
-#### 6. GAIA最佳实践
-
-```bash
-python 06_gaia_best_practices.py
-```
-
-展示GAIA评估的最佳实践，包括：
-- 分级评估
-- 小样本快速测试
-- 结果解读
-
-#### 7. 数据生成完整评估流程
-
-```bash
-python 07_data_generation_complete_flow.py 30 3.0
-```
-
-参数说明：
-- `30`：生成30道题目
-- `3.0`：每道题目之间延迟3秒
-
-这个示例展示了数据生成的完整评估流程：
-1. 生成AIME题目
-2. LLM Judge评估
-3. Win Rate评估
-4. 人工验证
-
-**预期输出**：
-```
-生成数量: 30道题目
-LLM Judge平均分: 3.5/5.0
-Win Rate: 45.0%
-建议: 生成质量接近AIME真题水平
-```
-
-#### 8. LLM Judge评估
-
-```bash
-python 08_data_generation_llm_judge.py
-```
-
-展示如何使用LLM Judge评估生成的AIME题目质量。
-
-**预期输出**：
-```
-平均分:
-  正确性: 5.00/5
-  清晰度: 4.50/5
-  难度匹配: 4.00/5
-  完整性: 5.00/5
-  总体平均: 4.62/5
-
-质量评估:
-✅ 优秀 - 题目质量很高，可以直接使用
-```
-
-#### 9. Win Rate评估
-
-```bash
-python 09_data_generation_win_rate.py
-```
-
-展示如何使用Win Rate评估生成的AIME题目质量。
-
-**预期输出**：
-```
-Win Rate: 45.00%
-Tie Rate: 10.00%
-Loss Rate: 45.00%
-
-质量评估:
-✅ 优秀 - 生成质量接近AIME真题水平
-```
-
-## 📊 学习路径
-
-### 初学者路径
-
-1. **了解评估的必要性**：
-   - 运行 `01_basic_agent_example.py`
-
-2. **学习BFCL评估**：
-   - 运行 `02_bfcl_quick_start.py`（快速开始）
-   - 运行 `04_run_bfcl_evaluation.py`（最佳实践）
-
-3. **学习GAIA评估**：
-   - 运行 `05_gaia_quick_start.py`（快速开始）
-   - 运行 `06_gaia_best_practices.py`（最佳实践）
-
-### 进阶路径
-
-1. **自定义评估流程**：
-   - 运行 `03_bfcl_custom_evaluation.py`
-
-2. **数据生成评估**：
-   - 运行 `08_data_generation_llm_judge.py`（LLM Judge）
-   - 运行 `09_data_generation_win_rate.py`（Win Rate）
-   - 运行 `07_data_generation_complete_flow.py`（完整流程）
-
-## 💡 常见问题
-
-### Q1: 运行示例时提示找不到模块？
-
-A: 请确保已安装HelloAgents框架：
-```bash
-cd ../HelloAgents
-pip install -e .
-```
-
-### Q2: BFCL评估提示找不到数据集？
-
-A: 首次运行会自动下载数据集，请确保网络连接正常。如果下载失败，可以手动下载：
 ```bash
 cd ../HelloAgents
 git clone https://github.com/ShishirPatil/gorilla.git temp_gorilla
 ```
 
-### Q3: GAIA评估提示没有访问权限？
+## Run Examples
 
-A: GAIA是受限数据集，需要先申请访问权限：
-1. 访问 https://huggingface.co/datasets/gaia-benchmark/GAIA
-2. 点击"Request Access"
-3. 等待审核通过
-4. 设置HF_TOKEN环境变量
+### Basic Agent Example
 
-### Q4: 评估速度太慢？
-
-A: 可以减少样本数量：
-```python
-# BFCL评估
-results = bfcl_tool.run(agent, category="simple_python", max_samples=5)
-
-# GAIA评估
-results = gaia_tool.run(agent, level=1, max_samples=2)
-
-# 数据生成评估
-python 07_data_generation_complete_flow.py 10 3.0  # 只生成10道题目
+```bash
+python 01_basic_agent_example.py
 ```
 
-### Q5: 如何估算评估成本？
+Shows a minimal ReAct-style agent and explains why evaluation harnesses are needed.
 
-A: 评估成本主要来自LLM API调用：
+### BFCL Quickstart
 
-**BFCL评估**：
-- 每个样本约1次API调用
-- 成本约0.01-0.02元/样本
-- 完整评估（400样本）约4-8元
+```bash
+python 02_bfcl_quick_start.py
+```
 
-**GAIA评估**：
-- 每个样本约1-5次API调用（取决于任务复杂度）
-- 成本约0.05-0.20元/样本
-- 完整评估（466样本）约23-93元
+Expected output:
 
-**数据生成评估**：
-- 生成：约0.05元/题
-- LLM Judge：约0.02元/题
-- Win Rate：约0.02元/对比
-- 生成30道题目约2-3元
+```text
+Accuracy: 100.00%
+Correct: 5/5
+```
 
-## 📚 相关资源
+### Custom BFCL Evaluation
 
-- **HelloAgents框架**：https://github.com/jjyaoao/HelloAgents
-- **BFCL官方仓库**：https://github.com/ShishirPatil/gorilla
-- **GAIA官方仓库**：https://huggingface.co/datasets/gaia-benchmark/GAIA
+```bash
+python 03_bfcl_custom_evaluation.py
+```
 
-## 🤝 贡献
+Shows how to assemble a custom BFCL evaluation from lower-level components.
 
-如果你发现示例代码有问题或有改进建议，欢迎提交Issue或Pull Request。
+### BFCL Best Practices
 
-## 📄 许可证
+```bash
+python 04_run_bfcl_evaluation.py
+```
 
-本示例代码遵循与HelloAgents框架相同的许可证。
+Covers progressive evaluation, multi-category evaluation, comparative runs, and error analysis.
 
+### GAIA Quickstart
+
+GAIA is a gated dataset. Request access first:
+
+1. Open <https://huggingface.co/datasets/gaia-benchmark/GAIA>.
+2. Click **Request Access**.
+3. Wait for approval.
+4. Set `HF_TOKEN`.
+
+```bash
+python 05_gaia_quick_start.py
+```
+
+Expected output:
+
+```text
+Exact match: 100.00%
+Partial match: 100.00%
+Correct: 2/2
+```
+
+### GAIA Best Practices
+
+```bash
+python 06_gaia_best_practices.py
+```
+
+Covers level-based evaluation, small-sample smoke tests, and result interpretation.
+
+### Complete Data Generation Evaluation
+
+```bash
+python 07_data_generation_complete_flow.py 30 3.0
+```
+
+Arguments:
+
+- `30`: generate 30 problems.
+- `3.0`: wait 3 seconds between generations.
+
+Workflow:
+
+1. Generate AIME-style problems.
+2. Score them with an LLM judge.
+3. Compare them with reference problems using win rate.
+4. Optionally perform human verification.
+
+Expected output:
+
+```text
+Generated problems: 30
+LLM judge average score: 3.5/5.0
+Win rate: 45.0%
+Recommendation: generated quality is approaching reference AIME style.
+```
+
+### LLM Judge Evaluation
+
+```bash
+python 08_data_generation_llm_judge.py
+```
+
+Evaluates generated AIME-style problems across correctness, clarity, difficulty match, and completeness.
+
+### Win-Rate Evaluation
+
+```bash
+python 09_data_generation_win_rate.py
+```
+
+Compares generated problems against reference problems and reports win, tie, and loss rates.
+
+## Recommended Learning Path
+
+Beginner path:
+
+1. Run `01_basic_agent_example.py`.
+2. Run `02_bfcl_quick_start.py`.
+3. Run `04_run_bfcl_evaluation.py`.
+4. Run `05_gaia_quick_start.py`.
+5. Run `06_gaia_best_practices.py`.
+
+Advanced path:
+
+1. Run `03_bfcl_custom_evaluation.py`.
+2. Run `08_data_generation_llm_judge.py`.
+3. Run `09_data_generation_win_rate.py`.
+4. Run `07_data_generation_complete_flow.py`.
+
+## Troubleshooting
+
+### Module not found
+
+Install the framework locally:
+
+```bash
+cd ../HelloAgents
+pip install -e .
+```
+
+### BFCL data not found
+
+The first run should download the dataset. If it fails, clone the Gorilla repository manually:
+
+```bash
+cd ../HelloAgents
+git clone https://github.com/ShishirPatil/gorilla.git temp_gorilla
+```
+
+### GAIA access denied
+
+GAIA requires dataset approval. Request access on Hugging Face and set `HF_TOKEN`.
+
+### Evaluation is slow
+
+Reduce sample counts while developing:
+
+```python
+results = bfcl_tool.run(agent, category="simple_python", max_samples=5)
+results = gaia_tool.run(agent, level=1, max_samples=2)
+```
+
+Or reduce generated data volume:
+
+```bash
+python 07_data_generation_complete_flow.py 10 3.0
+```
+
+### How should I estimate cost?
+
+Costs come mostly from LLM API calls:
+
+- BFCL: roughly one call per sample.
+- GAIA: often one to five calls per sample, depending on task complexity.
+- Synthetic data generation: generation, judge scoring, and pairwise win-rate calls each add cost.
+
+Use small samples first, then scale only after the harness is stable.
+
+## Related Resources
+
+- [HelloAgents framework](https://github.com/jjyaoao/HelloAgents)
+- [BFCL / Gorilla](https://github.com/ShishirPatil/gorilla)
+- [GAIA dataset](https://huggingface.co/datasets/gaia-benchmark/GAIA)

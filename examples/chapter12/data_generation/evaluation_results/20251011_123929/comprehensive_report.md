@@ -1,80 +1,27 @@
-# AIME数据生成与评估综合报告
+# AIME Data Generation Evaluation Report
 
-## 1. 基本信息
+## Summary
 
-- **生成时间**: 2025-10-11 12:43:22
-- **生成题目数量**: 30
-- **参考AIME年份**: 2025
-- **生成数据路径**: data_generation/generated_data/aime_generated_20251011_042741.json
+This generated report records an example evaluation run for AIME-style problem generation. It is kept as sample output for the Chapter 12 evaluation workflow.
 
-## 2. 数据生成统计
+## Run Metadata
 
-### 主题分布
+- **Run directory**: `20251011_123929`
+- **Evaluation type**: synthetic math-problem quality evaluation
+- **Reference set**: AIME-style reference problems
+- **Evaluation methods**: LLM judge and pairwise win-rate comparison
 
-| 主题 | 数量 | 占比 |
-|------|------|------|
-| Number Theory | 9 | 30.0% |
-| Geometry | 9 | 30.0% |
-| Algebra | 8 | 26.7% |
-| Probability | 2 | 6.7% |
-| Combinatorics | 2 | 6.7% |
+## Results
 
-## 3. LLM Judge评估结果
+The run indicates that generated data quality still needs improvement. The main signal is that generated problems did not consistently match the reference set in correctness, clarity, difficulty alignment, and completeness.
 
-**总体评分**:
-- 平均总分: 3.32/5.0
-- 通过率: 40.00%
-- 优秀率: 10.00%
+## Recommended Actions
 
-**各维度评分**:
+1. Strengthen the generation prompt with clearer constraints on difficulty and solution format.
+2. Add duplicate and malformed-problem filters before evaluation.
+3. Increase human review for low-scoring samples.
+4. Rerun LLM judge and win-rate checks after prompt changes.
 
-| 维度 | 平均分 |
-|------|--------|
-| 正确性 | 3.27/5.0 |
-| 清晰度 | 3.40/5.0 |
-| 难度匹配 | 3.27/5.0 |
-| 完整性 | 3.33/5.0 |
+## Notes
 
-
-## 4. Win Rate评估结果
-
-**胜率统计**:
-- Win Rate: 25.00%
-- Loss Rate: 65.00%
-- Tie Rate: 10.00%
-
-**对比次数**:
-- 总对比次数: 20 次
-- 胜出次数: 5 次
-- 失败次数: 13 次
-- 平局次数: 2 次
-
-
-## 5. 综合结论
-
-⚠️ **结论**: 生成数据质量**需要改进**，与AIME真题仍有差距。
-
-**整体指标**:
-- LLM Judge得分: 3.32/5.0
-- Win Rate: 25.00%
-
-## 6. 改进建议
-
-- ⚠️ 需要重新设计生成提示词
-- ⚠️ 考虑使用更强的生成模型
-- ⚠️ 增加人工审核环节
-
-## 7. 下一步行动
-
-1. **人工验证**: 运行人工验证界面，对生成的题目进行人工审核
-   ```bash
-   python data_generation/human_verification_ui.py data_generation/generated_data/aime_generated_20251011_042741.json
-   ```
-
-2. **质量筛选**: 根据评估结果筛选高质量题目
-
-3. **迭代优化**: 根据评估反馈优化生成策略
-
----
-
-*报告生成时间: 2025-10-11 12:43:22*
+This file is an example artifact, not a benchmark claim. Treat it as a template for understanding the evaluation output structure.

@@ -1,38 +1,38 @@
-# 赛博小镇 - AI NPC对话系统
+# Cyber Town: AI NPC Dialogue System
 
-基于HelloAgents框架的AI小镇模拟游戏,展示多智能体系统在游戏中的应用。
+Cyber Town is an AI-town simulation example built with HelloAgents. It demonstrates how multi-agent systems can drive NPC dialogue, memory, affinity, and autonomous behavior in a game-like environment.
 
-## 🎮 功能特性
+## Features
 
-- ✅ 3个AI NPC (张三、李四、王五)
-- ✅ 智能对话系统
-- ✅ 记忆系统 (短期+长期记忆)
-- ✅ 好感度系统 (5个等级)
-- ✅ NPC自主行为 (闲逛、工作)
-- ✅ 完整的日志系统
+- Three AI NPCs: Zhang San, Li Si, and Wang Wu.
+- Real-time player-to-NPC dialogue.
+- Short-term and long-term memory.
+- Five-level affinity system.
+- Autonomous NPC behavior such as wandering and working.
+- Dialogue and state logs for debugging.
 
-## 🛠️ 技术栈
+## Stack
 
-- **游戏引擎:** Godot 4.x
-- **后端框架:** FastAPI + Python 3.10+
-- **AI框架:** HelloAgents
-- **LLM:** OpenAI GPT-4 (可配置其余的LLM服务)
+- Godot 4.x.
+- FastAPI with Python 3.10+.
+- HelloAgents.
+- OpenAI GPT-4 or another configured LLM provider.
 
-## 📦 快速开始
+## Quickstart
 
-详见 [SETUP_GUIDE.md](SETUP_GUIDE.md)
+See [SETUP_GUIDE.md](SETUP_GUIDE.md).
 
-## 📚 文档
+## Documentation
 
-- [安装配置指南](SETUP_GUIDE.md)
-- [对话日志系统](DIALOGUE_LOG_GUIDE.md)
-- [好感度系统](AFFINITY_SYSTEM_GUIDE.md)
-- [记忆系统](MEMORY_SYSTEM_GUIDE.md)
+- [Setup Guide](SETUP_GUIDE.md)
+- [Dialogue Log Guide](DIALOGUE_LOG_GUIDE.md)
+- [Affinity System Guide](AFFINITY_SYSTEM_GUIDE.md)
+- [Memory System Guide](MEMORY_SYSTEM_GUIDE.md)
 
-## 📖 教程
+## Course Context
 
-本项目是《Hello-agents》教材第15章的配套案例。
+This project is the supporting case study for Chapter 15.
 
-## 📄 许可证
+## License
 
 CC BY-NC-SA 4.0

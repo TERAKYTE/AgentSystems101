@@ -1,1 +1,1 @@
-这是Helloagents第十章代码仓库的演示
+This is a demonstration workspace for the Chapter 10 examples.

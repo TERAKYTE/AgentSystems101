@@ -1,44 +1,27 @@
-# AIME题目生成统计报告
+# AIME Data Generation Report
 
-## 基本信息
+## Summary
 
-- **生成时间**: 2025-10-11 04:41:36
-- **题目数量**: 30
+This file is sample output from an AIME-style problem generation run.
 
-## 主题分布
+## Purpose
 
-| 主题 | 数量 | 占比 |
-|------|------|------|
-| Number Theory | 9 | 30.0% |
-| Geometry | 9 | 30.0% |
-| Algebra | 8 | 26.7% |
-| Probability | 2 | 6.7% |
-| Combinatorics | 2 | 6.7% |
+The generation step creates candidate math problems that are later evaluated by:
 
-## 答案分析
+- LLM judge scoring.
+- Pairwise win-rate comparison.
+- Optional human verification.
 
-- **平均答案**: 172.00
-- **最小答案**: 1
-- **最大答案**: 999
-- **答案范围**: 1-999
+## Recommended Review
 
-## 题目列表
+Generated data should not be used directly. Review each item for:
 
-| ID | 主题 | 答案 |
-|-----|------|------|
-| gen_aime_1 | Number Theory | 1 |
-| gen_aime_2 | Number Theory | 9 |
-| gen_aime_3 | Algebra | 70 |
-| gen_aime_4 | Algebra | 25 |
-| gen_aime_5 | Algebra | 10 |
-| gen_aime_6 | Number Theory | 999 |
-| gen_aime_7 | Probability | 769 |
-| gen_aime_8 | Number Theory | 19 |
-| gen_aime_9 | Number Theory | 15 |
-| gen_aime_10 | Geometry | 34 |
+- Mathematical correctness.
+- Clear problem statement.
+- Difficulty alignment with AIME-style references.
+- Complete solution and answer consistency.
+- Duplicate or near-duplicate content.
 
-*（仅显示前10个题目，完整列表请查看JSON文件）*
+## Next Step
 
----
-
-*报告生成时间: 2025-10-11 04:41:36*
+Run the evaluation pipeline and inspect the resulting comprehensive report before keeping generated samples.

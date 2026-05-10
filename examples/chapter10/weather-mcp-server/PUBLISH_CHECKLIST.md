@@ -1,67 +1,66 @@
-# 发布检查清单
+# Publish Checklist
 
-在提交到 Smithery 之前，请确保完成以下所有项目：
+Use this checklist before submitting the MCP server to Smithery.
 
-## 📋 文件检查
+## File Checks
 
-- [ ] README.md 完整且清晰
-- [ ] LICENSE 文件存在
-- [ ] Dockerfile 配置正确（推荐）
-- [ ] pyproject.toml 配置正确（必需）
-- [ ] requirements.txt 包含所有依赖
-- [ ] smithery.yaml 配置正确
-- [ ] server.py 可以正常运行
+- [ ] `README.md` is complete and clear.
+- [ ] `LICENSE` exists.
+- [ ] `Dockerfile` is configured correctly, if used.
+- [ ] `pyproject.toml` is configured correctly.
+- [ ] `requirements.txt` contains all required dependencies.
+- [ ] `smithery.yaml` is configured correctly.
+- [ ] `server.py` runs locally.
 
-## 🧪 功能测试
+## Functional Tests
 
-- [ ] 服务器可以正常启动
-- [ ] 所有工具都能正常调用
-- [ ] 错误处理完善
-- [ ] 返回结果格式正确
+- [ ] The server starts successfully.
+- [ ] All tools can be called.
+- [ ] Errors are handled clearly.
+- [ ] Response payloads have the expected shape.
 
-## 📝 文档检查
+## Documentation Checks
 
-- [ ] 安装说明清晰
-- [ ] 使用示例完整
-- [ ] API 文档详细
-- [ ] 支持的功能列表完整
+- [ ] Installation instructions are clear.
+- [ ] Usage examples are complete.
+- [ ] API documentation covers all tools.
+- [ ] Supported capabilities are listed.
 
-## 🔧 配置检查
+## Configuration Checks
 
-- [ ] pyproject.toml 中的 name 和 version 正确
-- [ ] smithery.yaml 中的 name 唯一
-- [ ] pyproject.toml 和 smithery.yaml 的 version 保持一致
-- [ ] version 遵循语义化版本
-- [ ] tools 列表完整
-- [ ] homepage URL 正确
+- [ ] `name` and `version` are correct in `pyproject.toml`.
+- [ ] `name` is unique in `smithery.yaml`.
+- [ ] Versions match across `pyproject.toml` and `smithery.yaml`.
+- [ ] Versioning follows semantic versioning.
+- [ ] Tool definitions are complete.
+- [ ] Homepage URL is correct.
 
-## 🚀 GitHub 准备
+## GitHub Readiness
 
-- [ ] 代码已推送到 GitHub
-- [ ] 创建了 v1.0.0 标签
-- [ ] 创建了 Release
-- [ ] 仓库是 Public
+- [ ] Code has been pushed to GitHub.
+- [ ] A `v1.0.0` tag exists.
+- [ ] A release has been created.
+- [ ] The repository is public.
 
-## ✅ 最终检查
+## Final Checks
 
-- [ ] 在本地测试通过
-- [ ] 文档无拼写错误
-- [ ] 所有链接可访问
-- [ ] 准备好提交到 Smithery
+- [ ] Local tests pass.
+- [ ] Documentation has no obvious spelling issues.
+- [ ] Important links are reachable.
+- [ ] The server is ready for Smithery submission.
 
-## 提交步骤
+## Submission Steps
 
-1. 访问 https://smithery.ai/
-2. 使用 GitHub 登录
-3. 点击 "Submit Server"
-4. 输入仓库 URL
-5. 确认信息并提交
-6. 等待审核（1-3天）
+1. Open <https://smithery.ai/>.
+2. Sign in with GitHub.
+3. Click **Submit Server**.
+4. Enter the repository URL.
+5. Confirm the metadata.
+6. Submit and wait for review. Reviews commonly take one to three days.
 
-## 审核后
+## After Approval
 
-- [ ] 收到审核通过邮件
-- [ ] 在 Smithery 上可以搜索到
-- [ ] 测试安装和使用
-- [ ] 分享给社区
-
+- [ ] Approval email received.
+- [ ] Server is searchable on Smithery.
+- [ ] Installation and usage have been tested from Smithery.
+- [ ] Announcement or community post is prepared, if relevant.

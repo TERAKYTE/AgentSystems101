@@ -1,18 +1,17 @@
-# 项目演示目录
+# Sample Project Directory
 
-这个目录用于演示 TerminalTool 的安全特性。
+This directory is used to demonstrate `TerminalTool` safety behavior.
 
-## 说明
+## Safety Properties
 
-TerminalTool 具有以下安全特性：
+`TerminalTool` includes three guardrails:
 
-1. **命令白名单**：只允许执行特定的安全命令
-2. **工作目录限制**：不能访问工作目录之外的文件
-3. **路径逃逸保护**：防止通过 `..` 等方式逃逸工作目录
+1. **Command allowlist**: only specific low-risk commands can run.
+2. **Working-directory boundary**: files outside the configured workspace cannot be accessed.
+3. **Path traversal protection**: relative paths such as `..` are checked so the tool cannot escape the workspace.
 
-## 测试场景
+## Test Scenarios
 
-- 尝试执行危险命令（如 `rm -rf`）会被阻止
-- 尝试访问工作目录外的文件会被拒绝
-- 尝试通过相对路径逃逸工作目录会被检测并阻止
-
+- Dangerous commands such as `rm -rf` should be blocked.
+- Attempts to read files outside the workspace should be rejected.
+- Attempts to escape the workspace with relative paths should be detected and blocked.
