@@ -1,7 +1,7 @@
 # AgentSystems101
 
 [![Validate Repository](https://github.com/TERAKYTE/AgentSystems101/actions/workflows/validate.yml/badge.svg)](https://github.com/TERAKYTE/AgentSystems101/actions/workflows/validate.yml)
-[![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC_BY--NC--SA_4.0-lightgrey.svg)](./LICENSE.txt)
+[![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC_BY--NC--SA_4.0-lightgrey.svg)](./LICENSE)
 [![Focus: AI Agent Engineering](https://img.shields.io/badge/Focus-AI_Agent_Engineering-0f766e.svg)](#what-this-repository-covers)
 
 AgentSystems101 is a Terakyte-maintained engineering handbook for building AI agent systems. It gives engineers a practical path from LLM fundamentals to agent orchestration, tool use, memory, retrieval, evaluation, and production operations.
@@ -181,7 +181,7 @@ Contributions should improve clarity, correctness, or reproducibility.
 5. Include validation output when changing docs, links, notebooks, or examples.
 6. Clearly mark uncertain translations with a TODO instead of guessing.
 
-See [CONTRIBUTING.md](./CONTRIBUTING.md) for contribution standards and local checks.
+See [CONTRIBUTING.md](./CONTRIBUTING.md) for contribution standards and local checks. A repository social preview asset is available at [assets/brand/agentsystems101-social-preview.svg](./assets/brand/agentsystems101-social-preview.svg).
 
 ## Attribution
 

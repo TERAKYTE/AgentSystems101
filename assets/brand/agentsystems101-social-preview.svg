@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640" role="img" aria-labelledby="title desc">
+  <title id="title">AgentSystems101 social preview</title>
+  <desc id="desc">Terakyte branded preview for the AgentSystems101 repository.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#07111f"/>
+      <stop offset="52%" stop-color="#102235"/>
+      <stop offset="100%" stop-color="#0b3d3a"/>
+    </linearGradient>
+    <linearGradient id="line" x1="0" x2="1">
+      <stop offset="0%" stop-color="#5eead4"/>
+      <stop offset="100%" stop-color="#60a5fa"/>
+    </linearGradient>
+  </defs>
+  <rect width="1280" height="640" fill="url(#bg)"/>
+  <path d="M122 438 C242 312 316 514 444 382 S624 198 754 320 968 442 1158 210" fill="none" stroke="url(#line)" stroke-width="6" opacity="0.72"/>
+  <g fill="none" stroke="#5eead4" stroke-width="3" opacity="0.24">
+    <circle cx="190" cy="170" r="72"/>
+    <circle cx="1090" cy="466" r="96"/>
+    <path d="M960 120 h160 v160 h-160z"/>
+  </g>
+  <g fill="#ffffff">
+    <text x="96" y="130" font-family="Inter, Arial, sans-serif" font-size="26" letter-spacing="4">TERAKYTE LABS</text>
+    <text x="96" y="284" font-family="Inter, Arial, sans-serif" font-size="86" font-weight="700">AgentSystems101</text>
+    <text x="100" y="350" font-family="Inter, Arial, sans-serif" font-size="34" fill="#cbd5e1">Engineering handbook for production AI agents</text>
+  </g>
+  <g font-family="Inter, Arial, sans-serif" font-size="24" fill="#d1fae5">
+    <text x="100" y="456">orchestration</text>
+    <text x="306" y="456">memory</text>
+    <text x="438" y="456">RAG</text>
+    <text x="520" y="456">tool use</text>
+    <text x="662" y="456">multi-agent systems</text>
+    <text x="936" y="456">evaluation</text>
+  </g>
+  <text x="100" y="548" font-family="Inter, Arial, sans-serif" font-size="28" fill="#93c5fd">github.com/TERAKYTE/AgentSystems101</text>
+</svg>
