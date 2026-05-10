@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://c6guopaun4bag" path="res://assets/interiors/Japanese_Home_1_preview_48x48.png" id="5_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://cm0yi2d074t64" path="res://scenes/dialogue_ui.tscn" id="5_tefeu"]
 [ext_resource type="Texture2D" uid="uid://ev8s67j8speg" path="res://assets/characters/character_4.png" id="6_o6xl0"]
-[ext_resource type="Texture2D" uid="uid://be80ipi13u6xb" path="res://assets/interiors/小鲸鱼.png" id="8_tipki"]
+[ext_resource type="Texture2D" uid="uid://be80ipi13u6xb" path="res://assets/interiors/small-whale.png" id="8_tipki"]
 [ext_resource type="AudioStream" uid="uid://brhbet2ll8icy" path="res://assets/audio/BGM.ogg" id="9_85g3d"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tipki"]
@@ -390,7 +390,7 @@ scale = Vector2(1.4747808, 1.1394081)
 texture = ExtResource("5_tbgi4")
 metadata/_edit_lock_ = true
 
-[node name="小鲸鱼" type="Sprite2D" parent="Background"]
+[node name="SmallWhale" type="Sprite2D" parent="Background"]
 position = Vector2(96.62457, -220.50922)
 scale = Vector2(0.09239753, 0.12666555)
 texture = ExtResource("8_tipki")

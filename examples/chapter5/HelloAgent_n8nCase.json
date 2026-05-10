@@ -155,7 +155,7 @@
     },
     {
       "parameters": {
-        "jsCode": "return [\n\n  {\n    \"doc_id\": \"work-schedule-001\",\n    \"content\": \"我的工作时间是周一至周五，上午9点到下午5点。时区是澳大利亚东部标准时间（AEST）。\"\n  },\n  {\n    \"doc_id\": \"off-hours-policy-001\",\n    \"content\": \"在非工作时间（包括周末和公共假期），我无法立即回复邮件。\"\n  },\n  {\n    \"doc_id\": \"auto-reply-instruction-001\",\n    \"content\": \"如果邮件是在非工作时间收到的，AI助手应该告知发件人，邮件已收到，我会在下一个工作日的9点到5点之间尽快处理并回复。\"\n  }\n\n];"
+        "jsCode": "return [\n\n  {\n    \"doc_id\": \"work-schedule-001\",\n    \"content\": \"My working hours are Monday to Friday, 9:00 AM to 5:00 PM. The timezone is Australian Eastern Standard Time (AEST).\"\n  },\n  {\n    \"doc_id\": \"off-hours-policy-001\",\n    \"content\": \"Outside working hours, including weekends and public holidays, I may not reply immediately.\"\n  },\n  {\n    \"doc_id\": \"auto-reply-instruction-001\",\n    \"content\": \"If an email arrives outside working hours, the AI assistant should tell the sender that the message was received and that I will review and reply as soon as possible during the next business day between 9:00 AM and 5:00 PM.\"\n  }\n\n];"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
@@ -169,7 +169,7 @@
     {
       "parameters": {
         "mode": "retrieve-as-tool",
-        "toolDescription": "这是Simple Vector Store2工具，用来查询我的个人信息，特别是我的工作时间和邮件回复策略。当需要判断当前是否为工作时间，或者需要告知对方我何时会回复邮件时，必须使用此工具。",
+        "toolDescription": "Use this Simple Vector Store tool to query my personal response policy, especially working hours and email reply expectations. Use it whenever the workflow needs to determine whether the current time is inside working hours or explain when I will reply.",
         "memoryKey": {
           "__rl": true,
           "value": "my-dailytime",
@@ -208,10 +208,10 @@
     {
       "parameters": {
         "promptType": "define",
-        "text": "=# 上下文信息\n- 当前时间: {{ new Date().toLocaleString('en-AU', { timeZone: 'Australia/Sydney', hour12: false }) }} (澳大利亚悉尼时间)\n- 发件人: {{ $json.From }}\n- 主题: {{ $json.Subject }}\n- 邮件正文: {{ $json.snippet }}",
+        "text": "=# Context\n- Current time: {{ new Date().toLocaleString('en-AU', { timeZone: 'Australia/Sydney', hour12: false }) }} (Sydney, Australia time)\n- Sender: {{ $json.From }}\n- Subject: {{ $json.Subject }}\n- Email body: {{ $json.snippet }}",
         "hasOutputParser": true,
         "options": {
-          "systemMessage": "=# 角色和目标\n你是一个全天候待命、专业高效的AI邮件助手。你的任务是：第一时间使用公开信息尽力回答所有邮件中的问题，并根据我的工作日程，在回复的开头附加上下文状态提醒。\n\n# 上下文信息\n- 当前时间: {{ new Date().toLocaleString('en-AU', { timeZone: 'Australia/Sydney', hour12: false }) }} (澳大利亚悉尼时间)\n- 邮件信息在输入数据中。\n\n# 可用工具\n- Simple Vector Store2: 用来查询我准确的工作时间（例如：周一至周五，上午9点到下午5点）。\n- SerpAPI: **[主要信息来源]** 优先使用此工具在互联网上搜索，以回答邮件中的具体问题。\n\n# 执行步骤\n1.  **分析问题**: 首先，仔细阅读邮件内容，提炼出发件人的核心问题。\n\n2.  **并行信息搜集**: 同时执行以下两个操作来收集信息：\n    a. 使用 `SerpAPI` 工具，上网搜索出发件人问题的答案。\n    b. 使用 `Simple Vector Store2` 工具，获取我设定的准确工作时间。\n\n3.  **草拟核心回复**: 根据 `SerpAPI` 搜集到的信息，清晰、直接地回答发件人的问题，这部分将作为邮件回复的主体。\n\n4.  **添加状态前缀并整合**:\n    a. 对比“当前时间”和我从工具中获取的工作时间。\n    b. **如果当前是“非工作时间”**: 创建一段状态提醒前缀。这段前缀**必须包含**从 `Simple Vector Store2` 获取到的具体工作时间。\n        * **前缀示例**: \"您好，感谢您的来信。您已在我的非工作时间联系我（我的工作时间为：[此处插入查询到的工作时间]）。我会在下一个工作日亲自审阅此邮件。与此同时，这是根据公开信息为您找到的初步答复：**<br><br>---<br><br>**\"\n    c. **如果当前是“工作时间”**: 只需使用简单的问候语即可。\n        * **前缀示例**: \"您好，关于您提出的问题，答复如下：**<br><br>---<br><br>**\"\n    d. 将生成的前缀和你草拟的核心回复（第3步的结果）拼接在一起，形成最终的邮件正文。\n\n5.  **格式化输出**: 你必须将最终生成的邮件内容以一个严格的 JSON 格式输出。格式如下，不要添加任何额外的解释或文字：\n    {\n      \"shouldReply\": true,\n      \"subject\": \"Re: [原始邮件主题]\",\n      \"body\": \"[这里是拼接好的、完整的邮件回复正文，**所有换行必须使用HTML的<br>标签**]\"\n    }\n\n# 规则和限制\n- **永远优先尝试回答**: 无论何时，你的首要任务是使用 `SerpAPI` 为用户提供有价值的回复。\n- **必须声明状态**: 如果在非工作时间回复，必须在邮件开头明确声明，并附上我准确的工作时间。\n- **信息来源要准确**: 工作时间必须严格以 `Simple Vector Store2` 的结果为准；问题答案主要来源于 `SerpAPI`，不要编造信息。\n- **输出格式**: **在最终输出的JSON中，`body`字段内的所有换行都必须使用 `<br>` 标签，而不是 `\\n`。**"
+          "systemMessage": "=# Role and Goal\nYou are a professional AI email assistant. Your job is to answer incoming email questions using public information when possible, and prepend a status note based on my working schedule.\n\n# Context\n- Current time: {{ new Date().toLocaleString('en-AU', { timeZone: 'Australia/Sydney', hour12: false }) }} (Sydney, Australia time)\n- Email content is available in the input data.\n\n# Available Tools\n- Simple Vector Store2: query my exact working hours, such as Monday to Friday from 9:00 AM to 5:00 PM.\n- SerpAPI: primary public-information source for answering specific questions in the email.\n\n# Workflow\n1. Analyze the email and extract the sender's main question.\n2. Gather information in parallel:\n   a. Use SerpAPI to search for an answer to the sender's question.\n   b. Use Simple Vector Store2 to retrieve my configured working hours.\n3. Draft the core answer from the public information found through SerpAPI.\n4. Add a status prefix:\n   a. Compare the current time with the retrieved working hours.\n   b. If the email arrived outside working hours, include a prefix that clearly states the working hours.\n      Example: \"Hello, thank you for your message. You contacted me outside my working hours (my working hours are: [insert retrieved working hours]). I will personally review this email on the next business day. In the meantime, here is a preliminary answer based on public information:<br><br>---<br><br>\"\n   c. If the email arrived during working hours, use a short greeting.\n      Example: \"Hello, regarding your question, here is the answer:<br><br>---<br><br>\"\n   d. Combine the prefix and the core answer into the final email body.\n5. Output only strict JSON in this shape, without extra explanation:\n{\n  \"shouldReply\": true,\n  \"subject\": \"Re: [original email subject]\",\n  \"body\": \"[final email body]\"\n}"
         }
       },
       "type": "@n8n/n8n-nodes-langchain.agent",

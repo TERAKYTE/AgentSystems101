@@ -22,6 +22,7 @@ const activeMarkdownRoots = [
 ];
 
 const failures = [];
+const headingCache = new Map();
 
 function rel(file) {
   return path.relative(root, file).replaceAll(path.sep, "/");
@@ -47,6 +48,15 @@ function isActiveMarkdown(file) {
   return activeMarkdownRoots.some((prefix) => relative === prefix || relative.startsWith(`${prefix}/`));
 }
 
+function isArchivedOrGenerated(relative) {
+  return (
+    relative.startsWith("docs/upstream-zh/") ||
+    relative.startsWith("docs/upstream-legacy/") ||
+    relative.startsWith("projects/community/") ||
+    relative.startsWith("examples/chapter15/Helloagents-AI-Town/backend/memory_data/")
+  );
+}
+
 function stripCodeFences(markdown) {
   const lines = markdown.split(/\r?\n/);
   let inFence = false;
@@ -59,6 +69,35 @@ function stripCodeFences(markdown) {
       return inFence ? "" : line;
     })
     .join("\n");
+}
+
+function githubSlug(text) {
+  return text
+    .trim()
+    .toLowerCase()
+    .replace(/<[^>]+>/g, "")
+    .replace(/[`*_~]/g, "")
+    .replace(/[^\p{L}\p{N}\s-]/gu, "")
+    .trim()
+    .replace(/\s+/g, "-");
+}
+
+function headingAnchors(file) {
+  if (headingCache.has(file)) return headingCache.get(file);
+  const anchors = new Set();
+  const seen = new Map();
+  const text = stripCodeFences(readFileSync(file, "utf8"));
+  for (const line of text.split(/\r?\n/)) {
+    const match = line.match(/^(#{1,6})\s+(.+?)\s*#*\s*$/);
+    if (!match) continue;
+    const base = githubSlug(match[2]);
+    if (!base) continue;
+    const count = seen.get(base) || 0;
+    anchors.add(count === 0 ? base : `${base}-${count}`);
+    seen.set(base, count + 1);
+  }
+  headingCache.set(file, anchors);
+  return anchors;
 }
 
 function checkMarkdown(file) {
@@ -104,7 +143,7 @@ function checkMarkdown(file) {
     ) {
       continue;
     }
-    const [targetPath] = rawTarget.split("#");
+    const [targetPath, anchor] = rawTarget.split("#");
     if (!targetPath) continue;
     let decoded = targetPath;
     try {
@@ -116,6 +155,13 @@ function checkMarkdown(file) {
     const resolved = path.resolve(path.dirname(file), decoded);
     if (!resolved.startsWith(root) || !existsSync(resolved)) {
       failures.push(`${relative}: broken local link ${rawTarget}`);
+      continue;
+    }
+    if (anchor && resolved.endsWith(".md")) {
+      const decodedAnchor = decodeURIComponent(anchor).toLowerCase();
+      if (!headingAnchors(resolved).has(decodedAnchor)) {
+        failures.push(`${relative}: broken local anchor ${rawTarget}`);
+      }
     }
   }
 }
@@ -164,10 +210,14 @@ function checkPythonSyntax(files) {
 
 const files = walk(root);
 for (const file of files) {
+  const relative = rel(file);
+  if (!isArchivedOrGenerated(relative) && /[^\x00-\x7F]/.test(relative)) {
+    failures.push(`${relative}: active path contains non-ASCII characters`);
+  }
   try {
     readFileSync(file);
   } catch (error) {
-    failures.push(`${rel(file)}: unreadable file: ${error.message}`);
+    failures.push(`${relative}: unreadable file: ${error.message}`);
   }
 }
 
